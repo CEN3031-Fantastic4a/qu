@@ -1,13 +1,7 @@
 Yo Team! So I got the MeanJs code on our GitHub and we'll update the ReadMe accordingly once our project is assigned and setup works for you. Go ahead and clone the repo and run "npm install" and then "npm start"
 
 
-For the team based assignment we all have to make pull requests so just add your name before your merge.
-
-Pull Request Completed By:
-    Allison Kast
-
-
-----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
 
 
 [![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
