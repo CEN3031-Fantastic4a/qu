@@ -12,6 +12,8 @@ Pull Request completed by: Leany Singh
 
 Pull Request completed by: Shelby Warnock
 
+Pull Request Completed By: Jianyi Gao
+
 Pull Request completed by: Iden Sassani
 
 ----------------------------------------------------------------------------------------------------------
