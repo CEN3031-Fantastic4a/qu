@@ -10,22 +10,63 @@ var mongoose = require('mongoose'),
   chalk = require('chalk');
 
 /**
- * Article Schema
+ * Spot Schema
  */
-var ArticleSchema = new Schema({
+var SpotSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
-  title: {
-    type: String,
-    default: '',
-    trim: true,
-    required: 'Title cannot be blank'
+  address: {
+    streetAddress: {
+      type: String,
+      default: '',
+      trim: true,
+      required: 'Street Address cannot be blank'
+    },
+    city: {
+      type: String,
+      default: '',
+      trim: true,
+      required: 'City cannot be blank'
+    },
+    state: {
+      type: String,
+      default: '',
+      trim: true,
+      required: 'State cannot be blank'
+    },
+    zip: {
+      type: String,
+      default: '',
+      trim: true,
+      required: 'State cannot be blank'
+    },
+    country: {
+      type: String,
+      default: '',
+      trim: true,
+      required: 'Country cannot be blank'
+    }
   },
-  content: {
+  availability: {
+    type: Boolean,
+    default: false,
+    trim: true
+  },
+  description: {
     type: String,
     default: '',
+    trim: true
+  },
+  price: {
+    type: Number,
+    default: 0,
+    trim: true
+  },
+  active: {
+    type: Boolean,
+    default: false,
     trim: true
   },
   user: {
@@ -34,16 +75,16 @@ var ArticleSchema = new Schema({
   }
 });
 
-ArticleSchema.statics.seed = seed;
+SpotSchema.statics.seed = seed;
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Spot', SpotSchema);
 
 /**
-* Seeds the User collection with document (Article)
+* Seeds the User collection with document (Spot)
 * and provided options.
 */
 function seed(doc, options) {
-  var Article = mongoose.model('Article');
+  var Spot = mongoose.model('Spot');
 
   return new Promise(function (resolve, reject) {
 
@@ -83,9 +124,15 @@ function seed(doc, options) {
 
     function skipDocument() {
       return new Promise(function (resolve, reject) {
-        Article
+        Spot
           .findOne({
-            title: doc.title
+            address: {
+              streetAddress: doc.streetAddress,
+              city: doc.city,
+              state: doc.state,
+              zip: doc.zip,
+              country: doc.county
+            }
           })
           .exec(function (err, existing) {
             if (err) {
@@ -100,7 +147,7 @@ function seed(doc, options) {
               return resolve(true);
             }
 
-            // Remove Article (overwrite)
+            // Remove Spot (overwrite)
 
             existing.remove(function (err) {
               if (err) {
@@ -117,19 +164,19 @@ function seed(doc, options) {
       return new Promise(function (resolve, reject) {
         if (skip) {
           return resolve({
-            message: chalk.yellow('Database Seeding: Article\t' + doc.title + ' skipped')
+            message: chalk.yellow('Database Seeding: Parking Spot\t' + doc._id + ' skipped')
           });
         }
 
-        var article = new Article(doc);
+        var spot = new Spot(doc);
 
-        article.save(function (err) {
+        spot.save(function (err) {
           if (err) {
             return reject(err);
           }
 
           return resolve({
-            message: 'Database Seeding: Article\t' + article.title + ' added'
+            message: 'Database Seeding: Parking spot\t' + spot._id + ' added'
           });
         });
       });

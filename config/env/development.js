@@ -100,7 +100,7 @@ module.exports = {
         }
       }]
     }, {
-      model: 'Article',
+      model: 'Spot',
       options: {
         // Override log results setting at the
         // collection level.
@@ -113,8 +113,14 @@ module.exports = {
       },
       docs: [{
         data: {
-          title: 'First Article',
-          content: 'This is a seeded Article for the development environment'
+          address: {
+            streetAddress: 'Test Address',
+            city: 'Gainesville',
+            state: 'Florida',
+            zip: '32601',
+            country: 'USA'
+          },
+          description: 'Parking spot details'
         }
       }]
     }]

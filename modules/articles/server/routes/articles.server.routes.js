@@ -3,21 +3,21 @@
 /**
  * Module dependencies
  */
-var articlesPolicy = require('../policies/articles.server.policy'),
-  articles = require('../controllers/articles.server.controller');
+var spotsPolicy = require('../policies/articles.server.policy'),
+  spots = require('../controllers/articles.server.controller');
 
 module.exports = function (app) {
-  // Articles collection routes
-  app.route('/api/articles').all(articlesPolicy.isAllowed)
-    .get(articles.list)
-    .post(articles.create);
+  // Host Parking Spots collection routes
+  app.route('/api/articles').all(spotsPolicy.isAllowed)
+    .get(spots.list)
+    .post(spots.create);
 
-  // Single article routes
-  app.route('/api/articles/:articleId').all(articlesPolicy.isAllowed)
-    .get(articles.read)
-    .put(articles.update)
-    .delete(articles.delete);
+  // Single host parking spot routes
+  app.route('/api/articles/:spotId').all(spotsPolicy.isAllowed)
+    .get(spots.read)
+    .put(spots.update)
+    .delete(spots.delete);
 
-  // Finish by binding the article middleware
-  app.param('articleId', articles.articleByID);
+  // Finish by binding the host parking spot middleware
+  app.param('spotId', spots.spotByID);
 };

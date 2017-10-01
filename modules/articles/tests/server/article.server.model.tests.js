@@ -6,19 +6,19 @@
 var should = require('should'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  Article = mongoose.model('Article');
+  Spot = mongoose.model('Spot');
 
 /**
  * Globals
  */
 var user,
-  article;
+  spot;
 
 /**
  * Unit tests
  */
-describe('Article Model Unit Tests:', function () {
-
+describe('Parking Spots Model Unit Tests:', function () {
+  this.timeout(15000);
   beforeEach(function (done) {
     user = new User({
       firstName: 'Full',
@@ -32,9 +32,15 @@ describe('Article Model Unit Tests:', function () {
 
     user.save()
       .then(function () {
-        article = new Article({
-          title: 'Article Title',
-          content: 'Article Content',
+        spot = new Spot({
+          address: {
+            streetAddress: 'Test Street Address',
+            city: 'Gainesville',
+            state: 'Florida',
+            zip: '32601',
+            country: 'United States'
+          },
+          active: true,
           user: user
         });
 
@@ -46,16 +52,16 @@ describe('Article Model Unit Tests:', function () {
   describe('Method Save', function () {
     it('should be able to save without problems', function (done) {
       this.timeout(10000);
-      article.save(function (err) {
+      spot.save(function (err) {
         should.not.exist(err);
         return done();
       });
     });
 
-    it('should be able to show an error when try to save without title', function (done) {
-      article.title = '';
+    it('should be able to show an error when try to save without street address', function (done) {
+      spot.address.streetAddress = '';
 
-      article.save(function (err) {
+      spot.save(function (err) {
         should.exist(err);
         return done();
       });
@@ -63,7 +69,7 @@ describe('Article Model Unit Tests:', function () {
   });
 
   afterEach(function (done) {
-    Article.remove().exec()
+    Spot.remove().exec()
       .then(User.remove().exec())
       .then(done())
       .catch(done);
