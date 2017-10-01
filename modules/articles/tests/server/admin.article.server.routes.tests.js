@@ -5,7 +5,7 @@ var should = require('should'),
   path = require('path'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  Article = mongoose.model('Article'),
+  Spot = mongoose.model('Spot'),
   express = require(path.resolve('./config/lib/express'));
 
 /**
@@ -15,12 +15,12 @@ var app,
   agent,
   credentials,
   user,
-  article;
+  spot;
 
 /**
- * Article routes tests
+ * Spot routes tests
  */
-describe('Article Admin CRUD tests', function () {
+describe('Parking Spot Admin CRUD tests', function () {
   before(function (done) {
     // Get application
     app = express.init(mongoose.connection.db);
@@ -48,12 +48,18 @@ describe('Article Admin CRUD tests', function () {
       provider: 'local'
     });
 
-    // Save a user to the test db and create new article
+    // Save a user to the test db and create new parking spot
     user.save()
       .then(function () {
-        article = {
-          title: 'Article Title',
-          content: 'Article Content'
+        spot = {
+          address: {
+            streetAddress: 'Test Address',
+            city: 'Gainesville',
+            state: 'Florida',
+            zip: '32601',
+            country: 'USA'
+          },
+          description: 'Parking spot details'
         };
 
         done();
@@ -61,7 +67,7 @@ describe('Article Admin CRUD tests', function () {
       .catch(done);
   });
 
-  it('should be able to save an article if logged in', function (done) {
+  it('should be able to save a parking spot if logged in', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -74,30 +80,30 @@ describe('Article Admin CRUD tests', function () {
         // Get the userId
         var userId = user.id;
 
-        // Save a new article
+        // Save a new parking spot
         agent.post('/api/articles')
-          .send(article)
+          .send(spot)
           .expect(200)
-          .end(function (articleSaveErr, articleSaveRes) {
-            // Handle article save error
-            if (articleSaveErr) {
-              return done(articleSaveErr);
+          .end(function (spotSaveErr, spotSaveRes) {
+            // Handle spot save error
+            if (spotSaveErr) {
+              return done(spotSaveErr);
             }
 
-            // Get a list of articles
+            // Get a list of spots
             agent.get('/api/articles')
-              .end(function (articlesGetErr, articlesGetRes) {
-                // Handle article save error
-                if (articlesGetErr) {
-                  return done(articlesGetErr);
+              .end(function (spotsGetErr, spotsGetRes) {
+                // Handle spot save error
+                if (spotsGetErr) {
+                  return done(spotsGetErr);
                 }
 
-                // Get articles list
-                var articles = articlesGetRes.body;
+                // Get spots list
+                var spots = spotsGetRes.body;
 
                 // Set assertions
-                (articles[0].user._id).should.equal(userId);
-                (articles[0].title).should.match('Article Title');
+                (spots[0].user._id).should.equal(userId);
+                (spots[0].address.streetAddress).should.match('Test Address');
 
                 // Call the assertion callback
                 done();
@@ -106,7 +112,7 @@ describe('Article Admin CRUD tests', function () {
       });
   });
 
-  it('should be able to update an article if signed in', function (done) {
+  it('should be able to update a spot if signed in', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -119,32 +125,32 @@ describe('Article Admin CRUD tests', function () {
         // Get the userId
         var userId = user.id;
 
-        // Save a new article
+        // Save a new spot
         agent.post('/api/articles')
-          .send(article)
+          .send(spot)
           .expect(200)
-          .end(function (articleSaveErr, articleSaveRes) {
-            // Handle article save error
-            if (articleSaveErr) {
-              return done(articleSaveErr);
+          .end(function (spotSaveErr, spotSaveRes) {
+            // Handle spot save error
+            if (spotSaveErr) {
+              return done(spotSaveErr);
             }
 
-            // Update article title
-            article.title = 'WHY YOU GOTTA BE SO MEAN?';
+            // Update spot street address
+            spot.address.streetAddress = 'Test Update Address';
 
-            // Update an existing article
-            agent.put('/api/articles/' + articleSaveRes.body._id)
-              .send(article)
+            // Update an existing spot
+            agent.put('/api/articles/' + spotSaveRes.body._id)
+              .send(spot)
               .expect(200)
-              .end(function (articleUpdateErr, articleUpdateRes) {
-                // Handle article update error
-                if (articleUpdateErr) {
-                  return done(articleUpdateErr);
+              .end(function (spotUpdateErr, spotUpdateRes) {
+                // Handle spot update error
+                if (spotUpdateErr) {
+                  return done(spotUpdateErr);
                 }
 
                 // Set assertions
-                (articleUpdateRes.body._id).should.equal(articleSaveRes.body._id);
-                (articleUpdateRes.body.title).should.match('WHY YOU GOTTA BE SO MEAN?');
+                (spotUpdateRes.body._id).should.equal(spotSaveRes.body._id);
+                (spotUpdateRes.body.address.streetAddress).should.match('Test Update Address');
 
                 // Call the assertion callback
                 done();
@@ -153,9 +159,9 @@ describe('Article Admin CRUD tests', function () {
       });
   });
 
-  it('should not be able to save an article if no title is provided', function (done) {
-    // Invalidate title field
-    article.title = '';
+  it('should not be able to save a spot if no street address is provided', function (done) {
+    // Invalidate streetAddress field
+    spot.address.streetAddress = '';
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -169,21 +175,21 @@ describe('Article Admin CRUD tests', function () {
         // Get the userId
         var userId = user.id;
 
-        // Save a new article
+        // Save a new spot
         agent.post('/api/articles')
-          .send(article)
+          .send(spot)
           .expect(422)
-          .end(function (articleSaveErr, articleSaveRes) {
+          .end(function (spotSaveErr, spotSaveRes) {
             // Set message assertion
-            (articleSaveRes.body.message).should.match('Title cannot be blank');
+            (spotSaveRes.body.message).should.match('Street Address cannot be blank');
 
-            // Handle article save error
-            done(articleSaveErr);
+            // Handle spot save error
+            done(spotSaveErr);
           });
       });
   });
 
-  it('should be able to delete an article if signed in', function (done) {
+  it('should be able to delete a spot if signed in', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -196,28 +202,28 @@ describe('Article Admin CRUD tests', function () {
         // Get the userId
         var userId = user.id;
 
-        // Save a new article
+        // Save a new spot
         agent.post('/api/articles')
-          .send(article)
+          .send(spot)
           .expect(200)
-          .end(function (articleSaveErr, articleSaveRes) {
-            // Handle article save error
-            if (articleSaveErr) {
-              return done(articleSaveErr);
+          .end(function (spotSaveErr, spotSaveRes) {
+            // Handle spot save error
+            if (spotSaveErr) {
+              return done(spotSaveErr);
             }
 
-            // Delete an existing article
-            agent.delete('/api/articles/' + articleSaveRes.body._id)
-              .send(article)
+            // Delete an existing spot
+            agent.delete('/api/articles/' + spotSaveRes.body._id)
+              .send(spot)
               .expect(200)
-              .end(function (articleDeleteErr, articleDeleteRes) {
-                // Handle article error error
-                if (articleDeleteErr) {
-                  return done(articleDeleteErr);
+              .end(function (spotDeleteErr, spotDeleteRes) {
+                // Handle spot error error
+                if (spotDeleteErr) {
+                  return done(spotDeleteErr);
                 }
 
                 // Set assertions
-                (articleDeleteRes.body._id).should.equal(articleSaveRes.body._id);
+                (spotDeleteRes.body._id).should.equal(spotSaveRes.body._id);
 
                 // Call the assertion callback
                 done();
@@ -226,10 +232,10 @@ describe('Article Admin CRUD tests', function () {
       });
   });
 
-  it('should be able to get a single article if signed in and verify the custom "isCurrentUserOwner" field is set to "true"', function (done) {
-    // Create new article model instance
-    article.user = user;
-    var articleObj = new Article(article);
+  it('should be able to get a single spot if signed in and verify the custom "isCurrentUserOwner" field is set to "true"', function (done) {
+    // Create new spot model instance
+    spot.user = user;
+    var spotObj = new Spot(spot);
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -243,31 +249,35 @@ describe('Article Admin CRUD tests', function () {
         // Get the userId
         var userId = user.id;
 
-        // Save a new article
+        // Save a new spot
         agent.post('/api/articles')
-          .send(article)
+          .send(spot)
           .expect(200)
-          .end(function (articleSaveErr, articleSaveRes) {
-            // Handle article save error
-            if (articleSaveErr) {
-              return done(articleSaveErr);
+          .end(function (spotSaveErr, spotSaveRes) {
+            // Handle spot save error
+            if (spotSaveErr) {
+              return done(spotSaveErr);
             }
 
-            // Get the article
-            agent.get('/api/articles/' + articleSaveRes.body._id)
+            // Get the spot
+            agent.get('/api/articles/' + spotSaveRes.body._id)
               .expect(200)
-              .end(function (articleInfoErr, articleInfoRes) {
-                // Handle article error
-                if (articleInfoErr) {
-                  return done(articleInfoErr);
+              .end(function (spotInfoErr, spotInfoRes) {
+                // Handle spot error
+                if (spotInfoErr) {
+                  return done(spotInfoErr);
                 }
 
                 // Set assertions
-                (articleInfoRes.body._id).should.equal(articleSaveRes.body._id);
-                (articleInfoRes.body.title).should.equal(article.title);
+                (spotInfoRes.body._id).should.equal(spotSaveRes.body._id);
+                (spotInfoRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
+                (spotInfoRes.body.address.city).should.equal(spot.address.city);
+                (spotInfoRes.body.address.state).should.equal(spot.address.state);
+                (spotInfoRes.body.address.zip).should.equal(spot.address.zip);
+                (spotInfoRes.body.address.country).should.equal(spot.address.country);
 
                 // Assert that the "isCurrentUserOwner" field is set to true since the current User created it
-                (articleInfoRes.body.isCurrentUserOwner).should.equal(true);
+                (spotInfoRes.body.isCurrentUserOwner).should.equal(true);
 
                 // Call the assertion callback
                 done();
@@ -277,7 +287,7 @@ describe('Article Admin CRUD tests', function () {
   });
 
   afterEach(function (done) {
-    Article.remove().exec()
+    Spot.remove().exec()
       .then(User.remove().exec())
       .then(done())
       .catch(done);

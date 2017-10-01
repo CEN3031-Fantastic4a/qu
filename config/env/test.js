@@ -105,12 +105,18 @@ module.exports = {
         }
       }]
     }, {
-      model: 'Article',
+      model: 'Spot',
       docs: [{
         overwrite: true,
         data: {
-          title: 'Test Article',
-          content: 'Code coverage test article!'
+          address: {
+            streetAddress: 'Test Street',
+            city: 'Gainesville',
+            state: 'Florida',
+            zip: '32601',
+            country: 'USA'
+          },
+          description: 'Code coverage test spot!'
         }
       }]
     }]

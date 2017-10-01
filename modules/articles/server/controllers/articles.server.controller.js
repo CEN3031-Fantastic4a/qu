@@ -5,113 +5,121 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Article = mongoose.model('Article'),
+  Spot = mongoose.model('Spot'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Create an article
+ * Create a Host Parking Spot
  */
 exports.create = function (req, res) {
-  var article = new Article(req.body);
-  article.user = req.user;
+  var spot = new Spot(req.body);
+  spot.user = req.user;
 
-  article.save(function (err) {
+  spot.save(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(spot);
     }
   });
 };
 
 /**
- * Show the current article
+ * Show the current parking spot
  */
 exports.read = function (req, res) {
   // convert mongoose document to JSON
-  var article = req.article ? req.article.toJSON() : {};
+  var spot = req.article ? req.article.toJSON() : {};
 
-  // Add a custom field to the Article, for determining if the current User is the "owner".
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  article.isCurrentUserOwner = !!(req.user && article.user && article.user._id.toString() === req.user._id.toString());
+  // Add a custom field to the Spot, for determining if the current User is the "owner".
+  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Host Spot model.
+  spot.isCurrentUserOwner = !!(req.user && spot.user && spot.user._id.toString() === req.user._id.toString());
 
-  res.json(article);
+  res.json(spot);
 };
 
 /**
- * Update an article
+ * Update a spot
  */
 exports.update = function (req, res) {
-  var article = req.article;
+  var spot = req.article;
 
-  article.title = req.body.title;
-  article.content = req.body.content;
+  spot.address.streetAddress = req.body.address.streetAddress;
+  spot.address.city = req.body.address.city;
+  spot.address.state = req.body.address.state;
+  spot.address.zip = req.body.address.zip;
+  spot.address.country = req.body.address.country;
 
-  article.save(function (err) {
+  spot.availability = req.body.availability;
+  spot.description = req.body.description;
+  spot.price = req.body.price;
+  spot.active = req.body.active;
+
+  spot.save(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(spot);
     }
   });
 };
 
 /**
- * Delete an article
+ * Delete a spot
  */
 exports.delete = function (req, res) {
-  var article = req.article;
+  var spot = req.article;
 
-  article.remove(function (err) {
+  spot.remove(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(spot);
     }
   });
 };
 
 /**
- * List of Articles
+ * List of Host Parking Spots
  */
 exports.list = function (req, res) {
-  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Spot.find().sort('-created').populate('user', 'displayName').exec(function (err, spots) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(articles);
+      res.json(spots);
     }
   });
 };
 
 /**
- * Article middleware
+ * Host Parking Spot middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.spotByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Article is invalid'
+      message: 'Parking Spot is invalid'
     });
   }
 
-  Article.findById(id).populate('user', 'displayName').exec(function (err, article) {
+  Spot.findById(id).populate('user', 'displayName').exec(function (err, spot) {
     if (err) {
       return next(err);
-    } else if (!article) {
+    } else if (!spot) {
       return res.status(404).send({
-        message: 'No article with that identifier has been found'
+        message: 'No spot with that identifier has been found'
       });
     }
-    req.article = article;
+    req.article = spot;
     next();
   });
 };
