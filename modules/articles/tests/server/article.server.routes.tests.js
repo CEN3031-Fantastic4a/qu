@@ -52,14 +52,9 @@ describe('Parking Spot CRUD tests', function () {
     user.save()
       .then(function () {
         spot = {
-          address: {
-            streetAddress: 'Test Address',
-            city: 'Gainesville',
-            state: 'Florida',
-            zip: '32601',
-            country: 'USA'
-          },
-          description: 'Parking spot details'
+          address: 'Test Address',
+          postal_code: '32601',
+          city_name: 'Gainesville'
         };
 
         done();
@@ -269,11 +264,9 @@ describe('Parking Spot CRUD tests', function () {
               }
 
               // Set assertions on new spot
-              (spotSaveRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
-              (spotSaveRes.body.address.city).should.equal(spot.address.city);
-              (spotSaveRes.body.address.state).should.equal(spot.address.state);
-              (spotSaveRes.body.address.zip).should.equal(spot.address.zip);
-              (spotSaveRes.body.address.country).should.equal(spot.address.country);
+              (spotSaveRes.body.address).should.equal(spot.address);
+              (spotSaveRes.body.city_name).should.equal(spot.city_name);
+              (spotSaveRes.body.postal_code).should.equal(spot.postal_code);
               should.exist(spotSaveRes.body.user);
               should.equal(spotSaveRes.body.user._id, orphanId);
 
@@ -300,11 +293,9 @@ describe('Parking Spot CRUD tests', function () {
 
                         // Set assertions
                         (spotInfoRes.body._id).should.equal(spotSaveRes.body._id);
-                        (spotInfoRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
-                        (spotInfoRes.body.address.city).should.equal(spot.address.city);
-                        (spotInfoRes.body.address.state).should.equal(spot.address.state);
-                        (spotInfoRes.body.address.zip).should.equal(spot.address.zip);
-                        (spotInfoRes.body.address.country).should.equal(spot.address.country);
+                        (spotInfoRes.body.address).should.equal(spot.address);
+                        (spotInfoRes.body.city_name).should.equal(spot.city_name);
+                        (spotInfoRes.body.postal_code).should.equal(spot.postal_code);
                         should.equal(spotInfoRes.body.user, undefined);
 
                         // Call the assertion callback
@@ -387,11 +378,9 @@ describe('Parking Spot CRUD tests', function () {
               }
 
               // Set assertions on new spot
-              (spotSaveRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
-              (spotSaveRes.body.address.city).should.equal(spot.address.city);
-              (spotSaveRes.body.address.state).should.equal(spot.address.state);
-              (spotSaveRes.body.address.zip).should.equal(spot.address.zip);
-              (spotSaveRes.body.address.country).should.equal(spot.address.country);
+              (spotSaveRes.body.address).should.equal(spot.address);
+              (spotSaveRes.body.city_name).should.equal(spot.city_name);
+              (spotSaveRes.body.postal_code).should.equal(spot.postal_code);
               should.exist(spotSaveRes.body.user);
               should.equal(spotSaveRes.body.user._id, userId);
 
@@ -416,11 +405,9 @@ describe('Parking Spot CRUD tests', function () {
 
                       // Set assertions
                       (spotInfoRes.body._id).should.equal(spotSaveRes.body._id);
-                      (spotInfoRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
-                      (spotInfoRes.body.address.city).should.equal(spot.address.city);
-                      (spotInfoRes.body.address.state).should.equal(spot.address.state);
-                      (spotInfoRes.body.address.zip).should.equal(spot.address.zip);
-                      (spotInfoRes.body.address.country).should.equal(spot.address.country);                       // Assert that the custom field "isCurrentUserOwner" is set to false since the current User didn't create it
+                      (spotInfoRes.body.address).should.equal(spot.address);
+                      (spotInfoRes.body.city_name).should.equal(spot.city_name);
+                      (spotInfoRes.body.postal_code).should.equal(spot.postal_code);                      // Assert that the custom field "isCurrentUserOwner" is set to false since the current User didn't create it
                       (spotInfoRes.body.isCurrentUserOwner).should.equal(false);
 
                       // Call the assertion callback

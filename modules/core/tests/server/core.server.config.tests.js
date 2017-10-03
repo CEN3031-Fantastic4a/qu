@@ -55,14 +55,10 @@ describe('Configuration Tests:', function () {
       };
 
       _spot = {
-        address: {
-          streetAddress: 'Test Address',
-          city: 'Gainesville',
-          state: 'Florida',
-          zip: '32601',
-          country: 'USA'
-        },
-        description: 'Parking spot details'
+        address: 'Test Street Address',
+        city_name: 'Gainesville',
+        postal_code: '32601',
+        status: true
       };
 
       var spotCollections = _.filter(_seedConfig.collections, function (collection) {
@@ -98,13 +94,11 @@ describe('Configuration Tests:', function () {
     it('should have default seed configuration set for spots', function (done) {
       spotSeedConfig.should.be.instanceof(Object);
       spotSeedConfig.docs.should.be.instanceof(Array).and.have.lengthOf(1);
-      should.exist(spotSeedConfig.docs[0].data.address.streetAddress);
-      should.exist(spotSeedConfig.docs[0].data.address.city);
-      should.exist(spotSeedConfig.docs[0].data.address.state);
-      should.exist(spotSeedConfig.docs[0].data.address.zip);
-      should.exist(spotSeedConfig.docs[0].data.address.country);
+      should.exist(spotSeedConfig.docs[0].data.address);
+      should.exist(spotSeedConfig.docs[0].data.city_name);
+      should.exist(spotSeedConfig.docs[0].data.postal_code);
 
-      should.exist(spotSeedConfig.docs[0].data.description);
+      should.exist(spotSeedConfig.docs[0].data.status);
 
       return done();
     });
@@ -162,16 +156,14 @@ describe('Configuration Tests:', function () {
           return Spot.find().exec();
         })
         .then(function (spots) {
-          spots.should.be.instanceof(Array).and.have.lengthOf(2);
+          spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          spotSeedConfig.docs[0].data.address.streetAddress.should.equal(newSpot.address.streetAddress);
-          spotSeedConfig.docs[0].data.address.city.should.equal(newSpot.address.city);
-          spotSeedConfig.docs[0].data.address.state.should.equal(newSpot.address.state);
-          spotSeedConfig.docs[0].data.address.zip.should.equal(newSpot.address.zip);
-          spotSeedConfig.docs[0].data.address.country.should.equal(newSpot.address.country);
+          spotSeedConfig.docs[0].data.address.should.equal(newSpot.address);
+          spotSeedConfig.docs[0].data.city_name.should.equal(newSpot.city_name);
+          spotSeedConfig.docs[0].data.postal_code.should.equal(newSpot.postal_code);
 
-          spotSeedConfig.docs[0].data.description.should.equal(newSpot.description);
+          spotSeedConfig.docs[0].data.status.should.equal(newSpot.status);
 
           return done();
         })
@@ -250,13 +242,11 @@ describe('Configuration Tests:', function () {
           spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          _spot.address.streetAddress.should.equal(newSpot.address.streetAddress);
-          _spot.address.city.should.equal(newSpot.address.city);
-          _spot.address.state.should.equal(newSpot.address.state);
-          _spot.address.zip.should.equal(newSpot.address.zip);
-          _spot.address.country.should.equal(newSpot.address.country);
+          _spot.address.should.equal(newSpot.address);
+          _spot.city_name.should.equal(newSpot.city_name);
+          _spot.postal_code.should.equal(newSpot.postal_code);
 
-          _spot.description.should.equal(newSpot.description);
+          _spot.status.should.equal(newSpot.status);
 
           return done();
         })
@@ -294,13 +284,11 @@ describe('Configuration Tests:', function () {
           spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          _spot.address.streetAddress.should.equal(newSpot.address.streetAddress);
-          _spot.address.city.should.equal(newSpot.address.city);
-          _spot.address.state.should.equal(newSpot.address.state);
-          _spot.address.zip.should.equal(newSpot.address.zip);
-          _spot.address.country.should.equal(newSpot.address.country);
+          _spot.address.should.equal(newSpot.address);
+          _spot.city_name.should.equal(newSpot.city_name);
+          _spot.postal_code.should.equal(newSpot.postal_code);
 
-          _spot.description.should.equal(newSpot.description);
+          _spot.status.should.equal(newSpot.status);
 
           should.exist(newSpot.user);
           should.exist(newSpot.user._id);
@@ -349,13 +337,11 @@ describe('Configuration Tests:', function () {
           spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          _spot.address.streetAddress.should.equal(newSpot.address.streetAddress);
-          _spot.address.city.should.equal(newSpot.address.city);
-          _spot.address.state.should.equal(newSpot.address.state);
-          _spot.address.zip.should.equal(newSpot.address.zip);
-          _spot.address.country.should.equal(newSpot.address.country);
+          _spot.address.should.equal(newSpot.address);
+          _spot.city_name.should.equal(newSpot.city_name);
+          _spot.postal_code.should.equal(newSpot.postal_code);
 
-          _spot.description.should.equal(newSpot.description);
+          _spot.status.should.equal(newSpot.status);
 
           should.not.exist(newSpot.user);
 
@@ -407,7 +393,7 @@ describe('Configuration Tests:', function () {
     it('should NOT overwrite existing spot with custom options', function (done) {
 
       var spot = new Spot(_spot);
-      spot.description = '_temp_spot_content_';
+      spot.status = false;
 
       spot.save()
         .then(function () {
@@ -425,16 +411,14 @@ describe('Configuration Tests:', function () {
           return Spot.find().exec();
         })
         .then(function (spots) {
-          spots.should.be.instanceof(Array).and.have.lengthOf(2);
+          spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var existingSpot = spots.pop();
-          spot.address.streetAddress.should.equal(existingSpot.address.streetAddress);
-          spot.address.city.should.equal(existingSpot.address.city);
-          spot.address.state.should.equal(existingSpot.address.state);
-          spot.address.zip.should.equal(existingSpot.address.zip);
-          spot.address.country.should.equal(existingSpot.address.country);
+          spot.address.should.equal(existingSpot.address);
+          spot.city_name.should.equal(existingSpot.city_name);
+          spot.postal_code.should.equal(existingSpot.postal_code);
 
-          // spot.description.should.equal(existingSpot.description);
+          spot.status.should.equal(existingSpot.status);
 
           return done();
         })
@@ -475,7 +459,7 @@ describe('Configuration Tests:', function () {
 
     it('should NOT seed spot when missing address with custom options', function (done) {
       var invalid = {
-        description: '_temp_spot_content_'
+        status: false
       };
 
       seed
@@ -495,7 +479,7 @@ describe('Configuration Tests:', function () {
         })
         .catch(function (err) {
           should.exist(err);
-          err.message.should.equal('Spot validation failed: address.streetAddress: Street Address cannot be blank, address.city: City cannot be blank, address.state: State cannot be blank, address.zip: State cannot be blank, address.country: Country cannot be blank');
+          err.message.should.equal('Spot validation failed: address: Address cannot be blank, postal_code: Zip Code cannot be blank, city_name: City cannot be blank');
 
           return done();
         });
@@ -647,12 +631,10 @@ describe('Configuration Tests:', function () {
           spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          _spot.address.streetAddress.should.be.equal(newSpot.address.streetAddress);
-          _spot.address.city.should.be.equal(newSpot.address.city);
-          _spot.address.state.should.be.equal(newSpot.address.state);
-          _spot.address.zip.should.be.equal(newSpot.address.zip);
-          _spot.address.country.should.be.equal(newSpot.address.country);
-          _spot.description.should.be.equal(newSpot.description);
+          _spot.address.should.be.equal(newSpot.address);
+          _spot.city_name.should.be.equal(newSpot.city_name);
+          _spot.postal_code.should.be.equal(newSpot.postal_code);
+          _spot.status.should.be.equal(newSpot.status);
 
           return done();
         })
@@ -661,14 +643,10 @@ describe('Configuration Tests:', function () {
 
     it('should skip seed on collection with custom options & skip.when has results', function (done) {
       var spot = new Spot({
-        address: {
-          streetAddress: 'Test Address',
-          city: 'Gainesville',
-          state: 'Florida',
-          zip: '32601',
-          country: 'USA'
-        },
-        description: 'temp-spot-content'
+        address: 'Test Address',
+        city_name: 'Gainesville',
+        postal_code: '32601',
+        status: true
       });
 
       spot
@@ -680,25 +658,19 @@ describe('Configuration Tests:', function () {
           spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var newSpot = spots.pop();
-          spot.address.streetAddress.should.be.equal(newSpot.address.streetAddress);
-          spot.address.city.should.be.equal(newSpot.address.city);
-          spot.address.state.should.be.equal(newSpot.address.state);
-          spot.address.zip.should.be.equal(newSpot.address.zip);
-          spot.address.country.should.be.equal(newSpot.address.country);
-          spot.description.should.equal(newSpot.description);
+          spot.address.should.be.equal(newSpot.address);
+          spot.city_name.should.be.equal(newSpot.city_name);
+          spot.postal_code.should.be.equal(newSpot.postal_code);
+          spot.status.should.equal(newSpot.status);
 
           return seed.start({
             collections: [{
               model: 'Spot',
               skip: {
                 when: {
-                  address: {
-                    streetAddress: newSpot.streetAddress,
-                    city: newSpot.city,
-                    state: newSpot.state,
-                    zip: newSpot.zip,
-                    country: newSpot.country
-                  }
+                  address: newSpot.address,
+                  city_name: newSpot.city_name,
+                  postal_code: newSpot.postal_code
                 }
               },
               docs: [{
@@ -712,16 +684,13 @@ describe('Configuration Tests:', function () {
         })
         .then(function (spots) {
           // We should have the same spot added at start of this unit test.
-          spots.should.be.instanceof(Array).and.have.lengthOf(2);
+          spots.should.be.instanceof(Array).and.have.lengthOf(1);
 
           var existingSpot = spots.pop();
-          spot.address.streetAddress.should.equal(existingSpot.address.streetAddress);
-          spot.address.city.should.equal(existingSpot.address.city);
-          spot.address.state.should.equal(existingSpot.address.state);
-          spot.address.zip.should.equal(existingSpot.address.zip);
-          spot.address.country.should.equal(existingSpot.address.country);
-
-          // spot.description.should.equal(existingSpot.description);
+          spot.address.should.be.equal(existingSpot.address);
+          spot.city_name.should.be.equal(existingSpot.city_name);
+          spot.postal_code.should.be.equal(existingSpot.postal_code);
+          spot.status.should.equal(existingSpot.status);
 
           return done();
         })
@@ -734,7 +703,7 @@ describe('Configuration Tests:', function () {
           collections: [{
             model: 'Spot',
             skip: {
-              when: { created: 'not-a-valid-date' }
+              when: { created_date: 'not-a-valid-date' }
             },
             docs: [{
               data: _spot

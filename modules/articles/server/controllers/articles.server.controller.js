@@ -46,16 +46,35 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var spot = req.article;
 
-  spot.address.streetAddress = req.body.address.streetAddress;
-  spot.address.city = req.body.address.city;
-  spot.address.state = req.body.address.state;
-  spot.address.zip = req.body.address.zip;
-  spot.address.country = req.body.address.country;
+  spot.update_date = Date.now;
 
-  spot.availability = req.body.availability;
+  spot.address = req.body.address;
+  spot.postal_code = req.body.postal_code;
+  spot.country_id = req.body.country_id;
+  spot.state_id = req.body.state_id;
+  spot.city_name = req.body.city_name;
+  spot.verification_status = req.body.verification_status;
+  spot.users_verification_status = req.body.users_verification_status;
+  spot.stsatus = req.body.status;
+  spot.number_of_space_spot = req.body.number_of_space_spot;
   spot.description = req.body.description;
-  spot.price = req.body.price;
-  spot.active = req.body.active;
+  spot.location = req.body.location;
+  spot.latitude = req.body.latitude;
+  spot.instant_rent = req.body.instant_rent;
+  spot.renting_type = req.body.renting_type;
+  spot.sche_start_date = req.body.sche_start_date;
+  spot.sche_start_time = req.body.sche_start_time;
+  spot.no_of_hours = req.body.no_of_hours;
+  spot.no_of_days = req.body.no_of_days;
+  spot.no_of_months = req.body.no_of_months;
+  spot.mon = req.body.mon;
+  spot.tue = req.body.tue;
+  spot.wed = req.body.wed;
+  spot.thur = req.body.thur;
+  spot.fri = req.body.fri;
+  spot.sat = req.body.sat;
+  spot.sun = req.body.sun;
+  spot.verification_code = req.body.verification_code;
 
   spot.save(function (err) {
     if (err) {
