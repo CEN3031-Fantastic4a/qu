@@ -113,14 +113,10 @@ module.exports = {
       },
       docs: [{
         data: {
-          address: {
-            streetAddress: 'Test Address',
-            city: 'Gainesville',
-            state: 'Florida',
-            zip: '32601',
-            country: 'USA'
-          },
-          description: 'Parking spot details'
+          address: 'Test Address',
+          city_name: 'Gainesville',
+          postal_code: '32601',
+          status: true
         }
       }]
     }]

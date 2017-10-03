@@ -52,14 +52,9 @@ describe('Parking Spot Admin CRUD tests', function () {
     user.save()
       .then(function () {
         spot = {
-          address: {
-            streetAddress: 'Test Address',
-            city: 'Gainesville',
-            state: 'Florida',
-            zip: '32601',
-            country: 'USA'
-          },
-          description: 'Parking spot details'
+          address: 'Test Address',
+          postal_code: '32601',
+          city_name: 'Gainesville'
         };
 
         done();
@@ -103,7 +98,7 @@ describe('Parking Spot Admin CRUD tests', function () {
 
                 // Set assertions
                 (spots[0].user._id).should.equal(userId);
-                (spots[0].address.streetAddress).should.match('Test Address');
+                (spots[0].address).should.match('Test Address');
 
                 // Call the assertion callback
                 done();
@@ -136,7 +131,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             }
 
             // Update spot street address
-            spot.address.streetAddress = 'Test Update Address';
+            spot.address = 'Test Update Address';
 
             // Update an existing spot
             agent.put('/api/articles/' + spotSaveRes.body._id)
@@ -150,7 +145,7 @@ describe('Parking Spot Admin CRUD tests', function () {
 
                 // Set assertions
                 (spotUpdateRes.body._id).should.equal(spotSaveRes.body._id);
-                (spotUpdateRes.body.address.streetAddress).should.match('Test Update Address');
+                (spotUpdateRes.body.address).should.match('Test Update Address');
 
                 // Call the assertion callback
                 done();
@@ -161,7 +156,7 @@ describe('Parking Spot Admin CRUD tests', function () {
 
   it('should not be able to save a spot if no street address is provided', function (done) {
     // Invalidate streetAddress field
-    spot.address.streetAddress = '';
+    spot.address = '';
 
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -181,7 +176,7 @@ describe('Parking Spot Admin CRUD tests', function () {
           .expect(422)
           .end(function (spotSaveErr, spotSaveRes) {
             // Set message assertion
-            (spotSaveRes.body.message).should.match('Street Address cannot be blank');
+            (spotSaveRes.body.message).should.match('Address cannot be blank');
 
             // Handle spot save error
             done(spotSaveErr);
@@ -270,11 +265,9 @@ describe('Parking Spot Admin CRUD tests', function () {
 
                 // Set assertions
                 (spotInfoRes.body._id).should.equal(spotSaveRes.body._id);
-                (spotInfoRes.body.address.streetAddress).should.equal(spot.address.streetAddress);
-                (spotInfoRes.body.address.city).should.equal(spot.address.city);
-                (spotInfoRes.body.address.state).should.equal(spot.address.state);
-                (spotInfoRes.body.address.zip).should.equal(spot.address.zip);
-                (spotInfoRes.body.address.country).should.equal(spot.address.country);
+                (spotInfoRes.body.address).should.equal(spot.address);
+                (spotInfoRes.body.city_name).should.equal(spot.city_name);
+                (spotInfoRes.body.postal_code).should.equal(spot.postal_code);
 
                 // Assert that the "isCurrentUserOwner" field is set to true since the current User created it
                 (spotInfoRes.body.isCurrentUserOwner).should.equal(true);

@@ -33,14 +33,10 @@ describe('Parking Spots Model Unit Tests:', function () {
     user.save()
       .then(function () {
         spot = new Spot({
-          address: {
-            streetAddress: 'Test Street Address',
-            city: 'Gainesville',
-            state: 'Florida',
-            zip: '32601',
-            country: 'United States'
-          },
-          active: true,
+          address: 'Test Street Address',
+          city_name: 'Gainesville',
+          postal_code: '32601',
+          status: true,
           user: user
         });
 
@@ -58,8 +54,8 @@ describe('Parking Spots Model Unit Tests:', function () {
       });
     });
 
-    it('should be able to show an error when try to save without street address', function (done) {
-      spot.address.streetAddress = '';
+    it('should be able to show an error when try to save without address', function (done) {
+      spot.address = '';
 
       spot.save(function (err) {
         should.exist(err);

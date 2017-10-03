@@ -109,14 +109,10 @@ module.exports = {
       docs: [{
         overwrite: true,
         data: {
-          address: {
-            streetAddress: 'Test Street',
-            city: 'Gainesville',
-            state: 'Florida',
-            zip: '32601',
-            country: 'USA'
-          },
-          description: 'Code coverage test spot!'
+          address: 'Test Address',
+          city_name: 'Gainesville',
+          postal_code: '32601',
+          status: true
         }
       }]
     }]
