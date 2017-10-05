@@ -7,8 +7,9 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   passport = require('passport'),
-  User = mongoose.model('User');
-
+  User = mongoose.model('User'),
+  config = require(path.resolve('./config/config')),
+  Stripe = require('stripe')(config.stripe.api_key);
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
   '/authentication/signin',
@@ -21,11 +22,19 @@ var noReturnUrls = [
 exports.signup = function (req, res) {
   // For security measurement we remove the roles from the req.body object
   delete req.body.roles;
-
   // Init user and add missing fields
   var user = new User(req.body);
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
+  Stripe.customers.create({
+    email: user.email,
+    metadata: {
+      firstName: user.firstName,
+      lastName: user.lastName
+    }
+  }, function (err, customer) {
+    user.customer_id = customer.id;
+  });
 
   // Then save the user
   user.save(function (err) {
@@ -121,7 +130,7 @@ exports.oauthCallback = function (strategy) {
 /**
  * Helper function to save or update a OAuth user profile
  */
-exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
+exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {/** %TODO: Implement OAuth user profile redirection to create a payment account before completing the automated user creation or it will failed*/
   // Setup info and user objects
   var info = {};
   var user;
