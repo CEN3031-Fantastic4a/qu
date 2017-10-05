@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-test',
+    uri: process.env.MONGOHQ_URL || process.env.MONGODB_URI || 'mongodb://root:root@ds161503.mlab.com:61503/qwertyqwerty' || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-test',
     options: {},
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
@@ -67,6 +67,9 @@ module.exports = {
     callbackURL: '/api/auth/paypal/callback',
     sandbox: true
   },
+  stripe: {
+    api_key: process.env.STRIPE_API_KEY || 'sk_test_H1upOVCYDyuzp8hNlAMyqMxy'
+  },
   mailer: {
     from: process.env.MAILER_FROM || 'MAILER_FROM',
     options: {
@@ -88,6 +91,28 @@ module.exports = {
       docs: [{
         overwrite: true,
         data: {
+          customer: {
+            customer_id: 'cu_FJFkfass443',
+            sources: [{
+              payment_type: 'cards',
+              currency: 'usd',
+              owner: {
+                address: {
+                  city: 'Gainesvile',
+                  country: 'USA',
+                  line1: '1001 mill street',
+                  line2: '',
+                  postal_code: 33250,
+                  state: 'FL'
+                },
+                email: 'dddd@fxff.com',
+                name: 'Full Name',
+                phone: '7863105879'
+              },
+              token: 'tk_vidsds',
+              usage: 'reusable'
+            }]
+          },
           username: 'seedadmin',
           email: 'admin@localhost.com',
           firstName: 'Admin',
@@ -97,6 +122,28 @@ module.exports = {
       }, {
         overwrite: true,
         data: {
+          customer: {
+            customer_id: 'cu_FJFzzkf443',
+            sources: [{
+              payment_type: 'cards',
+              currency: 'usd',
+              owner: {
+                address: {
+                  city: 'Gainesvile',
+                  country: 'USA',
+                  line1: '1001 mill street',
+                  line2: '',
+                  postal_code: 33250,
+                  state: 'FL'
+                },
+                email: 'dddd@fff.com',
+                name: 'Full Name',
+                phone: '7863105879'
+              },
+              token: 'tk_vidsds',
+              usage: 'reusable'
+            }]
+          },
           username: 'seeduser',
           email: 'user@localhost.com',
           firstName: 'User',
