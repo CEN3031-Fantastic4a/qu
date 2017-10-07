@@ -24,6 +24,9 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/ngmap/build/scripts/ng-map.min.js',
+        '//maps.google.com/maps/api/js'
+
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
