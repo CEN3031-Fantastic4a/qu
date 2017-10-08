@@ -80,7 +80,7 @@ var UserSchema = new Schema({
     validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
   },
   customer: {
-    customer_id: { type: String, unique: 'Must be Unique error' },
+    customer_id: { type: String },
     sources: [{
       payment_type: [{ type: String,
         enum: ['cards', 'bank_account', ''],
