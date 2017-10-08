@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
   chalk = require('chalk');
 
 /**
- * Availability Schema
+ * Custom Availability Schema
  */
 var AvailabilitySchema = new Schema({
   users_id: { type: Schema.ObjectId, ref: 'User' },

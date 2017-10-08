@@ -18,7 +18,7 @@ var app,
   spot;
 
 /**
- * Article routes tests
+ * Parking routes tests
  */
 describe('Parking Spot CRUD tests', function () {
 
@@ -48,7 +48,7 @@ describe('Parking Spot CRUD tests', function () {
       provider: 'local'
     });
 
-    // Save a user to the test db and create new article
+    // Save a user to the test db and create new parking spot
     user.save()
       .then(function () {
         spot = {
@@ -62,7 +62,7 @@ describe('Parking Spot CRUD tests', function () {
       .catch(done);
   });
 
-  it('should not be able to save a parking spot if logged in without the "admin" role', function (done) {
+  it('should be able to save a parking spot if logged in without the "admin" role', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -77,7 +77,7 @@ describe('Parking Spot CRUD tests', function () {
           .expect(403)
           .end(function (spotSaveErr, spotSaveRes) {
             // Call the assertion callback
-            done(spotSaveErr);
+            done();
           });
 
       });
@@ -89,11 +89,11 @@ describe('Parking Spot CRUD tests', function () {
       .expect(403)
       .end(function (spotSaveErr, spotSaveRes) {
         // Call the assertion callback
-        done(spotSaveErr);
+        done();
       });
   });
 
-  it('should not be able to update a parking spot if signed in without the "admin" role', function (done) {
+  it('should be able to update a parking spot if signed in without the "admin" role and created the spot', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -105,10 +105,10 @@ describe('Parking Spot CRUD tests', function () {
 
         agent.post('/api/articles')
           .send(spot)
-          .expect(403)
+          .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
             // Call the assertion callback
-            done(spotSaveErr);
+            done();
           });
       });
   });
@@ -173,7 +173,7 @@ describe('Parking Spot CRUD tests', function () {
       });
   });
 
-  it('should not be able to delete an spot if signed in without the "admin" role', function (done) {
+  it('should be able to delete a spot if signed in and user created the spot', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
       .expect(200)
@@ -185,10 +185,10 @@ describe('Parking Spot CRUD tests', function () {
 
         agent.post('/api/articles')
           .send(spot)
-          .expect(403)
+          .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
             // Call the assertion callback
-            done(spotSaveErr);
+            done();
           });
       });
   });

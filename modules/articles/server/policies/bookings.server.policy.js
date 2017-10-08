@@ -9,47 +9,48 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions
+ * Invoke Bookings Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/articles',
+      resources: '/api/bookings',
       permissions: '*'
     }, {
-      resources: '/api/articles/:spotId',
+      resources: '/api/bookings/:bookingId',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/articles',
+      resources: '/api/bookings',
       permissions: ['get', 'post']
     }, {
-      resources: '/api/articles/:spotId',
+      resources: '/api/bookings/:bookingId',
       permissions: ['get']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/articles',
-      permissions: ['get']
+      resources: '/api/bookings',
+      permissions: []
     }, {
-      resources: '/api/articles/:spotId',
-      permissions: ['get']
+      resources: '/api/bookings/:bookingId',
+      permissions: []
     }]
   }]);
 };
 
 /**
- * Check If Parking Spot Policy Allows
+ * Check If Bookings Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an article is being processed and the current user created it then allow any manipulation
-  if (req.article && req.user && req.article.user && req.article.user.id === req.user.id) {
+  // If a booking is being processed and the current user created it then allow any manipulation
+  // TODO allow manipulation by spot owner
+  if (req.booking && req.user && req.booking.user && req.booking.user.id === req.user.id) {
     return next();
   }
 
