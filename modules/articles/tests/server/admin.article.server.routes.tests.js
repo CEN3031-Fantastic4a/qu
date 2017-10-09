@@ -52,8 +52,8 @@ describe('Parking Spot Admin CRUD tests', function () {
     user.save()
       .then(function () {
         spot = {
-          address: 'Test Address',
-          postal_code: '32601',
+          address: '444 Newell Drive',
+          postal_code: '32611',
           city_name: 'Gainesville'
         };
 
@@ -98,7 +98,7 @@ describe('Parking Spot Admin CRUD tests', function () {
 
                 // Set assertions
                 (spots[0].user._id).should.equal(userId);
-                (spots[0].address).should.match('Test Address');
+                (spots[0].address).should.match('444 Newell Drive');
 
                 // Call the assertion callback
                 done();
@@ -131,7 +131,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             }
 
             // Update spot street address
-            spot.address = 'Test Update Address';
+            spot.address = '1545 W University Ave';
 
             // Update an existing spot
             agent.put('/api/articles/' + spotSaveRes.body._id)
@@ -145,7 +145,7 @@ describe('Parking Spot Admin CRUD tests', function () {
 
                 // Set assertions
                 (spotUpdateRes.body._id).should.equal(spotSaveRes.body._id);
-                (spotUpdateRes.body.address).should.match('Test Update Address');
+                (spotUpdateRes.body.address).should.match('1545 W University Ave');
 
                 // Call the assertion callback
                 done();

@@ -15,6 +15,11 @@ exports.create = function (req, res) {
   var spot = new Spot(req.body);
   spot.user = req.user;
 
+  if (req.results) {
+    spot.longitude = req.results.lng;
+    spot.latitude = req.results.lat;
+  }
+
   spot.save(function (err) {
     if (err) {
       return res.status(422).send({
@@ -59,7 +64,6 @@ exports.update = function (req, res) {
   spot.number_of_space_spot = req.body.number_of_space_spot;
   spot.description = req.body.description;
   spot.location = req.body.location;
-  spot.latitude = req.body.latitude;
   spot.instant_rent = req.body.instant_rent;
   spot.renting_type = req.body.renting_type;
   spot.sche_start_date = req.body.sche_start_date;
@@ -75,6 +79,12 @@ exports.update = function (req, res) {
   spot.sat = req.body.sat;
   spot.sun = req.body.sun;
   spot.verification_code = req.body.verification_code;
+
+  if (req.results) {
+    spot.longitude = req.results.lng;
+    spot.latitude = req.results.lat;
+  }
+
 
   spot.save(function (err) {
     if (err) {
