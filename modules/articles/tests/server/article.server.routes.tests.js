@@ -52,8 +52,8 @@ describe('Parking Spot CRUD tests', function () {
     user.save()
       .then(function () {
         spot = {
-          address: 'Test Address',
-          postal_code: '32601',
+          address: '444 Newell Drive',
+          postal_code: '32611',
           city_name: 'Gainesville'
         };
 
@@ -74,7 +74,7 @@ describe('Parking Spot CRUD tests', function () {
 
         agent.post('/api/articles')
           .send(spot)
-          .expect(403)
+          .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
             // Call the assertion callback
             done();
@@ -102,6 +102,8 @@ describe('Parking Spot CRUD tests', function () {
         if (signinErr) {
           return done(signinErr);
         }
+
+        spot.address = '1545 W University Ave';
 
         agent.post('/api/articles')
           .send(spot)

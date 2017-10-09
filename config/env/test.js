@@ -156,9 +156,9 @@ module.exports = {
       docs: [{
         overwrite: true,
         data: {
-          address: 'Test Address',
+          address: '444 Newell Drive',
+          postal_code: '32611',
           city_name: 'Gainesville',
-          postal_code: '32601',
           status: true
         }
       }]

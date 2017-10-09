@@ -57,8 +57,8 @@ describe('Booking CRUD tests', function () {
     user.save()
         .then(function () {
           spot = {
-            address: 'Test Address',
-            postal_code: '32601',
+            address: '444 Newell Drive',
+            postal_code: '32611',
             city_name: 'Gainesville'
           };
         })
