@@ -643,9 +643,9 @@ describe('Configuration Tests:', function () {
 
     it('should skip seed on collection with custom options & skip.when has results', function (done) {
       var spot = new Spot({
-        address: 'Test Address',
+        address: '444 Newell Drive',
+        postal_code: '32611',
         city_name: 'Gainesville',
-        postal_code: '32601',
         status: true
       });
 

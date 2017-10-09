@@ -33,9 +33,9 @@ describe('Parking Spots Model Unit Tests:', function () {
     user.save()
       .then(function () {
         spot = new Spot({
-          address: 'Test Street Address',
+          address: '444 Newell Drive',
+          postal_code: '32611',
           city_name: 'Gainesville',
-          postal_code: '32601',
           status: true,
           user: user
         });
