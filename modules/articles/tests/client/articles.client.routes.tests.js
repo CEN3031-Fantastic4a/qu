@@ -69,8 +69,9 @@
           // create mock article
           mockArticle = new ArticlesService({
             _id: '525a8422f6d0f87f0e407a33',
-            title: 'An Article about MEAN',
-            content: 'MEAN rocks!'
+            address: '444 Newell Drive',
+            postal_code: '32611',
+            city_name: 'Gainesville'
           });
 
           // Initialize Controller
