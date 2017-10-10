@@ -14,32 +14,33 @@ var path = require('path'),
  * Create a Booking
  */
 exports.create = function (req, res) {
-  var booking = req.booking;
-  booking.user = req.user;
+  var bookingObj = new Booking(req.body);
 
-  Spot.findOne({ _id: req.body.booking.spot }, function (err, spot) {
+  Spot.findOne({ _id: bookingObj.spot }, function (err, spot) {
     if (err) {
       return res.json(err);
     }
+    var stream = Booking.find({ parking_spot_id: bookingObj.spot }).stream();
 
-    Booking.find({ parking_spot_id: booking.spot }).stream().on('data', function (doc) {
-      if (!(booking.exit_date_time < doc.entry_date_time) && !(doc.exit_date_time < booking.entry_date_time)) {
-        throw err;
-      }
+    stream.on('data', function (doc) {
+      /* Add functionality to sort through booking times
+       if (!(bookingObj.exit_date_time < doc.entry_date_time) && !(doc.exit_date_time < bookingObj.entry_date_time)) {
+        res.status(400).send(err);
+      } */
     }).on('error', function (err) {
-      return res.status(422).send({
+      res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
-    }).then(function () {
-      var booking = new Booking();
-      booking.user = req.user;
-      booking.save(function (err) {
-        if (err) throw err;
-        return res.json(booking);
+    }).on('close', function () {
+      bookingObj.save(function (err) {
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        } else {
+          res.json(bookingObj);
+        }
       });
     });
-
-    return res.json(err);
   });
 };
 
@@ -62,7 +63,8 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
   var booking = req.booking;
-  booking.updated_date = Date.now;
+  // booking.updated_date = Date.now;
+  booking.total_time = req.body.total_time;
 
   booking.save(function (err) {
     if (err) {
@@ -79,31 +81,14 @@ exports.update = function (req, res) {
  * Delete a booking
  */
 exports.delete = function (req, res) {
-  Booking.findOne({ _id: req.params.id, user: req.user._id }).exec(function (err, booking) {
+  var booking = req.booking;
+
+  /* Remove the booking */
+  booking.remove(function (err) {
     if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    }
-
-    if (booking) {
-      Spot.findOne({ _id: booking.spot }, function (err, spot) {
-        if (err) return res.json(err);
-
-        booking.remove(function (err) {
-          if (err) {
-            return res.status(422).send({
-              message: errorHandler.getErrorMessage(err)
-            });
-          } else {
-            res.json(booking);
-          }
-        });
-      });
+      res.status(400).send(err);
     } else {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
+      res.json(booking);
     }
   });
 };
