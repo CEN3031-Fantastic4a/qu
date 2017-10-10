@@ -100,6 +100,7 @@
   },
   "devDependencies": {
     "coveralls": "~2.13.0",
+    "grunt": "^1.0.1",
     "gulp-istanbul": "~1.1.1",
     "gulp-mocha": "~3.0.1",
     "gulp-protractor": "~4.0.0",

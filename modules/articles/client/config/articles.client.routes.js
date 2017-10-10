@@ -20,6 +20,12 @@
         controller: 'ArticlesListController',
         controllerAs: 'vm'
       })
+      .state('articles.create', {
+        url: 'articles/create',
+        templateUrl: '/modules/articles/client/views/create-articles.client.view.html',
+        controller: 'ArticlesController',
+        controllerAs: 'vm'
+      })
       .state('articles.view', {
         url: '/:articleId',
         templateUrl: '/modules/articles/client/views/view-article.client.view.html',

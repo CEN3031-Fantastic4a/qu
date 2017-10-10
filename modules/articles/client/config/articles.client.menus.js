@@ -21,5 +21,10 @@
       state: 'articles.list',
       roles: ['*']
     });
+    menuService.addSubMenuItem('topbar', 'articles', {
+      title: 'Add Spot',
+      state: 'articles.create',
+      roles: ['*']
+    });
   }
 }());
