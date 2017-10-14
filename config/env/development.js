@@ -31,9 +31,9 @@ module.exports = {
     callbackURL: '/api/auth/facebook/callback'
   },
   google: {
-    clientID: process.env.GOOGLE_ID || 'APP_ID',
-    clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
-    callbackURL: '/api/auth/google/callback'
+    clientID: process.env.GOOGLE_ID || '592604191308-t0685a0n8jg8777g04hqib0ftvsnt999.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || 'Uvsn-7urJ-mdz4aboOTPIzED',
+    callbackURL: 'http://localhost:3000/auth/google/callback'
   },
   stripe: {
     api_key: process.env.STRIPE_API_KEY || 'sk_test_H1upOVCYDyuzp8hNlAMyqMxy'
