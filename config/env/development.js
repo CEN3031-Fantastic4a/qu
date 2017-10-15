@@ -26,14 +26,14 @@ module.exports = {
     title: defaultEnvConfig.app.title + ' - Development Environment'
   },
   facebook: {
-    clientID: process.env.FACEBOOK_ID || 'APP_ID',
-    clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+    clientID: process.env.FACEBOOK_ID || '494532197599180',
+    clientSecret: process.env.FACEBOOK_SECRET || '04acdc759a9c02baff4e73a9f660d334',
     callbackURL: '/api/auth/facebook/callback'
   },
   google: {
     clientID: process.env.GOOGLE_ID || '592604191308-t0685a0n8jg8777g04hqib0ftvsnt999.apps.googleusercontent.com',
     clientSecret: process.env.GOOGLE_SECRET || 'Uvsn-7urJ-mdz4aboOTPIzED',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: '/api/auth/google/callback',
   },
   stripe: {
     api_key: process.env.STRIPE_API_KEY || 'sk_test_H1upOVCYDyuzp8hNlAMyqMxy'
