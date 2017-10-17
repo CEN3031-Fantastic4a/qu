@@ -6,7 +6,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a ui-sref="home" class="navbar-brand">MEAN.JS</a>
+    <md-button ...>
+        <img class="png-icon" src="/modules/core/client/img/brand/parkit.png" style="width: 40px; height: 40px;">
+     </md-button>
+    <a ui-sref="home" class="navbar-brand">ParkIt</a>
+    
   </div>
   <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">

@@ -9,7 +9,9 @@ module.exports = {
         // bower:css
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-ui-notification/dist/angular-ui-notification.css'
+        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        'public/lib/bootstrap/dist/css/bootstrap.min.css',
+        'public/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min'
         // endbower
       ],
       js: [
@@ -25,7 +27,13 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/ngmap/build/scripts/ng-map.min.js',
-        '//maps.google.com/maps/api/js'
+        '//maps.google.com/maps/api/js',
+        'public/lib/jquery/dist/jquery.js',
+        'public/lib/jquery/dist/jquery.min.js',
+        'public/lib/moment/min/moment.min.js',
+        'public/lib/eonasdan-bootstrap-datetimepicker/eodatimepicker.js',
+        'public/lib/bootstrap/dist/js/bootstrap.min.js',
+        'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 
         // endbower
       ],
