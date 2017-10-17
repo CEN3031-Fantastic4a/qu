@@ -33,7 +33,7 @@ module.exports = {
   google: {
     clientID: process.env.GOOGLE_ID || '592604191308-t0685a0n8jg8777g04hqib0ftvsnt999.apps.googleusercontent.com',
     clientSecret: process.env.GOOGLE_SECRET || 'Uvsn-7urJ-mdz4aboOTPIzED',
-    callbackURL: '/api/auth/google/callback',
+    callbackURL: '/api/auth/google/callback'
   },
   stripe: {
     api_key: process.env.STRIPE_API_KEY || 'sk_test_H1upOVCYDyuzp8hNlAMyqMxy'
