@@ -56,7 +56,7 @@ module.exports = {
     },
     // Order of collections in configuration will determine order of seeding.
     // i.e. given these settings, the User seeds will be complete before
-    // Article seed is performed.
+    // Parking spot seed is performed.
     collections: [{
       model: 'User',
       docs: [{

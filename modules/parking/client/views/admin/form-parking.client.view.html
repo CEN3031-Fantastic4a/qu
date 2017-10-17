@@ -1,0 +1,30 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.spot._id ? 'Edit Parking Spot' : 'New Parking Spot'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.spot._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.parkingForm" class="form-horizontal" ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Title</label>
+          <input name="address" type="text" ng-model="vm.spot.address" id="title" class="form-control" placeholder="Title" required autofocus>
+          <div ng-messages="vm.form.spotForm.address.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Parking Spot title is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="description">Content</label>
+          <textarea name="description" data-ng-model="vm.spot.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.spot._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
