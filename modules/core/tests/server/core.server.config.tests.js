@@ -55,9 +55,9 @@ describe('Configuration Tests:', function () {
       };
 
       _spot = {
-        address: 'Test Street Address',
+        address: '444 Newell Drive',
         city_name: 'Gainesville',
-        postal_code: '32601',
+        postal_code: '32611',
         status: true
       };
 
