@@ -38,5 +38,10 @@
       title: 'Manage Social Accounts',
       state: 'settings.accounts'
     });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Manage Parking Spots',
+      state: 'settings.parking'
+    });
   }
 }());
