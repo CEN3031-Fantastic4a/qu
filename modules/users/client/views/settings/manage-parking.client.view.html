@@ -36,10 +36,21 @@
             When a user clicks on a table row, the view will display a single listing and the state change will be
             reflected in the browser's URL. 
         -->
-        <tr ng-repeat="spot in vm.spots | filter: query" ui-sref=".details({ spotId: spot._id })">
+        <tr ng-repeat="spot in vm.spots | filter: query">
           <td>{{spot.active}}</td>
           <td>{{spot.number_of_space_spot}}</td>
           <td>{{spot.address}}</td>
+          <td></td>
+          <td></td>    
+          <td></td>
+          <td class="btn btn-primary" ui-sref=".details({ spotId: spot._id })">
+            <i class="glyphicon glyphicon-search"></i>
+            View
+          </td>       
+          <td class="btn btn-warning" ui-sref=".edit({ spotId: spot._id })">
+            <i class="glyphicon glyphicon-edit"></i>
+            Edit
+          </td>
           <td class="btn btn-danger" ng-click="vm.remove(spot)">
             <i class="glyphicon glyphicon-trash"></i>
             Remove

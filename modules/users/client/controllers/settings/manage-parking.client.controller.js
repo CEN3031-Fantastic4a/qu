@@ -27,24 +27,26 @@
 
     // Save Parking Spot
     function save(isValid) {
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.parkingForm');
-        return false;
-      }
+      if ($window.confirm('Are you sure you want to save?')) {
+        if (!isValid) {
+            $scope.$broadcast('show-errors-check-validity', 'vm.form.parkingForm');
+            return false;
+        }
 
-      // Create a new parking spot, or update the current instance
-      vm.spot.createOrUpdate()
-        .then(successCallback)
-        .catch(errorCallback);
+        // Create a new parking spot, or update the current instance
+        vm.spot.createOrUpdate()
+            .then(successCallback)
+            .catch(errorCallback);
 
-      function successCallback(res) {
-        console.log(res);
-        $state.go('settings.parking', {}, { reload: true }); // should we send the User to the list or the updated Parking Spot's view?
-        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Parking Spot saved successfully!' });
-      }
+        function successCallback(res) {
+            console.log(res);
+            $state.go('settings.parking', {}, { reload: true }); // should we send the User to the list or the updated Parking Spot's view?
+            Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Parking Spot saved successfully!' });
+        }
 
-      function errorCallback(res) {
-        Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Parking Spot save error!' });
+        function errorCallback(res) {
+            Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Parking Spot save error!' });
+        }
       }
     }
   }
