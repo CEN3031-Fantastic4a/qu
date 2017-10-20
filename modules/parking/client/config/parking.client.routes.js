@@ -21,7 +21,7 @@
         controllerAs: 'vm'
       })
       .state('parking.create', {
-        url: 'parking/create',
+        url: '/create',
         templateUrl: '/modules/parking/client/views/create-parking.client.view.html',
         controller: 'ParkingController',
         controllerAs: 'vm'
