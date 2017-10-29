@@ -1,7 +1,7 @@
 (function () {
   var dateTimeController = function ($scope, $rootScope) {
     $scope.vm = {
-      message: "Bootstrap DateTimePicker Directive",
+      message: 'Bootstrap DateTimePicker Directive',
       dateTime: {}
     };
     $scope.$watch('change', function () {

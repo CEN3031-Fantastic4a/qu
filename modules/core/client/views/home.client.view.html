@@ -20,16 +20,16 @@
             <ng-map center="41,-87" zoom="3"></ng-map>
           </div>
           <div class="list-group">
-            <a ng-repeat="article in vm.articles" ui-sref="articles.view({ articleId: article._id })" class="list-group-item">
+            <a ng-repeat="spot in vm.spots" ui-sref="spots.view({ spotId: spot._id })" class="list-group-item">
               <small class="list-group-item-text">
                 Posted on
-                <span ng-bind="article.created | date:'mediumDate'"></span>
+                <span ng-bind="spot.created | date:'mediumDate'"></span>
                 by
-                <span ng-if="article.user" ng-bind="article.user.displayName"></span>
-                <span ng-if="!article.user">Deleted User</span>
+                <span ng-if="spot.user" ng-bind="spot.user.displayName"></span>
+                <span ng-if="!spot.user">Deleted User</span>
               </small>
-              <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
-              <p class="list-group-item-text" ng-bind="article.content"></p>
+              <h4 class="list-group-item-heading" ng-bind="spot.address"></h4>
+              <p class="list-group-item-text" ng-bind="spot.description"></p>
             </a>
           </div>
         </section>
