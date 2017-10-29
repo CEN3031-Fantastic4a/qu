@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/CEN3031-Fantastic4a/qu/badge.svg?branch=master)](https://coveralls.io/github/CEN3031-Fantastic4a/qu?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/CEN3031-Fantastic4a/qu/badge.svg)](https://snyk.io/test/github/CEN3031-Fantastic4a/qu)
 
-*ADD Qü LOGO*
+![alt Qü LOGO*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/modules/core/client/img/brand/qu.png)
 
 Qü is a full stack MEAN stack application that allows users to act as renters for private parking spaces. The user has the ability to rent out a space and also rent one from another user for a set amount of time agreed upon by the renter and rentee.
 
