@@ -2,9 +2,9 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-    keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
+    title: 'Qu.Park.It',
+    description: 'Park you car at lower price where ever you drive',
+    keywords: 'park it, Park, private lot, awesome deals, parking for less, car, parking',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
   db: {
@@ -41,7 +41,7 @@ module.exports = {
     xssProtection: true
   },
   logo: 'modules/core/client/img/brand/logo.png',
-  favicon: 'modules/core/client/img/brand/favicon.ico',
+  favicon: 'modules/core/client/img/brand/favicon1.ico',
   illegalUsernames: ['meanjs', 'administrator', 'password', 'admin', 'user',
     'unknown', 'anonymous', 'null', 'undefined', 'api'
   ],

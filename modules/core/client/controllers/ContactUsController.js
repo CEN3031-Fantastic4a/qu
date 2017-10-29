@@ -10,7 +10,7 @@
     vm.user = Authentication.user;
 
     $scope.checkboxModel = {
-      anonymous : true
+      anonymous: true
     };
   }
 }());
