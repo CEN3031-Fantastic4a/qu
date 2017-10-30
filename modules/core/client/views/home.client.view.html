@@ -16,8 +16,8 @@
       <div class="col-md-6">
         <h1>Map</h1>
         <section>
-          <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{vm.googleMapsUrl}}">
-            <ng-map center="41,-87" zoom="3"></ng-map>
+          <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+            <ng-map center="current-location" zoom="15"  geo-fallback-center="4.672585, -74.059525"></ng-map>
           </div>
           <div class="list-group">
             <a ng-repeat="spot in vm.spots" ui-sref="spots.view({ spotId: spot._id })" class="list-group-item">
@@ -54,7 +54,6 @@
             <div ng-app="f" class='input-group date' id='datetimepicker2'>
                 <span class="input-group-addon">
                   <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()><span class="glyphicon glyphicon-calendar"></span>
-                  <!-- Something wrong when I close span here idk why -->
                   </button>
                   </span>
                   <input type='text' class="form-control" placeholder="Enter end date and time" />
