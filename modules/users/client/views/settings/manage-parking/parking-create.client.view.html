@@ -1,10 +1,21 @@
 <ui-view>
-    <div class="row">
-        <div class="col-md-offset-1 col-md-4">
-          <section>
+    <div class = "row">
+        <div class="col-md-6">
           <div class="page-header">
             <h1>Add Your Spot</h1>
           </div>
+        </div>
+          <div class = "col-md-6">
+              <h2>Choose Availability</h2>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "col-md-6">
           <form name="vm.form.parkingForm" class="form-horizontal" ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
                 <fieldset>
                   <div class="form-group" show-errors>
@@ -90,14 +101,19 @@
                     </div>
                   </div>
                   <div class="form-group" show-errors>
+                    <!-- Is special instruction needed from every spot? -->
                     <label for="description">Special Instructions</label>
                     <input name="description" type="text" ng-model="vm.spot.description" id="description" class="form-control" placeholder="e.g. Park all the way to the left" required>
                     <div ng-messages="vm.form.parkingForm.description.$error" role="alert">
-                      <!--<p class="help-block error-text" ng-message="required">City is required</p>-->
+                      <p class="help-block error-text" ng-message="required">Special instruction is required</p>
                     </div>
                   </div>
                   <div class="form-group">
                     <input type="submit" class="btn btn-success">
+                    <a class="btn btn-warning" ui-sref="settings.parking">
+                        <i class="glyphicon glyphicon-remove-sign"></i>
+                        Back
+                    </a>
                   </div>
                   <div ng-show="error" class="text-danger">
                     <strong ng-bind="error"></strong>
@@ -105,11 +121,184 @@
                 </fieldset>
               </form>
             </div>
-      </section>
-      </div>
-      
-    <a class="btn btn-primary" ui-sref="settings.parking">
-        <i class="glyphicon glyphicon-remove-sign"></i>
-        Back
-    </a> 
+            <div class = "col-md-6">
+
+
+
+
+              <style>
+              .switch {
+                position: relative;
+                display: inline-block;
+                width: 44px;
+                height: 20px;
+              }
+
+              .switch input {display:none;}
+
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              .slider:before {
+                position: absolute;
+                content: "";
+                height: 18px;
+                width: 18px;
+                left: 1px;
+                bottom: 1px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              input:checked + .slider {
+                background-color: #2196F3;
+              }
+
+              input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+              }
+
+              input:checked + .slider:before {
+                -webkit-transform: translateX(24px);
+                -ms-transform: translateX(24px);
+                transform: translateX(24px);
+              }
+
+              /* Rounded sliders */
+              .slider.round {
+                border-radius: 20px;
+              }
+
+              .slider.round:before {
+                border-radius: 50%;
+              }
+              </style>
+
+
+
+              <form>
+              <div class="checkbox">
+                <label>
+                  <input data-toggle="toggle" type="checkbox" id = "autoRent"
+                  onclick="if (this.checked){
+                    document.getElementById('startDay').disabled = false;
+                    document.getElementById('endDay').disabled = false;
+                    document.getElementById('startTime').disabled = false;
+                    document.getElementById('endTime').disabled = false; input.focus();
+                  }
+                    else{
+                      document.getElementById('startDay').disabled = true;
+                      document.getElementById('endDay').disabled = true;
+                      document.getElementById('startTime').disabled = true;
+                      document.getElementById('endTime').disabled = true;
+                    }">
+                  Auto Rent
+                </label>
+              </div>
+
+              <!-- <div ng-app="f" class='input-group date' id='datetimepicker1'>
+                <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()>
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </button>
+              </div> -->
+
+              <div class = "col-md-6">
+                <div class="input-group input-daterange">
+                  <input type="text" class="form-control" disabled = "disabled" id = "startDay" placeholder="Mon">
+                <div class="input-group-addon">to</div>
+                  <input type="text" class="form-control" disabled = "disabled" id = "endDay" placeholder="Fri">
+                </div>
+              </div>
+
+              <!-- <script>
+              $("#autoRent").click(function() {
+                $("#startDay").attrs("enabled", true);
+              });
+
+              $('#autoRent').change(function() {
+                  $('startDay').attr('disabled',!this.checked)
+                  // $('endDay').attr('disabled',!this.checked),
+              });
+              </script> -->
+
+
+
+              <div class = "col-md-6">
+              <div class="input-group input-daterange">
+                <input type="text" class="form-control" id = "startTime" disabled = "disabled" placeholder ="8 am">
+              <div class="input-group-addon">to</div>
+                <input type="text" class="form-control" id = "endTime" disabled = "disabled" placeholder ="6 pm">
+              </div>
+            </div>
+
+            </form>
+            <form>
+            <div class="checkbox">
+              <label>
+                <input data-toggle="toggle" type="checkbox"
+                  onclick="if (this.checked){
+                    document.getElementById('startDate').disabled = false;
+                    document.getElementById('endDate').disabled = false; input.focus();
+                  }
+                    else{
+                      document.getElementById('startDate').disabled = true;
+                      document.getElementById('endDate').disabled = true;
+                    }">
+                  Custom Rent
+              </label>
+            </div>
+            <!--  -->
+            <!-- <div class='form-group form-group-lg'>
+              <div ng-app="f" class='input-group date' id='datetimepicker2'>
+                  <span class="input-group-addon">
+                    <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()><span class="glyphicon glyphicon-calendar"></span>
+                    </button>
+                </span>
+                    <input type='text' class="form-control" placeholder="Enter start date and time" />
+              </div>
+            </div> -->
+            <!--  -->
+              <div class="input-group input-daterange">
+                <input type="text" class="form-control" id = "startDate" disabled = "disabled" placeholder="2017-11-5">
+
+                <!-- <div class="container">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>  -->
+
+              <div class="input-group-addon">to</div>
+                <input type="text" class="form-control" id = "endDate" disabled = "disabled" placeholder="2017-11-6">
+              </div>
+            </form>
+              <div map-lazy-load="https://maps.google.com/maps/api/js"
+                   map-lazy-load-params="{{googleMapsUrl}}">
+                   <ng-map center="41,-87" zoom="3"></ng-map>
+              </div>
+            </div>
+          </div>
 </ui-view>
