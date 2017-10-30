@@ -42,6 +42,9 @@ a:hover .header-profile-image {
   display: inline;
 }
 .jumbotron{
-  background-color: #ffffff; 
+  background-color: #ffffff;
 }
 
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
