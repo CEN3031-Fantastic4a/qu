@@ -8,7 +8,7 @@
   ManageParkingService.$inject = ['$resource', '$log'];
 
   function ManageParkingService($resource, $log) {
-    var Spot = $resource('/api/parking/:spotId', {
+    var Spot = $resource('/api/manage-parking/:spotId', {
       spotId: '@_id'
     }, {
       update: {

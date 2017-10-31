@@ -117,8 +117,23 @@ exports.delete = function (req, res) {
 /**
  * List of Host Parking Spots
  */
-exports.list = function (req, res) {
+exports.listAll = function (req, res) {
   Spot.find().sort('-created').populate('user', 'displayName').exec(function (err, spots) {
+    if (err) {
+      return res.status(422).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(spots);
+    }
+  });
+};
+
+/**
+ * List of Host Parking Spots
+ */
+exports.listUser = function (req, res) {
+  Spot.find({ user: req.user }).sort('-created').populate('user', 'displayName').exec(function (err, spots) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)

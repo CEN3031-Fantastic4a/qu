@@ -10,11 +10,14 @@ var parkingPolicy = require('../policies/parking.server.policy'),
 module.exports = function (app) {
   // Host Parking Spots collection routes
   app.route('/api/parking').all(parkingPolicy.isAllowed)
-    .get(spots.list)
+    .get(spots.listAll);
+
+  app.route('/api/manage-parking').all(parkingPolicy.isAllowed)
+    .get(spots.listUser)
     .post(getCoordinates, spots.create);
 
   // Single host parking spot routes
-  app.route('/api/parking/:spotId').all(parkingPolicy.isAllowed)
+  app.route('/api/manage-parking/:spotId').all(parkingPolicy.isAllowed)
     .get(spots.read)
     .put(getCoordinates, spots.update)
     .delete(spots.delete);
