@@ -3,6 +3,18 @@
     position: fixed;
   }
 }
+
+.mapClass{
+  background-color:black;
+  height:500px;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+body{
+}
 .social-account-container {
   display: inline-block;
   position: relative;
@@ -64,4 +76,8 @@
 }
 .social-button:hover {
   opacity: 0.65;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
 }
