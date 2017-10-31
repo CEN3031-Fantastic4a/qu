@@ -76,7 +76,7 @@ describe('Parking Spot Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new parking spot
-        agent.post('/api/manage-parking')
+        agent.post('/api/parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -86,7 +86,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             }
 
             // Get a list of parking spots
-            agent.get('/api/manage-parking')
+            agent.get('/api/parking')
               .end(function (spotsGetErr, spotsGetRes) {
                 // Handle spot save error
                 if (spotsGetErr) {
@@ -121,7 +121,7 @@ describe('Parking Spot Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new parking spot
-        agent.post('/api/manage-parking')
+        agent.post('/api/parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -134,7 +134,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             spot.address = '1545 W University Ave';
 
             // Update an existing spot
-            agent.put('/api/manage-parking/' + spotSaveRes.body._id)
+            agent.put('/api/parking/' + spotSaveRes.body._id)
               .send(spot)
               .expect(200)
               .end(function (spotUpdateErr, spotUpdateRes) {
@@ -171,7 +171,7 @@ describe('Parking Spot Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new spot
-        agent.post('/api/manage-parking')
+        agent.post('/api/parking')
           .send(spot)
           .expect(422)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -198,7 +198,7 @@ describe('Parking Spot Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new parking spot
-        agent.post('/api/manage-parking')
+        agent.post('/api/parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -208,7 +208,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             }
 
             // Delete an existing parking spot
-            agent.delete('/api/manage-parking/' + spotSaveRes.body._id)
+            agent.delete('/api/parking/' + spotSaveRes.body._id)
               .send(spot)
               .expect(200)
               .end(function (spotDeleteErr, spotDeleteRes) {
@@ -245,7 +245,7 @@ describe('Parking Spot Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new spot
-        agent.post('/api/manage-parking')
+        agent.post('/api/parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -255,7 +255,7 @@ describe('Parking Spot Admin CRUD tests', function () {
             }
 
             // Get the spot
-            agent.get('/api/manage-parking/' + spotSaveRes.body._id)
+            agent.get('/api/parking/' + spotSaveRes.body._id)
               .expect(200)
               .end(function (spotInfoErr, spotInfoRes) {
                 // Handle spot error

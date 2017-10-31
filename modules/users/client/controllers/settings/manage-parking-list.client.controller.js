@@ -9,6 +9,7 @@
 
   function ManageParkingListController($state, $window, ManageParkingService, Notification) {
     var vm = this;
+    console.log(vm);
     vm.spots = ManageParkingService.query();
     vm.remove = remove;
 

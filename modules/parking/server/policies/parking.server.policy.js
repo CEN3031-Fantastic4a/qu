@@ -15,28 +15,28 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: ['/api/parking', '/api/manage-parking'],
+      resources: '/api/parking',
       permissions: '*'
     }, {
-      resources: ['/api/parking/:spotId', '/api/manage-parking/:spotId'],
+      resources: '/api/parking/:spotId',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: ['/api/parking', '/api/manage-parking'],
+      resources: '/api/parking',
       permissions: ['get', 'post']
     }, {
-      resources: ['/api/parking/:spotId', '/api/manage-parking/:spotId'],
+      resources: '/api/parking/:spotId',
       permissions: ['get']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: ['/api/parking', '/api/manage-parking'],
+      resources: '/api/parking',
       permissions: ['get']
     }, {
-      resources: ['/api/parking/:spotId', '/api/manage-parking/:spotId'],
+      resources: '/api/parking/:spotId',
       permissions: ['get']
     }]
   }]);
