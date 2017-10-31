@@ -57,6 +57,51 @@
           pageTitle: 'Settings picture'
         }
       })
+      .state('settings.parking', {
+        url: '/manage-parking',
+        templateUrl: '/modules/users/client/views/settings/manage-parking.client.view.html',
+        controller: 'ManageParkingListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings manage parking'
+        }
+      })
+      .state('settings.parking.create', {
+        url: '/create',
+        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-create.client.view.html',
+        controller: 'ManageParkingController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings create parking'
+        },
+        resolve: {
+          parkingResolve: newParking
+        }
+      })
+      .state('settings.parking.details', {
+        url: '/:spotId',
+        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-details.client.view.html',
+        controller: 'ManageParkingDetailsController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings view parking'
+        },
+        resolve: {
+          parkingResolve: getParking
+        }
+      })
+      .state('settings.parking.edit', {
+        url: '/:spotId/edit',
+        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-edit.client.view.html',
+        controller: 'ManageParkingController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings edit parking'
+        },
+        resolve: {
+          parkingResolve: getParking
+        }
+      })
       .state('authentication', {
         abstract: true,
         url: '/authentication',
@@ -124,5 +169,19 @@
           pageTitle: 'Password reset form'
         }
       });
+  }
+
+  getParking.$inject = ['$stateParams', 'ManageParkingService'];
+
+  function getParking($stateParams, ManageParkingService) {
+    return ManageParkingService.get({
+      spotId: $stateParams.spotId
+    }).$promise;
+  }
+
+  newParking.$inject = ['ManageParkingService'];
+
+  function newParking(ManageParkingService) {
+    return new ManageParkingService();
   }
 }());

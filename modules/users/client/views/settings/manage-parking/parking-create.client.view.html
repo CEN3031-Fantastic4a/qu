@@ -1,0 +1,304 @@
+<ui-view>
+    <div class = "row">
+        <div class="col-md-6">
+          <div class="page-header">
+            <h1>Add Your Spot</h1>
+          </div>
+        </div>
+          <div class = "col-md-6">
+              <h2>Choose Availability</h2>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class = "col-md-6">
+          <form name="vm.form.parkingForm" class="form-horizontal" ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
+                <fieldset>
+                  <div class="form-group" show-errors>
+                    <label for="address">Address</label>
+                    <input name="address" type="text" ng-model="vm.spot.address" id="address" class="form-control" placeholder="Address" required>
+                    <div ng-messages="vm.form.parkingForm.address.$error" role="alert">
+                      <p class="help-block error-text" ng-message="required">Address is required</p>
+                    </div>
+                  </div>
+                  <div class="form-group" show-errors>
+                    <label for="city_name">City</label>
+                    <input name="city_name" type="text" ng-model="vm.spot.city_name" id="city_name" class="form-control" placeholder="City" required>
+                    <div ng-messages="vm.form.parkingForm.city_name.$error" role="alert">
+                      <p class="help-block error-text" ng-message="required">City is required</p>
+                    </div>
+                  </div>
+                  <label for="state">State</label><p></p>
+                  <select name="State">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
+                  <div class="form-group" show-errors>
+                    <label for="postal_code">Zip Code</label>
+                    <input name="postal_code" type="text" ng-model="vm.spot.postal_code" id="postal_code" class="form-control" placeholder="Zip Code" required>
+                    <div ng-messages="vm.form.parkingForm.postal_code.$error" role="alert">
+                      <p class="help-block error-text" ng-message="required">Zip Code is required</p>
+                    </div>
+                  </div>
+                  <div class="form-group" show-errors>
+                    <label for="number_of_space_spot">Number of Spaces</label>
+                    <input name="number_of_space_spot" type="text" ng-model="vm.spot.number_of_space_spot" id="number_of_space_spot" class="form-control" placeholder="Number of Spots" required>
+                    <div ng-messages="vm.form.parkingForm.number_of_space_spot.$error" role="alert">
+                      <p class="help-block error-text" ng-message="required">Number of spaces is required</p>
+                    </div>
+                  </div>
+                  <div class="form-group" show-errors>
+                    <!-- Is special instruction needed from every spot? -->
+                    <label for="description">Special Instructions</label>
+                    <input name="description" type="text" ng-model="vm.spot.description" id="description" class="form-control" placeholder="e.g. Park all the way to the left" required>
+                    <div ng-messages="vm.form.parkingForm.description.$error" role="alert">
+                      <p class="help-block error-text" ng-message="required">Special instruction is required</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" class="btn btn-success">
+                    <a class="btn btn-warning" ui-sref="settings.parking">
+                        <i class="glyphicon glyphicon-remove-sign"></i>
+                        Back
+                    </a>
+                  </div>
+                  <div ng-show="error" class="text-danger">
+                    <strong ng-bind="error"></strong>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class = "col-md-6">
+
+
+
+
+              <style>
+              .switch {
+                position: relative;
+                display: inline-block;
+                width: 44px;
+                height: 20px;
+              }
+
+              .switch input {display:none;}
+
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              .slider:before {
+                position: absolute;
+                content: "";
+                height: 18px;
+                width: 18px;
+                left: 1px;
+                bottom: 1px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+              }
+
+              input:checked + .slider {
+                background-color: #2196F3;
+              }
+
+              input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+              }
+
+              input:checked + .slider:before {
+                -webkit-transform: translateX(24px);
+                -ms-transform: translateX(24px);
+                transform: translateX(24px);
+              }
+
+              /* Rounded sliders */
+              .slider.round {
+                border-radius: 20px;
+              }
+
+              .slider.round:before {
+                border-radius: 50%;
+              }
+              </style>
+
+
+
+              <form>
+              <div class="checkbox">
+                <label>
+                  <input data-toggle="toggle" type="checkbox" id = "autoRent"
+                  onclick="if (this.checked){
+                    document.getElementById('startDay').disabled = false;
+                    document.getElementById('endDay').disabled = false;
+                    document.getElementById('startTime').disabled = false;
+                    document.getElementById('endTime').disabled = false; input.focus();
+                  }
+                    else{
+                      document.getElementById('startDay').disabled = true;
+                      document.getElementById('endDay').disabled = true;
+                      document.getElementById('startTime').disabled = true;
+                      document.getElementById('endTime').disabled = true;
+                    }">
+                  Auto Rent
+                </label>
+              </div>
+
+              <!-- <div ng-app="f" class='input-group date' id='datetimepicker1'>
+                <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()>
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </button>
+              </div> -->
+
+              <div class = "col-md-6">
+                <div class="input-group input-daterange">
+                  <input type="text" class="form-control" disabled = "disabled" id = "startDay" placeholder="Mon">
+                <div class="input-group-addon">to</div>
+                  <input type="text" class="form-control" disabled = "disabled" id = "endDay" placeholder="Fri">
+                </div>
+              </div>
+
+              <!-- <script>
+              $("#autoRent").click(function() {
+                $("#startDay").attrs("enabled", true);
+              });
+
+              $('#autoRent').change(function() {
+                  $('startDay').attr('disabled',!this.checked)
+                  // $('endDay').attr('disabled',!this.checked),
+              });
+              </script> -->
+
+
+
+              <div class = "col-md-6">
+              <div class="input-group input-daterange">
+                <input type="text" class="form-control" id = "startTime" disabled = "disabled" placeholder ="8 am">
+              <div class="input-group-addon">to</div>
+                <input type="text" class="form-control" id = "endTime" disabled = "disabled" placeholder ="6 pm">
+              </div>
+            </div>
+
+            </form>
+            <form>
+            <div class="checkbox">
+              <label>
+                <input data-toggle="toggle" type="checkbox"
+                  onclick="if (this.checked){
+                    document.getElementById('startDate').disabled = false;
+                    document.getElementById('endDate').disabled = false; input.focus();
+                  }
+                    else{
+                      document.getElementById('startDate').disabled = true;
+                      document.getElementById('endDate').disabled = true;
+                    }">
+                  Custom Rent
+              </label>
+            </div>
+            <!--  -->
+            <!-- <div class='form-group form-group-lg'>
+              <div ng-app="f" class='input-group date' id='datetimepicker2'>
+                  <span class="input-group-addon">
+                    <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()><span class="glyphicon glyphicon-calendar"></span>
+                    </button>
+                </span>
+                    <input type='text' class="form-control" placeholder="Enter start date and time" />
+              </div>
+            </div> -->
+            <!--  -->
+              <div class="input-group input-daterange">
+                <input type="text" class="form-control" id = "startDate" disabled = "disabled" placeholder="2017-11-5">
+
+                <!-- <div class="container">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>  -->
+
+              <div class="input-group-addon">to</div>
+                <input type="text" class="form-control" id = "endDate" disabled = "disabled" placeholder="2017-11-6">
+              </div>
+            </form>
+              <div map-lazy-load="https://maps.google.com/maps/api/js"
+                   map-lazy-load-params="{{googleMapsUrl}}">
+                   <ng-map center="41,-87" zoom="3"></ng-map>
+              </div>
+            </div>
+          </div>
+</ui-view>

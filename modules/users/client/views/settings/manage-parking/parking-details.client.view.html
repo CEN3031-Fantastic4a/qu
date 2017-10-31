@@ -1,0 +1,64 @@
+<ui-view>
+  <div class="jumbotron">
+  <!-- <img id="loader" ng-show="loading" src="/../../img/484.gif"> -->
+  <!-- <div ng-repeat="spot in vm.spots | filter: query"> -->
+    <h2>Spot Detail</h2>
+    <p><span>Active:</span> </p>
+
+    <p><span>Address:</span></span><span ng-bind = "vm.spot.address"></span></p>
+    <p><span>City:</span><span ng-bind = "vm.spot.city_name"> </span></p>
+    <p><span>Postal Code:</span><span ng-bind = "vm.spot.postal_code"> </span></p>
+    <p><span>Number of spots:</span> <span ng-bind = "vm.spot.number_of_space_spot"> </span></p>
+    <!-- Need to update schema with Special instruction  -->
+    <p><span>Special Instruction:</span></p>
+
+  <a class="btn btn-primary" ui-sref="settings.parking.edit({ spotId: vm.spot._id })">
+    <i class="glyphicon glyphicon-edit"></i>
+      Edit
+  </a>
+  <a class="btn btn-danger" ng-click="vm.remove(spot);">
+    <i class="glyphicon glyphicon-trash"></i>
+    Remove
+  </a>
+  <a class="btn btn-warning" ui-sref="settings.parking">
+      <i class="glyphicon glyphicon-remove-sign"></i>
+      Back
+  </a>
+</div>
+
+
+
+
+      <!-- <div class="row" ng-controller="ManageParkingDetailsController" ng-init="findOne()">
+        <div class="col-md-offset-1 col-md-10">
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+          <div class="jumbotron">
+          <img id="loader" ng-show="loading" src="/../../img/484.gif">
+          <div ng-show="target">
+            <p>Active: {{target.active}}</p>
+            <p>Address: {{target.address}}</p>
+            <p>Nmber of spots: {{target.number_of_space_spot}}</p>
+            <a class="btn btn-primary" ui-sref="settings.parking.edit({ spotId: spot._id })">
+                <i class="glyphicon glyphicon-edit"></i>
+                Edit
+              </a>
+        <a class="btn btn-danger" ng-click="remove();">
+          <i class="glyphicon glyphicon-trash"></i>
+          Remove
+        </a>
+        <a class="btn btn-warning" ui-sref="settings.parking">
+            <i class="glyphicon glyphicon-remove-sign"></i>
+            Back
+        </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div map-lazy-load="https://maps.google.com/maps/api/js"
+     map-lazy-load-params="{{googleMapsUrl}}">
+     <ng-map center="41,-87" zoom="3"></ng-map>
+</div>
+</ui-view>

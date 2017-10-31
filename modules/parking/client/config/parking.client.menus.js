@@ -21,10 +21,5 @@
       state: 'parking.list',
       roles: ['*']
     });
-    menuService.addSubMenuItem('topbar', 'parking', {
-      title: 'Add Spot',
-      state: 'parking.create',
-      roles: ['*']
-    });
   }
 }());
