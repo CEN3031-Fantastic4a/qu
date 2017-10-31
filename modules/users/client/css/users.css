@@ -3,6 +3,16 @@
     position: fixed;
   }
 }
+
+.mapClass{
+  background-color:black;
+  height:500px;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 .social-account-container {
   display: inline-block;
   position: relative;
@@ -64,16 +74,4 @@
 }
 .social-button:hover {
   opacity: 0.65;
-}
-
-.outline {
-  background-color: transparent;
-  color: inherit;
-  transition: all .25s;
-}
-.btn-success.outline {
-  color: #5cb85c;
-}
-.btn-success.outline:hover{
-  color: #fff;
 }
