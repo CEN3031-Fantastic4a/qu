@@ -79,3 +79,7 @@ mongod
 *.ntvs*
 *.njsproj
 *.sln
+
+modules/users/client/views/authentication/old signin\.html
+
+modules/users/client/views/authentication/old signup\.html
