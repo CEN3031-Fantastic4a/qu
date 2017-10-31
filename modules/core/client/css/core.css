@@ -45,54 +45,6 @@ a:hover .header-profile-image {
   background-color: #ffffff;
 }
 
-.frontPage{
-  background-color:green !important;
-  margin:0 !important;
-  padding:0 !important;
-  width:100% !important;
-}
-section{
-margin:0 !important;
-padding:00 !important;
-width:100%;
-}
-
 *{
   font-family: 'Montserrat', sans-serif !important;
-}
-
-.left {
-  background:#035096;
-  background-size:100% 100%;
-  /*background-image:url("images/index.jpg");*/
-  left: 0;
-  overflow:auto;
-  position: absolute;
-  top: 0;
-  vertical-align: middle;
-  width: 70%;
-}
-.left-inner{
-  height:1000px;
-  margin: 0 auto;
-  width: 70%;
-}
-
-.rightHome {
-  background: #f8f8f8  ;
-  background-color: #f8f8f8;
-  clear:both;
-  height: 100%;
-  overflow:auto;
-  padding:20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30%;
-}
-.center{
-  bottom:20%;
-  position:relative;
-  top:100px;
-  width: 70%;
 }
