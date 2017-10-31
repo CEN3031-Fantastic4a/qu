@@ -13,12 +13,7 @@
 }
 .header-profile-image {
   border-radius: 50%;
-  height: 28
-  .center{
-    bottom:20%;
-    position:relative;
-    top:100px;
-    width: 70%};
+  height: 28;
   margin-right: 5px;
   opacity: 0.8;
   width: 28px;
@@ -51,15 +46,16 @@ a:hover .header-profile-image {
 }
 
 .frontPage{
-  margin:0px !important;
+  margin:0 !important;
+  padding:0 !important;
   width:100% !important;
-  padding:0px !important;
 }
 section{
-padding:0px !important;
-margin:0px !important;
+margin:0 !important;
+padding:0 !important;
 width:100%;
 }
+
 *{
   font-family: 'Montserrat', sans-serif !important;
 }
