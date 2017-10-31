@@ -81,7 +81,7 @@
       .state('settings.parking.details', {
         url: '/:spotId',
         templateUrl: '/modules/users/client/views/settings/manage-parking/parking-details.client.view.html',
-        controller: 'ManageParkingController',
+        controller: 'ManageParkingDetailsController',
         controllerAs: 'vm',
         data: {
           pageTitle: 'Settings view parking'
