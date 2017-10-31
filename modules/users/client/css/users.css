@@ -75,3 +75,7 @@
 .social-button:hover {
   opacity: 0.65;
 }
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
