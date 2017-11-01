@@ -5,11 +5,10 @@
 }
 .controlSocialBanner {
 background-color: #DFD18B;
-height: 30%;
-height: 100%;
+max-height: 170px;
+max-width: 30%;
 position: absolute;
 right: 0;
-width: 30%;
 }
 .mapClass {
 background-color: black;
@@ -39,14 +38,14 @@ position: relative;
   color:black !important;
 }
 .left {
-  background: #035096;
-  background-size: 100% 100%;
-  height: 100%;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  vertical-align: middle;
-  width: 70%;
+background: #035096;
+background-size: 100% 100%;
+height: 100%;
+left: 0;
+overflow: auto;
+position: absolute;
+vertical-align: middle;
+width: 70%;
 }
 .left-inner{
   margin: 0 auto;
