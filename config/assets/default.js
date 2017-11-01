@@ -11,7 +11,8 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
-        'public/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min'
+        'public/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        '//fonts.googleapis.com/css?family=Montserrat'
         // endbower
       ],
       js: [
