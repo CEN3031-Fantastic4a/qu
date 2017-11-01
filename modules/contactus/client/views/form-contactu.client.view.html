@@ -1,0 +1,60 @@
+<section>
+  <div class="page-header">
+    <h1>Contact Us</h1>
+  </div>
+
+  <form name="vm.form.contactuForm" class="form-horizontal" ng-submit="vm.save(vm.form.contactuForm.$valid)" novalidate>
+    <fieldset>
+      <div class="col-md-6" ng-hide="!vm.user">
+        <div class="form-group">
+          <div class="checkbox">
+            <label><input name="anonymous" type="checkbox" ng-model="vm.contactu.anonymous" ng-change="vm.onSelectAnonymous()" >Prefer to be anonymous</label>
+          </div>
+          <div ng-hide="vm.contactu.anonymous">
+            <label> First Name: </label>
+            <input type="text" class="form-control" ng-model="vm.user.firstName" ng-readonly="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <div ng-hide="vm.contactu.anonymous">
+            <label> Last Name: </label>
+            <input type="text" class="form-control" ng-disabled="vm.contactu.anonymous" ng-model="vm.user.lastName" ng-readonly="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <div ng-hide="vm.contactu.anonymous">
+            <label> Email: </label>
+            <input name="email" type="text" class="form-control" ng-disabled="vm.contactu.anonymous" ng-model="vm.user.email" ng-readonly="true">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group" show-errors>
+          <label class="control-label" for="description">Message</label>
+          <label class="control-label" for="description" ng-style="myStyle={color:'red'}">*</label>
+          <textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Your Message" ng-model="vm.contactu.message" required></textarea>
+          <div ng-messages="vm.form.contactuForm.description.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Message is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div>
+            <label> State: </label>
+            <select name="state" id="repeatSelect" ng-model="vm.contactu.state">
+              <option ng-repeat="stateselect in state" value="{{stateselect.abbreviation}}">{{stateselect.name}}</option>
+            </select>
+          </div>
+          <div ng-messages="vm.form.contactuForm.state.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Message is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</section>
