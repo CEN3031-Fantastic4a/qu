@@ -6,9 +6,9 @@
 .controlSocialBanner {
 background-color: #DFD18B;
 height: 30%;
-width: 30%;
 position: absolute;
 right: 0;
+width: 30%;
 }
 .mapClass {
 background-color: black;
@@ -73,8 +73,4 @@ width: 30%;
 }
 .social-button:hover {
   opacity: 0.65;
-}
-
-*{
-  font-family: 'Montserrat', sans-serif !important;
 }
