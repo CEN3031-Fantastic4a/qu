@@ -32,7 +32,6 @@ module.exports = {
         'public/lib/jquery/dist/jquery.js',
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/moment/min/moment.min.js',
-        'public/lib/eonasdan-bootstrap-datetimepicker/eodatimepicker.js',
         'public/lib/bootstrap/dist/js/bootstrap.min.js',
         'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 

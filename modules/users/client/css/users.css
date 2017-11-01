@@ -3,19 +3,22 @@
     position: fixed;
   }
 }
-
-.mapClass{
-  background-color:black;
-  height:500px;
+.controlSocialBanner {
+background-color: #DFD18B;
+max-height: 170px;
+max-width: 30%;
+position: absolute;
+right: 0;
 }
-
-*{
-  font-family: 'Montserrat', sans-serif !important;
+.mapClass {
+background-color: black;
+height: 500px;
 }
 
 .social-account-container {
-  display: inline-block;
-  position: relative;
+display: inline-block;
+padding: 0 !important;
+position: relative;
 }
 .btn-add-remove-account {
   pointer-events: none;
@@ -35,35 +38,31 @@
   color:black !important;
 }
 .left {
-  background:#035096;
-  background-size:100% 100%;
-  /*background-image:url("images/index.jpg");*/
-  height: 100%;
-  left: 0;
-  overflow:auto;
-  position: absolute;
-  top: 0;
-  vertical-align: middle;
-  width: 70%;
+background: #035096;
+background-size: 100% 100%;
+height: 100%;
+left: 0;
+overflow: auto;
+position: absolute;
+vertical-align: middle;
+width: 70%;
 }
 .left-inner{
   margin: 0 auto;
   width: 70%;
 }
-
 .user-profile-picture {
   max-height: 150px;
   min-height: 150px;
 }
 .right {
-  background: #DFD18B;
-  clear:both;
-  height: 100%;
-  overflow:auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30%;
+background: #DFD18B;
+clear: both;
+height: 100%;
+overflow: auto;
+position: absolute;
+right: 0;
+width: 30%;
 }
 
 .social-button {

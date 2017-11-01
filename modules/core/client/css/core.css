@@ -1,102 +1,96 @@
 .content {
-  margin-top: 50px;
+margin-top: 50px;
 }
-.container {
-  padding-left: 0px;
-  margin-left: 0px;
+.frontPage {
+background-color: #035096;
+margin: 0;
+padding: 0;
+position: absolute;
+width: 70%;
 }
 .undecorated-link:hover {
-  text-decoration: none;
+text-decoration: none;
 }
+
 [ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
-  display: none !important;
+display: none !important;
 }
+
 .header-profile-image {
-  border-radius: 50%;
-  height: 28px;
-  margin-right: 5px;
-  opacity: 0.8;
-  width: 28px;
+border-radius: 50%;
+height: 28px;
+margin-right: 5px;
+opacity: 0.8;
+width: 28px;
 }
+
 .open .header-profile-image,
 a:hover .header-profile-image {
-  opacity: 1;
+opacity: 1;
 }
+
 .user-header-dropdown-toggle {
-  padding-bottom: 11px !important;
-  padding-top: 11px !important;
+padding-bottom: 11px !important;
+padding-top: 11px !important;
 }
+
 .user-primary-account {
-  font-size: 30px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
+font-size: 30px;
+position: absolute;
+right: 10px;
+top: 10px;
 }
+
 .error-text {
-  display: none;
+display: none;
 }
+
 .has-error .help-block.error-text {
-  display: block;
+display: block;
 }
+
 .has-error .help-inline.error-text {
-  display: inline;
-}
-.jumbotron{
-  background-color: #ffffff;
+display: inline;
 }
 
-.frontPage{
-  margin:0;
-  padding:0;
-  position: absolute;
-  width: 70%;
-}
-section{
-margin:0;
-padding:0;
-width:100%;
+.jumbotron {
+background-color: #ffffff;
 }
 
-*{
-  font-family: 'Montserrat', sans-serif !important;
+section {
+margin: 0;
+padding: 0;
+width: 100%;
 }
 
 .left {
-  background: #035096;
-  background-size:100% 100%;
-  /*background-image:url("images/index.jpg");*/
-  left: 0;
-  overflow:auto;
-  position: absolute;
-  top: 0;
-  width: 70%;
-  vertical-align: middle;
+background: #035096;
+background-size: 100% 100%;
+left: 0;
+overflow: auto;
+position: absolute;
+vertical-align: middle;
+width: 70%;
 }
-.left-inner{
-  height:1000px;
-  margin: 0 auto;
-  width: 70%;
+
+.left-inner {
+margin: 0 auto;
+width: 70%;
 }
 
 .rightHome {
-  background: #f8f8f8  ;
-  background-color: #f8f8f8;
-  clear:both;
-  height: 100%;
-  padding:20px;
-  overflow:auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30%;
-}
-.center{
-  bottom:20%;
-  position:relative;
-  top:100px;
-  width: 70%;
+background: #f8f8f8;
+background-color: #f8f8f8;
+clear: both;
+height: 100%;
+overflow: auto;
+padding: 20px;
+position: absolute;
+right: 0;
+top: 0;
+width: 30%;
 }
