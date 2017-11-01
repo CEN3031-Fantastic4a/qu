@@ -8,6 +8,10 @@ padding: 0;
 position: absolute;
 width: 70%;
 }
+.container {
+  padding-left: 0px;
+  margin-left: 0px;
+}
 .undecorated-link:hover {
 text-decoration: none;
 }
@@ -57,13 +61,14 @@ display: inline;
 }
 
 .frontPage{
-  margin:0 !important;
-  padding:0 !important;
-  width:100% !important;
+  margin:0;
+  padding:0;
+  position: absolute;
+  width: 70%;
 }
 section{
-margin:0 !important;
-padding:0 !important;
+margin:0;
+padding:0;
 width:100%;
 }
 
@@ -72,7 +77,7 @@ width:100%;
 }
 
 .left {
-  background:#035096;
+  background: #035096;
   background-size:100% 100%;
   /*background-image:url("images/index.jpg");*/
   left: 0;
