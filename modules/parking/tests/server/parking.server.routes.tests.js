@@ -72,7 +72,7 @@ describe('Parking Spot CRUD tests', function () {
           return done(signinErr);
         }
 
-        agent.post('/api/parking')
+        agent.post('/api/manage-parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -84,7 +84,7 @@ describe('Parking Spot CRUD tests', function () {
   });
 
   it('should not be able to save a spot if not logged in', function (done) {
-    agent.post('/api/parking')
+    agent.post('/api/manage-parking')
       .send(spot)
       .expect(403)
       .end(function (spotSaveErr, spotSaveRes) {
@@ -105,7 +105,7 @@ describe('Parking Spot CRUD tests', function () {
 
         spot.address = '1545 W University Ave';
 
-        agent.post('/api/parking')
+        agent.post('/api/manage-parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -122,7 +122,7 @@ describe('Parking Spot CRUD tests', function () {
     // Save the parking spot
     spotObj.save(function () {
       // Request spots
-      agent.get('/api/parking')
+      agent.get('/api/manage-parking')
         .end(function (req, res) {
           // Set assertion
           res.body.should.be.instanceof(Array).and.have.lengthOf(1);
@@ -140,7 +140,7 @@ describe('Parking Spot CRUD tests', function () {
 
     // Save the spot
     spotObj.save(function () {
-      agent.get('/api/parking/' + spotObj._id)
+      agent.get('/api/manage-parking/' + spotObj._id)
         .end(function (req, res) {
           // Set assertion
           res.body.should.be.instanceof(Object).and.have.property('address', spot.address);
@@ -153,7 +153,7 @@ describe('Parking Spot CRUD tests', function () {
 
   it('should return proper error for single spot with an invalid Id, if not signed in', function (done) {
     // test is not a valid mongoose Id
-    agent.get('/api/parking/test')
+    agent.get('/api/manage-parking/test')
       .end(function (req, res) {
         // Set assertion
         res.body.should.be.instanceof(Object).and.have.property('message', 'Parking Spot is invalid');
@@ -165,7 +165,7 @@ describe('Parking Spot CRUD tests', function () {
 
   it('should return proper error for single spot which doesnt exist, if not signed in', function (done) {
     // This is a valid mongoose Id but a non-existent spot
-    agent.get('/api/parking/559e9cd815f80b4c256a8f41')
+    agent.get('/api/manage-parking/559e9cd815f80b4c256a8f41')
       .end(function (req, res) {
         // Set assertion
         res.body.should.be.instanceof(Object).and.have.property('message', 'No spot with that identifier has been found');
@@ -185,7 +185,7 @@ describe('Parking Spot CRUD tests', function () {
           return done(signinErr);
         }
 
-        agent.post('/api/parking')
+        agent.post('/api/manage-parking')
           .send(spot)
           .expect(200)
           .end(function (spotSaveErr, spotSaveRes) {
@@ -205,7 +205,7 @@ describe('Parking Spot CRUD tests', function () {
     // Save the parking spot
     spotObj.save(function () {
       // Try deleting spot
-      agent.delete('/api/parking/' + spotObj._id)
+      agent.delete('/api/manage-parking/' + spotObj._id)
         .expect(403)
         .end(function (spotDeleteErr, spotDeleteRes) {
           // Set message assertion
@@ -256,7 +256,7 @@ describe('Parking Spot CRUD tests', function () {
           var orphanId = orphan._id;
 
           // Save a new spot
-          agent.post('/api/parking')
+          agent.post('/api/manage-parking')
             .send(spot)
             .expect(200)
             .end(function (spotSaveErr, spotSaveRes) {
@@ -285,7 +285,7 @@ describe('Parking Spot CRUD tests', function () {
                     }
 
                     // Get the spot
-                    agent.get('/api/parking/' + spotSaveRes.body._id)
+                    agent.get('/api/manage-parking/' + spotSaveRes.body._id)
                       .expect(200)
                       .end(function (spotInfoErr, spotInfoRes) {
                         // Handle spot error
@@ -319,7 +319,7 @@ describe('Parking Spot CRUD tests', function () {
       if (err) {
         return done(err);
       }
-      agent.get('/api/parking/' + spotObj._id)
+      agent.get('/api/manage-parking/' + spotObj._id)
         .end(function (req, res) {
           // Set assertion
           res.body.should.be.instanceof(Object).and.have.property('address', spot.address);
@@ -370,7 +370,7 @@ describe('Parking Spot CRUD tests', function () {
           var userId = _user._id;
 
           // Save a new spot
-          agent.post('/api/parking')
+          agent.post('/api/manage-parking')
             .send(spot)
             .expect(200)
             .end(function (spotSaveErr, spotSaveRes) {
@@ -397,7 +397,7 @@ describe('Parking Spot CRUD tests', function () {
                   }
 
                   // Get the spot
-                  agent.get('/api/parking/' + spotSaveRes.body._id)
+                  agent.get('/api/manage-parking/' + spotSaveRes.body._id)
                     .expect(200)
                     .end(function (spotInfoErr, spotInfoRes) {
                       // Handle spot error
