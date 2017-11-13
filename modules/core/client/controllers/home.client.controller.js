@@ -5,16 +5,15 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['ParkingService', 'NgMap'];
+  HomeController.$inject = ['ParkingService', 'NgMap'];
 
   function HomeController(ParkingService, NgMap) {
     var vm = this;
     vm.spots = ParkingService.query();
-    //vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAJEoMA7rbgnOKG2ILkLNSaj8XB9zaR3Bo';
-    vm.showSpotInfo = function(event, spot){
+    vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
       vm.map.setZoom(18);
-      //vm.map.setCenter(new google.maps.LatLng(vm.selectedCity.latitude, vm.selectedCity.longitude));
+      vm.map.setCenter(new google.maps.LatLng(vm.selectedCity.latitude, vm.selectedCity.longitude));
       vm.map.showInfoWindow('myInfoWindow', this);
     }
     NgMap.getMap().then(function(map) {
