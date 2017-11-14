@@ -33,15 +33,6 @@
         controller: 'HomeController',
         controllerAs: 'vm'
       })
-      .state('contact', {
-        url: '/contact-us',
-        templateUrl: '/modules/core/client/views/contactUs.client.view.html',
-        controller: 'ContactUsController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'ContactUs'
-        }
-      })
       .state('not-found', {
         url: '/not-found',
         templateUrl: '/modules/core/client/views/404.client.view.html',
