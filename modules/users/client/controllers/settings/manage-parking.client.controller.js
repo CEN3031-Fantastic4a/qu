@@ -15,6 +15,7 @@
     vm.remove = remove;
     vm.save = save;
 
+
     // Remove existing Parking Spot
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
@@ -28,6 +29,11 @@
     // Save Parking Spot
     function save(isValid) {
       if ($window.confirm('Are you sure you want to save?')) {
+        // if (vm.spot.mon_start_time > vm.spot.mon_end_time || isValid) {
+        //   console.log('range wrong');
+        //   $scope.$broadcast('show-errors-check-validity', 'vm.form.parkingForm');
+        //   return false;
+        // }
         if (!isValid) {
           $scope.$broadcast('show-errors-check-validity', 'vm.form.parkingForm');
           return false;
@@ -55,58 +61,4 @@
       });
     });
   }
-}());
-
-(function () {
-  var dateTimeController = function ($scope, $rootScope) {
-    $scope.vm = {
-      message: 'Bootstrap DateTimePicker Directive',
-      dateTime: {}
-    };
-    $scope.$watch('change', function () {
-      console.log($scope.vm.dateTime);
-    });
-    $scope.$on('emit:dateTimePicker', function (e, value) {
-      $scope.vm.dateTime = value.dateTime;
-      console.log(value);
-    });
-  };
-  var dateTimePicker = function ($rootScope) {
-    return {
-      require: '?ngModel',
-      restrict: 'AE',
-      scope: {
-        pick12HourFormat: '@',
-        language: '@',
-        useCurrent: '@',
-        location: '@'
-      },
-      link: function (scope, elem, attrs) {
-        elem.datetimepicker({
-          pick12HourFormat: scope.pick12HourFormat,
-          language: scope.language,
-          useCurrent: scope.useCurrent
-        });
-            // Local event change
-        elem.on('blur', function () {
-          console.info('this', this);
-          console.info('scope', scope);
-          console.info('attrs', attrs);
-              /* // returns moments.js format object
-              scope.dateTime = new Date(elem.data("DateTimePicker").getDate().format());
-              // Global change propagation
-              $rootScope.$broadcast("emit:dateTimePicker", {
-                  location: scope.location,
-                  action: 'changed',
-                  dateTime: scope.dateTime,
-                  example: scope.useCurrent
-              });
-              scope.$apply();*/
-        });
-      }
-    };
-  };
-  angular.module('dateTimeSandbox', []).run(['$rootScope', function ($rootScope) {
-  }]).controller('dateTimeController', ['$scope', '$http', dateTimeController
-  ]).directive('dateTimePicker', dateTimePicker);
 }());

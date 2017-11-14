@@ -72,12 +72,20 @@ exports.update = function (req, res) {
   spot.no_of_days = req.body.no_of_days;
   spot.no_of_months = req.body.no_of_months;
   spot.mon = req.body.mon;
-  spot.tue = req.body.tue;
-  spot.wed = req.body.wed;
-  spot.thur = req.body.thur;
-  spot.fri = req.body.fri;
-  spot.sat = req.body.sat;
-  spot.sun = req.body.sun;
+  spot.mon_start_time = req.body.mon_start_time;
+  spot.mon_end_time = req.body.mon_end_time;
+  spot.tue_start_time = req.body.tue_start_time;
+  spot.tue_end_time = req.body.tue_end_time;
+  spot.wed_start_time = req.body.wed_start_time;
+  spot.wed_end_time = req.body.wed_end_time;
+  spot.thur_start_time = req.body.thur_start_time;
+  spot.wed_end_time = req.body.wed_end_time;
+  spot.fri_start_time = req.body.fri_start_time;
+  spot.fri_end_time = req.body.fri_end_time;
+  spot.sat_start_time = req.body.sat_start_time;
+  spot.sat_end_time = req.body.sat_end_time;
+  spot.sun_start_time = req.body.sun_start_time;
+  spot.sun_end_time = req.body.sun_end_time;
   spot.verification_code = req.body.verification_code;
 
   if (req.results) {
