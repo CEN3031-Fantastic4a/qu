@@ -11,7 +11,8 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
-        'public/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min'
+        'public/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        '//fonts.googleapis.com/css?family=Montserrat'
         // endbower
       ],
       js: [
@@ -31,7 +32,6 @@ module.exports = {
         'public/lib/jquery/dist/jquery.js',
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/moment/min/moment.min.js',
-        'public/lib/eonasdan-bootstrap-datetimepicker/eodatimepicker.js',
         'public/lib/bootstrap/dist/js/bootstrap.min.js',
         'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 

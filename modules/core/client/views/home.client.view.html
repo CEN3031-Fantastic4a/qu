@@ -1,103 +1,38 @@
 <section>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  </head>
-
-  <div class="jumbotron text">
-    <div class="row">
-      <div class="col-sm-4">
-        <h1 style="color:blue;">ParkIt</h1>
-      </div>
+  <div class="frontPage">
+    <div style="font-family:Montserrat, sans-serif;font-size: 24px;width: 100%; background-color: #035096; color: white;padding-left: 5px">
+      <p>This is a quick statement of Park-It. It'll probably have the logo, as well as brief instructions for users to follow to find a parking spot easily.</p>
     </div>
-    <div class="row">
-      <h4>Lorem ipsum dolor sit amet, ea quis altera offendit vel, cu vix dissentiet delicatissimi. His postulant facilisis at.
-        Cu labores delicatissimi mea. </h4>
+    <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+      <ng-map style="height:79vh;width:100%;" center="41,-87" zoom="3"></ng-map>
     </div>
   </div>
-  </div>
-  <body>
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Map</h1>
-        <section>
-          <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
-            <ng-map center="current-location" zoom="15"  geo-fallback-center="4.672585, -74.059525"></ng-map>
-          </div>
-          <div class="list-group">
-            <a ng-repeat="spot in vm.spots" ui-sref="spots.view({ spotId: spot._id })" class="list-group-item">
-              <small class="list-group-item-text">
-                Posted on
-                <span ng-bind="spot.created | date:'mediumDate'"></span>
-                by
-                <span ng-if="spot.user" ng-bind="spot.user.displayName"></span>
-                <span ng-if="!spot.user">Deleted User</span>
-              </small>
-              <h4 class="list-group-item-heading" ng-bind="spot.address"></h4>
-              <p class="list-group-item-text" ng-bind="spot.description"></p>
-            </a>
-          </div>
-        </section>
-      </div>
-
-      <div class="col-md-6">
-        <h1>Find Parking Spot</h1>
-        <div class="form-group form-group-lg">
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords">
-        </div>
-        <div class='form-group form-group-lg'>
-          <div ng-app="g" class='input-group date' id='datetimepicker1'>
-              <span class="input-group-addon">
-                <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()><span class="glyphicon glyphicon-calendar"></span>
-                </button>
-            </span>
-                <input type='text' class="form-control" placeholder="Enter start date and time" />
-          </div>
-        </div>
-
-        <div class='form-group form-group-lg'>
-            <div ng-app="f" class='input-group date' id='datetimepicker2'>
-                <span class="input-group-addon">
-                  <button type = "button" class = "btn btn-default" ng-click = vm.dateTimePicker()><span class="glyphicon glyphicon-calendar"></span>
-                  </button>
-                  </span>
-                  <input type='text' class="form-control" placeholder="Enter end date and time" />
-            </div>
-          </div>
-        <a class="btn btn-primary btn-md" href="http://meanjs.org" target="_blank">Find Spot</a>
-      </div>
-      </div>
-        <!--
-              http://eonasdan.github.io/bootstrap-datetimepicker/Installing/#installation-guides
-            -->
-
-
-
-
-    <div class="well">
-      <h2>MEAN.JS Documentation</h2>
-      <p>
-        Once you're familiar with the foundation technology, check out the MEAN.JS Documentation:
-        <ul>
-          <li>
-            <a target="_blank" href="http://meanjs.org/docs.html">MEAN.JS Documentation</a>
-          </li>
-          <!-- <li><a target="_blank" href="http://meanjs.org/generator.html">Yeoman Generator</a>
-				</li> -->
-          <li>
-            <a target="_blank" href="http://meanjs.org/modules.html">Modules</a>
-          </li>
-          <li>
-            <a target="_blank" href="http://meanjs.org/changelog.html">Changelog</a>
-          </li>
-          <li>
-            <a target="_blank" href="http://meanjs.org/community.html">Community</a>
-          </li>
-          <li>
-            <a target="_blank" href="http://blog.meanjs.org">Blog</a>
-          </li>
-        </ul>
-      </p>
+  <div class="rightHome ">
+    <div style="height:100px"></div>
+    <h1 style="text-align:center;">Find Parking Spot</h1>
+    <div class="form-group form-group-lg">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords">
     </div>
-    <br>Enjoy &amp; Keep Us Updated,
-    <br>The MEAN.JS Team.
+    <div class='form-group form-group-lg'>
+      <div ng-app="g" class='input-group date' id='datetimepicker1'>
+        <span class="input-group-addon">
+          <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
+            <span class="glyphicon glyphicon-calendar"></span>
+          </button>
+        </span>
+        <input type='text' class="form-control" placeholder="Enter start date and time" />
+      </div>
+    </div>
+    <div class='form-group form-group-lg'>
+      <div ng-app="f" class='input-group date' id='datetimepicker2'>
+        <span class="input-group-addon">
+          <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
+            <span class="glyphicon glyphicon-calendar"></span>
+          </button>
+        </span>
+        <input type='text' class="form-control" placeholder="Enter end date and time" />
+      </div>
+    </div>
+    <a class="btn btn-primary btn-md" href="http://meanjs.org" target="_blank">Find Spot</a>
+  </div>
 </section>
