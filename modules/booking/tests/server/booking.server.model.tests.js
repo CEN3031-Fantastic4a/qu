@@ -35,7 +35,7 @@ describe('Booking Model Unit Tests:', function () {
     user.save()
     .then(function () {
       spot = new Spot({
-        address: 'Test Address',
+        address: '111 Newell Drive',
         postal_code: '32601',
         city_name: 'Gainesville'
       });
