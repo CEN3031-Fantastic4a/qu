@@ -6,6 +6,7 @@
 .controlSocialBanner {
 background-color: #DFD18B;
 height: 30%;
+height: 100%;
 position: absolute;
 right: 0;
 width: 30%;
@@ -45,10 +46,13 @@ left: 0;
 overflow: auto;
 position: absolute;
 vertical-align: middle;
+overflow: scroll;
+position: fixed;
 width: 70%;
 }
 .left-inner{
   margin: 0 auto;
+  overflow-y: auto;  
   width: 70%;
 }
 .user-profile-picture {
