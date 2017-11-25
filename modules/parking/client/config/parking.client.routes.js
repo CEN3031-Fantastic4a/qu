@@ -22,9 +22,12 @@
       })
       .state('parking.create', {
         url: '/create',
-        templateUrl: '/modules/parking/client/views/create-parking.client.view.html',
-        controller: 'ParkingController',
-        controllerAs: 'vm'
+        templateUrl: '/modules/parking/client/views/manage-parking/parking-create.client.view.html',
+        controller: 'ManageParkingController',
+        controllerAs: 'vm',
+        resolve: {
+          parkingResolve: newParking
+        }
       })
       .state('parking.view', {
         url: '/:spotId',
@@ -46,5 +49,11 @@
     return ParkingService.get({
       spotId: $stateParams.spotId
     }).$promise;
+  }
+
+  newParking.$inject = ['ManageParkingService'];
+  
+  function newParking(ManageParkingService) {
+    return new ManageParkingService();
   }
 }());
