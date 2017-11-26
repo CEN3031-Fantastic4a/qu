@@ -14,7 +14,7 @@ var ContactuSchema = new Schema({
   created_date: { type: Date, default: Date.now },
   anonymous: { type: Boolean, default: true },
   state: { type: String, default: '' },
-  message: { type: String, required: 'message null' }
+  message: { type: String, required: 'message required' }
 });
 
 mongoose.model('Contactu', ContactuSchema);

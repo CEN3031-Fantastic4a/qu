@@ -25,19 +25,19 @@ exports.invokeRolesPolicies = function () {
     roles: ['user'],
     allows: [{
       resources: '/api/contactus',
-      permissions: ['get', 'post']
+      permissions: ['post']
     }, {
       resources: '/api/contactus/:contactuId',
-      permissions: ['get']
+      permissions: ['']
     }]
   }, {
     roles: ['guest'],
     allows: [{
       resources: '/api/contactus',
-      permissions: ['get', 'post']
+      permissions: ['post']
     }, {
       resources: '/api/contactus/:contactuId',
-      permissions: ['get']
+      permissions: ['']
     }]
   }]);
 };
@@ -47,11 +47,6 @@ exports.invokeRolesPolicies = function () {
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
-
-  // If an Contactu is being processed and the current user created it then allow any manipulation
-  if (req.contactu && req.user && req.contactu.user && req.contactu.user.id === req.user.id) {
-    return next();
-  }
 
   // Check for user roles
   acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {

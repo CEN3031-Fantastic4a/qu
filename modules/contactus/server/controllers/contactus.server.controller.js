@@ -33,34 +33,11 @@ exports.read = function (req, res) {
   // convert mongoose document to JSON
   var contactu = req.contactu ? req.contactu.toJSON() : {};
 
-  // Add a custom field to the Article, for determining if the current User is the "owner".
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  contactu.isCurrentUserOwner = req.user && contactu.user && contactu.user._id.toString() === req.user._id.toString();
-
   res.jsonp(contactu);
 };
 
 /**
- * Update a Contactu
- */
-exports.update = function (req, res) {
-  var contactu = req.contactu;
-
-  contactu = _.extend(contactu, req.body);
-
-  contactu.save(function (err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(contactu);
-    }
-  });
-};
-
-/**
- * Delete an Contactu
+ * Delete a Contactu
  */
 exports.delete = function (req, res) {
   var contactu = req.contactu;
