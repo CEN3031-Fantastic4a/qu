@@ -193,7 +193,7 @@
         <div class="col-md-6">
           <div class="checkbox">
             <label>
-              <input data-toggle="toggle" ng-model="checke" type="checkbox" id="autoRent" onclick="if (this.checked){
+              <input data-toggle="toggle" ng-model="checke" type="checkbox" ng-click="check = false" id="autoRent" onclick="if (this.checked){
                           document.getElementById('mon').disabled = false;
                           document.getElementById('tue').disabled = false;
                           document.getElementById('wed').disabled = false;
@@ -396,7 +396,7 @@
       <form>
         <div class="checkbox">
           <label>
-            <input data-toggle="toggle" ng-model="check" type="checkbox" onclick="if (this.checked){
+            <input data-toggle="toggle" ng-model="check" type="checkbox" ng-click="checke = false" onclick="if (this.checked){
                     document.getElementById('startDate').disabled = false;
                     document.getElementById('endDate').disabled = false;
                     document.getElementById('startT').disabled = false;
