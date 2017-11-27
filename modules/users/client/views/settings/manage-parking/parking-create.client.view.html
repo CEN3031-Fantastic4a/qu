@@ -140,7 +140,7 @@
             Auto Rent
           </label>
         </div>
-
+      
         <div class = "row">
           <div class = "col-md-4">
             <div class = "form-group">
@@ -163,7 +163,7 @@
               <div class="input-group-addon">:00</div>
             </div>
           </div>
-
+        
           <!-- <div class="input-group input-daterange form-group">
             <div class = "form-group" show-errors>
             <div class="float-left" style="width:50px; height: 25px">
@@ -200,7 +200,7 @@
                   document.getElementById('tueEndTime').disabled = true;
                 }">Tuesday
               </div>
-
+            
               <div class="input-group input-daterange">
                 <input type="time" class="form-control" id = "tueStartTime"  ng-model="vm.spot.tue_start_time"disabled = "disabled" placeholder ="8">
                 <div class="input-group-addon">:00</div>
@@ -302,13 +302,52 @@
 
             <div class="input-group input-daterange">
               <input type="time" class="form-control" id = "sunStartTime" ng-model="vm.spot.sun_start_time" disabled = "disabled" placeholder ="8">
-            <div class="input-group-addon">:00</div>
             <div class="input-group-addon">to</div>
               <input type="time" class="form-control" id = "sunEndTime" ng-model="vm.spot.sun_end_time" disabled = "disabled" placeholder ="18">
-            <div class="input-group-addon">:00</div>
             </div>
           </div>
-        </div>
-      </fieldset>
+        
+        
+       
+    
+  
+    
+      <div class="checkbox">
+        <label>
+          <input data-toggle="toggle"  type="checkbox" onclick="if (this.checked){
+                  document.getElementById('startDate').disabled = false;
+                  document.getElementById('endDate').disabled = false;
+                  document.getElementById('startT').disabled = false;
+                  document.getElementById('endT').disabled = false; input.focus();
+                }
+                  else{
+                    document.getElementById('startDate').disabled = true;
+                    document.getElementById('endDate').disabled = true;
+                    document.getElementById('startT').disabled = true;
+                    document.getElementById('endT').disabled = true;
+                  }"> Custom Rent
+        </label>
+      </div>
+    
+      <div class="row">
+        
+          <div class="input-group input-daterange">
+            <input type="text" class="form-control" id="startDate" disabled="disabled" size="55" placeholder="2017-11-5">
+
+            <div class="input-group-addon">to</div>
+            <input type="text" class="form-control" id="endDate" disabled="disabled" size="55" placeholder="2017-11-6">
+          </div>
+        
+       
+          <div class="input-group input-daterange">
+            <input type="text" class="form-control" id="startT" disabled="disabled" placeholder="8 am">
+            <div class="input-group-addon">to</div>
+            <input type="text" class="form-control" id="endT" disabled="disabled" placeholder="6 pm">
+          </div>
+        
+      </div>
+    </div>
     </form>
+  
+  </fieldset>
 </ui-view>
