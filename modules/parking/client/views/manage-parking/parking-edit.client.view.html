@@ -396,38 +396,26 @@
       <form>
         <div class="checkbox">
           <label>
-            <input data-toggle="toggle" ng-model="check" type="checkbox" ng-click="checke = false" onclick="if (this.checked){
-                    document.getElementById('startDate').disabled = false;
-                    document.getElementById('endDate').disabled = false;
-                    document.getElementById('startT').disabled = false;
-                    document.getElementById('endT').disabled = false; input.focus();
-                  }
-                    else{
-                      document.getElementById('startDate').disabled = true;
-                      document.getElementById('endDate').disabled = true;
-                      document.getElementById('startT').disabled = true;
-                      document.getElementById('endT').disabled = true;
-                    }"> Custom Rent
+            <input data-toggle="toggle" ng-model="check" type="checkbox" ng-click="checke = false" > Custom Rent
           </label>
         </div>
-        <div class="row">
+        
           <ng-show ng-show="check">
-            <div class="input-group input-daterange">
-              <input type="text" class="form-control" id="startDate" disabled="disabled" size="55" placeholder="2017-11-5">
-
-              <div class="input-group-addon">to</div>
-              <input type="text" class="form-control" id="endDate" disabled="disabled" size="55" placeholder="2017-11-6">
-            </div>
+              <div class="input-group input-daterange">
+                  <input type="date" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
+                  <div class="input-group-addon">to</div>
+                  <input type="date" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
+                </div>
           </ng-show>
 
           <ng-show ng-show="check">
-            <div class="input-group input-daterange">
-              <input type="text" class="form-control" id="startT" disabled="disabled" placeholder="8 am">
-              <div class="input-group-addon">to</div>
-              <input type="text" class="form-control" id="endT" disabled="disabled" placeholder="6 pm">
-            </div>
+              <div class="input-group input-daterange">
+                  <input type="time" class="form-control" id="StartTime">
+                  <div class="input-group-addon">to</div>
+                  <input type="time" class="form-control" id="EndTime">
+                </div>
           </ng-show>
-        </div>
+        
       </form>
       </div>
     </div>
