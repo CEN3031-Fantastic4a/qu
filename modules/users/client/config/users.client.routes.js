@@ -68,7 +68,7 @@
       })
       .state('settings.parking.create', {
         url: '/create',
-        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-create.client.view.html',
+        templateUrl: '/modules/parking/client/views/manage-parking/parking-create.client.view.html',
         controller: 'ManageParkingController',
         controllerAs: 'vm',
         data: {
@@ -80,7 +80,7 @@
       })
       .state('settings.parking.details', {
         url: '/:spotId',
-        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-details.client.view.html',
+        templateUrl: '/modules/parking/client/views/manage-parking/parking-details.client.view.html',
         controller: 'ManageParkingDetailsController',
         controllerAs: 'vm',
         data: {
@@ -92,7 +92,7 @@
       })
       .state('settings.parking.edit', {
         url: '/:spotId/edit',
-        templateUrl: '/modules/users/client/views/settings/manage-parking/parking-edit.client.view.html',
+        templateUrl: '/modules/parking/client/views/manage-parking/parking-edit.client.view.html',
         controller: 'ManageParkingController',
         controllerAs: 'vm',
         data: {
