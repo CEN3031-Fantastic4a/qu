@@ -29,7 +29,7 @@
           vm.contactu.username = vm.user.username;
         }
       } else {
-        vm.contactu.usersname = '';
+        vm.contactu.username = '';
       }
     };
 
