@@ -142,7 +142,7 @@ describe('Contact Us CRUD tests', function () {
         .end(function (req, res) {
           // Set assertion
           (res.body.message).should.match('User is not authorized');
-          
+
           // Call the assertion callback
           done();
         });
@@ -159,21 +159,21 @@ describe('Contact Us CRUD tests', function () {
           return done(signinErr);
         }
 
-        var contactObj = new Contactu(contactus);      
+        var contactObj = new Contactu(contactus);
 
         // Save the contactus form
         contactObj.save(function () {
-        agent.get('/api/contactus/' + contactObj._id)
-          .expect(403)
-          .end(function (req, res) {
-            // Set assertion
-            (res.body.message).should.match('User is not authorized');
-            
-            // Call the assertion callback
-            done();
-          });
+          agent.get('/api/contactus/' + contactObj._id)
+            .expect(403)
+            .end(function (req, res) {
+              // Set assertion
+              (res.body.message).should.match('User is not authorized');
+
+              // Call the assertion callback
+              done();
+            });
+        });
       });
-    });
   });
 
   it('should not be able to get a list of forms if signed in', function (done) {
@@ -186,27 +186,8 @@ describe('Contact Us CRUD tests', function () {
           return done(signinErr);
         }
 
-        var contactObj = new Contactu(contactus);      
+        var contactObj = new Contactu(contactus);
 
-        // Save the contactus form
-        contactObj.save(function () {
-        agent.get('/api/contactus/')
-          .expect(403)
-          .end(function (req, res) {
-            // Set assertion
-            (res.body.message).should.match('User is not authorized');
-            
-            // Call the assertion callback
-            done();
-          });
-      });
-    });
-  });
-
-  it('should not be able to get a list of forms if not signed in', function (done) {
-    // Create new contactus model instance
-    var contactObj = new Contactu(contactus);
-    
         // Save the contactus form
         contactObj.save(function () {
           agent.get('/api/contactus/')
@@ -214,11 +195,30 @@ describe('Contact Us CRUD tests', function () {
             .end(function (req, res) {
               // Set assertion
               (res.body.message).should.match('User is not authorized');
-              
+
               // Call the assertion callback
               done();
             });
         });
+      });
+  });
+
+  it('should not be able to get a list of forms if not signed in', function (done) {
+    // Create new contactus model instance
+    var contactObj = new Contactu(contactus);
+
+        // Save the contactus form
+    contactObj.save(function () {
+      agent.get('/api/contactus/')
+        .expect(403)
+        .end(function (req, res) {
+          // Set assertion
+          (res.body.message).should.match('User is not authorized');
+
+          // Call the assertion callback
+          done();
+        });
+    });
   });
 
   afterEach(function (done) {

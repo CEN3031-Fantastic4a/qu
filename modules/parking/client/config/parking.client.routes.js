@@ -52,7 +52,7 @@
   }
 
   newParking.$inject = ['ManageParkingService'];
-  
+
   function newParking(ManageParkingService) {
     return new ManageParkingService();
   }
