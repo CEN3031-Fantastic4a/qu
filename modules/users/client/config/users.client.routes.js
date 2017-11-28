@@ -66,6 +66,15 @@
           pageTitle: 'Settings manage parking'
         }
       })
+      .state('settings.banking', {
+        url: '/settings-banking',
+        templateUrl: '/modules/users/client/views/settings/settings-customer-banking.client.view.html',
+        controller: 'customerBankingSetting',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings banking information'
+        }
+      })
       .state('settings.parking.create', {
         url: '/create',
         templateUrl: '/modules/parking/client/views/manage-parking/parking-create.client.view.html',
