@@ -43,5 +43,9 @@
       title: 'Manage Parking Spots',
       state: 'settings.parking'
     });
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Manage Banking Information',
+      state: 'settings.banking'
+    });
   }
 }());
