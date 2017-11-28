@@ -102,7 +102,6 @@
         $scope.vm.save(false);
         expect($scope.$broadcast).toHaveBeenCalledWith('show-errors-check-validity', 'vm.form.contactuForm');
       }));
-      
     });
 
   });

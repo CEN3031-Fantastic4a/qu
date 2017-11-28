@@ -33,9 +33,6 @@
         });
 
         var current = new google.maps.InfoWindow;
-        current.setPosition(pos);
-        current.setContent('Current Location');
-        current.open(map);
         map.setCenter(pos);
       });
     } else {
@@ -47,9 +44,6 @@
       geocoder.geocode({
         'address': vm.newAddress
       }, function (results, status) {
-        console.log(status);
-        console.log(vm.newAddress);
-        console.log(results);
         if (results.length > 0) {
           console.log(results[0].geometry.location.lat());
           vm.lat = results[0].geometry.location.lat();
@@ -60,8 +54,6 @@
             zoom: 14
           });
           var infoWindow = new google.maps.InfoWindow;
-          infoWindow.setPosition(cur);
-          infoWindow.setContent('Park here');
           infoWindow.open(map);
         } else {
           alert('Cannot find ' + vm.newAddress);
