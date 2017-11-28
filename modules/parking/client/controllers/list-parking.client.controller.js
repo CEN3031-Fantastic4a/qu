@@ -5,12 +5,27 @@
     .module('parking')
     .controller('ParkingListController', ParkingListController);
 
-  ParkingListController.$inject = ['ParkingService'];
+  ParkingListController.$inject = ['ParkingService', 'NgMap'];
 
-  function ParkingListController(ParkingService) {
+  function ParkingListController(ParkingService, NgMap) {
     var vm = this;
-
-    vm.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAJEoMA7rbgnOKG2ILkLNSaj8XB9zaR3Bo';
     vm.spots = ParkingService.query();
+
+    vm.showSpotInfo = function(event, spot){
+      vm.selectedCity = spot;
+      vm.map.setZoom(18);
+      //vm.map.setCenter(new google.maps.LatLng(vm.selectedCity.latitude, vm.selectedCity.longitude));
+      vm.map.showInfoWindow('myInfoWindow', this);
+    }
+
+    NgMap.getMap().then(function(map) {
+		    vm.map = map;
+        vm.showCustomMarker = function(evt){
+			       console.log('showing marker');
+		    }
+		    vm.closeCustomMarker= function(evt) {
+            this.style.display = 'none';
+        };
+	  });
   }
 }());
