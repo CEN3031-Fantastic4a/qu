@@ -68,10 +68,10 @@
   <div class="rightHome">
     <h1 style="text-align:center;">Find Parking Spot</h1>
     <div class="form-group form-group-lg">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords" ng-model = "vm.newAddress" ng-change= "vm.changeCenter()">
     </div>
     <div class='form-group form-group-lg'>
-      <div ng-app="g" class='input-group date' id='datetimepicker1'>
+      <div class='input-group date' id='datetimepicker1'>
         <span class="input-group-addon">
           <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
             <span class="glyphicon glyphicon-calendar"></span>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <div class='form-group form-group-lg'>
-      <div ng-app="f" class='input-group date' id='datetimepicker2'>
+      <div class='input-group date' id='datetimepicker2'>
         <span class="input-group-addon">
           <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
             <span class="glyphicon glyphicon-calendar"></span>
@@ -90,14 +90,12 @@
         <input type='text' class="form-control" placeholder="Enter end date and time" />
       </div>
     </div>
-    <a class="btn btn-primary btn-md" href="http://meanjs.org" target="_blank">Find Spot</a>
+    <a class="btn btn-primary btn-md" target="_blank" ng-model = "vm.newAddress" ng-click = vm.changeCenter()>Find Spot</a>
   </div>
 
-  </section>
-</div>
-<div class="whatWeDo">
-  <h1>What we do</h1>
-  <p>
-
-</div>
--->
+<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETUsensor=false"></script> -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script> -->
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETU&callback=initMap"></script>
+<script src="/assets/gmap3.js?body=1" type="text/javascript"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETU&libraries=places&callback=initMap"></script>

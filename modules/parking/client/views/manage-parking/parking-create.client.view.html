@@ -1,0 +1,358 @@
+<ui-view>
+    <div class = "row">
+        <div class="col-md-6">
+          <div class="page-header">
+            <h1>Add Your Spot</h1>
+          </div>
+        </div>
+        <div class = "col-md-6">
+          <h2>Choose Availability</h2>
+        </div>
+    </div>
+
+    <form name="vm.form.parkingForm"  ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
+      <fieldset>
+        <div class = "col-md-6">
+          <div class="form-group" show-errors>
+            <label for="address">Address</label>
+            <input name="address" type="text" ng-model="vm.spot.address" id="address" class="form-control" placeholder="Address" required>
+            <div ng-messages="vm.form.parkingForm.address.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Address is required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="city_name">City</label>
+            <input name="city_name" type="text" ng-model="vm.spot.city_name" id="city_name" class="form-control" placeholder="City" required>
+            <div ng-messages="vm.form.parkingForm.city_name.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">City is required</p>
+            </div>
+          </div>
+          <label for="state">State</label><p></p>
+            <select name="State">
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          <div class="form-group" show-errors>
+            <label for="postal_code">Zip Code</label>
+            <input name="postal_code" type="text" ng-model="vm.spot.postal_code" id="postal_code" class="form-control" placeholder="Zip Code" required>
+            <div ng-messages="vm.form.parkingForm.postal_code.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Zip Code is required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="number_of_space_spot">Number of Spaces</label>
+            <input name="number_of_space_spot" type="text" ng-model="vm.spot.number_of_space_spot" id="number_of_space_spot" class="form-control" placeholder="Number of Spots" required>
+            <div ng-messages="vm.form.parkingForm.number_of_space_spot.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Number of spaces is required</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <!-- Is special instruction needed from every spot? -->
+            <label for="description">Special Instructions</label>
+            <input name="description" type="text" ng-model="vm.spot.description" id="description" class="form-control" placeholder="e.g. Park all the way to the left" required>
+            <div ng-messages="vm.form.parkingForm.description.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Special instruction is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class = "col-md-6">
+          <div class="checkbox">
+          <label>
+            <input data-toggle="toggle" type="checkbox" id = "autoRent"
+            onclick="if (this.checked){
+              document.getElementById('mon').disabled = false;
+              document.getElementById('tue').disabled = false;
+              document.getElementById('wed').disabled = false;
+              document.getElementById('thu').disabled = false;
+              document.getElementById('fri').disabled = false;
+              document.getElementById('sat').disabled = false;
+              document.getElementById('sun').disabled = false; input.focus();
+            }
+              else{
+                document.getElementById('mon').disabled = true;
+                document.getElementById('tue').disabled = true;
+                document.getElementById('wed').disabled = true;
+                document.getElementById('thu').disabled = true;
+                document.getElementById('fri').disabled = true;
+                document.getElementById('sat').disabled = true;
+                document.getElementById('sun').disabled = true;
+              }">
+            Auto Rent
+          </label>
+        </div>
+      
+        <div class = "row">
+          <div class = "col-md-4">
+            <div class = "form-group">
+              <input type="checkbox" id = "mon" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('monStartTime').disabled = false;
+                document.getElementById('monEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('monStartTime').disabled = true;
+                  document.getElementById('monEndTime').disabled = true;
+                }">Monday
+              </div>
+            </div>
+
+            <div class="input-group input-daterange">
+              <input type="time" class="form-control" id = "monStartTime"  ng-model="vm.spot.mon_start_time"disabled = "disabled" placeholder ="8">
+              <div class="input-group-addon">:00</div>
+              <div class="input-group-addon">to</div>
+              <input type="time" class="form-control" id = "monEndTime" ng-model="vm.spot.mon_end_time" disabled = "disabled" placeholder ="6">
+              <div class="input-group-addon">:00</div>
+            </div>
+          </div>
+        
+          <!-- <div class="input-group input-daterange form-group">
+            <div class = "form-group" show-errors>
+            <div class="float-left" style="width:50px; height: 25px">
+              <input type="time" name = "monStartTime" class="form-control" ng-model="vm.spot.mon_start_time" id = "monStartTime" disabled = "disabled"
+              placeholder ="08">
+            </div>
+
+            <div class="input-group-addon" style="width:50px; height: 25px">:00</div>
+
+            <div class="input-group-addon" style="width:50px; height: 25px">to</div>
+
+            <div class="" style="width:50px; height: 25px">
+              <input type="time" class="form-control" ng-model="vm.spot.mon_end_time" id = "monEndTime" disabled = "disabled" placeholder ="06">
+            </div>
+            <div class="input-group-addon" style="width:50px; height: 25px">:00</div>
+
+
+            <div class="float-left" ng-messages="vm.form.parkingForm.mon_end_time.$error" role="alert">
+              <p class="help-block error-text" ng-messages="required">End time must be later than begin time.</p>
+            </div>
+            </div>
+          </div> -->
+
+
+
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox" id = "tue" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('tueStartTime').disabled = false;
+                document.getElementById('tueEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('tueStartTime').disabled = true;
+                  document.getElementById('tueEndTime').disabled = true;
+                }">Tuesday
+              </div>
+            
+              <div class="input-group input-daterange">
+                <input type="time" class="form-control" id = "tueStartTime"  ng-model="vm.spot.tue_start_time"disabled = "disabled" placeholder ="8">
+                <div class="input-group-addon">:00</div>
+                <div class="input-group-addon">to</div>
+                <input type="time" class="form-control" id = "tueEndTime" ng-model="vm.spot.tue_end_time" disabled = "disabled" placeholder ="6">
+                <div class="input-group-addon">:00</div>
+              </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox" id = "wed" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('wedStartTime').disabled = false;
+                document.getElementById('wedEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('wedStartTime').disabled = true;
+                  document.getElementById('wedEndTime').disabled = true;
+                }">Wednesday
+              </div>
+
+            <div class="input-group input-daterange">
+              <input type="time" class="form-control" id = "wedStartTime"  ng-model="vm.spot.wed_start_time" disabled = "disabled" placeholder ="8">
+            <div class="input-group-addon">:00</div>
+            <div class="input-group-addon">to</div>
+              <input type="time" class="form-control" id = "wedEndTime" ng-model="vm.spot.wed_end_time" disabled = "disabled" placeholder ="6">
+              <div class="input-group-addon">:00</div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox"  id = "thu" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('thuStartTime').disabled = false;
+                document.getElementById('thuEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('thuStartTime').disabled = true;
+                  document.getElementById('thuEndTime').disabled = true;
+                }">Thursday
+              </div>
+
+            <div class="input-group input-daterange">
+              <input type="time" class="form-control" id = "thuStartTime" ng-model="vm.spot.thu_start_time" disabled = "disabled" placeholder ="8">
+            <div class="input-group-addon">:00</div>
+            <div class="input-group-addon">to</div>
+              <input type="time" class="form-control" id = "thuEndTime" ng-model="vm.spot.thu_end_time" disabled = "disabled" placeholder ="6">
+            <div class="input-group-addon">:00</div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox" id = "fri" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('friStartTime').disabled = false;
+                document.getElementById('friEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('friStartTime').disabled = true;
+                  document.getElementById('friEndTime').disabled = true;
+                }">Friday
+              </div>
+
+            <div class="input-group input-daterange">
+              <input type="time" class="form-control" id = "friStartTime" ng-model="vm.spot.fri_start_time" disabled = "disabled" placeholder ="8">
+            <div class="input-group-addon">:00</div>
+            <div class="input-group-addon">to</div>
+              <input type="time" class="form-control" id = "friEndTime" ng-model="vm.spot.fri_end_time" disabled = "disabled" placeholder ="6">
+            <div class="input-group-addon">:00</div>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox" id = "sat" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('satStartTime').disabled = false;
+                document.getElementById('satEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('satStartTime').disabled = true;
+                  document.getElementById('satEndTime').disabled = true;
+                }">Saturday
+              </div>
+              <div class="input-group input-daterange">
+                <input type="time" class="form-control" id = "satStartTime" ng-model="vm.spot.sat_start_time" disabled = "disabled" placeholder ="8">
+              <div class="input-group-addon">:00</div>
+              <div class="input-group-addon">to</div>
+                <input type="time" class="form-control" id = "satEndTime" ng-model="vm.spot.sat_end_time" disabled = "disabled" placeholder ="6">
+              <div class="input-group-addon">:00</div>
+              </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-4">
+              <input type="checkbox" id = "sun" disabled = "disabled" onclick="if (this.checked){
+                document.getElementById('sunStartTime').disabled = false;
+                document.getElementById('sunEndTime').disabled = false; input.focus();
+              }
+                else{
+                  document.getElementById('sunStartTime').disabled = true;
+                  document.getElementById('sunEndTime').disabled = true;
+                }">Sunday
+              </div>
+
+            <div class="input-group input-daterange">
+              <input type="time" class="form-control" id = "sunStartTime" ng-model="vm.spot.sun_start_time" disabled = "disabled" placeholder ="8">
+            <div class="input-group-addon">to</div>
+              <input type="time" class="form-control" id = "sunEndTime" ng-model="vm.spot.sun_end_time" disabled = "disabled" placeholder ="18">
+            </div>
+          </div>
+<<<<<<< refs/remotes/origin/master:modules/users/client/views/settings/manage-parking/parking-create.client.view.html
+        
+        
+       
+    
+  
+    
+      <div class="checkbox">
+        <label>
+          <input data-toggle="toggle"  type="checkbox" onclick="if (this.checked){
+                  document.getElementById('startDate').disabled = false;
+                  document.getElementById('endDate').disabled = false;
+                  document.getElementById('startT').disabled = false;
+                  document.getElementById('endT').disabled = false; input.focus();
+                }
+                  else{
+                    document.getElementById('startDate').disabled = true;
+                    document.getElementById('endDate').disabled = true;
+                    document.getElementById('startT').disabled = true;
+                    document.getElementById('endT').disabled = true;
+                  }"> Custom Rent
+        </label>
+      </div>
+    
+      <div class="row">
+        
+          <div class="input-group input-daterange">
+            <input type="text" class="form-control" id="startDate" disabled="disabled" size="55" placeholder="2017-11-5">
+
+            <div class="input-group-addon">to</div>
+            <input type="text" class="form-control" id="endDate" disabled="disabled" size="55" placeholder="2017-11-6">
+          </div>
+        
+       
+          <div class="input-group input-daterange">
+            <input type="text" class="form-control" id="startT" disabled="disabled" placeholder="8 am">
+            <div class="input-group-addon">to</div>
+            <input type="text" class="form-control" id="endT" disabled="disabled" placeholder="6 pm">
+          </div>
+        
+      </div>
+    </div>
+=======
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-success">
+          <a class="btn btn-warning" ui-sref="settings.parking">
+              <i class="glyphicon glyphicon-remove-sign"></i>
+              Back
+          </a>
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+>>>>>>> update routes:modules/parking/client/views/manage-parking/parking-create.client.view.html
+    </form>
+  
+  </fieldset>
+</ui-view>
