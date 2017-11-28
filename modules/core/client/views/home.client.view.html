@@ -1,6 +1,6 @@
 <div class="container-fluid" style="font-family:Montserrat;">
 <div class="jumbotron text-left" style="padding-top:10px;padding-bottom:10px;margin-bottom:10px;background-color:">
-  <h2>Welcome to QU!</h2>
+  <h1><strong>Welcome to QU!</strong></h1>
   <p>To get started, type the address below to see the spot's availability.</p>
 </div>
 <div class="container-fluid" style="width:100%;background-color: #035096;border-radius:10px;box-shadow:10px 10px 10px; #222;">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-md-4">
-    <h1 style="text-align:center;">Find Parking Spot</h1>
+    <h1 style="text-align:center;color:white;">Find Parking Spot</h1>
     <div class="form-group form-group-lg">
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords">
 
@@ -42,60 +42,13 @@
   </div>
 </div>
 </div>
+<div style="height:20px;">
+  <span> </span>
+</div>
 
 
 
 
 
-
-
-
-
-
-
-<!--
-
-<div class="mapAddressWrapper">
-<section>
-  <div class="frontPage">
-    <div style="font-family:Montserrat, sans-serif;font-size: 24px;width: 100%; background-color: #035096; color: white;padding-left: 5px">
-      <p>This is a quick statement of Park-It. It'll probably have the logo, as well as brief instructions for users to follow to find a parking spot easily.</p>
-    </div>
-    <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
-      <ng-map style="height:80vh;width:100%;" center="41,-87" zoom="3"></ng-map>
-    </div>
-  </div>
-  <div class="rightHome">
-    <h1 style="text-align:center;">Find Parking Spot</h1>
-    <div class="form-group form-group-lg">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords" ng-model = "vm.newAddress" ng-change= "vm.changeCenter()">
-    </div>
-    <div class='form-group form-group-lg'>
-      <div class='input-group date' id='datetimepicker1'>
-        <span class="input-group-addon">
-          <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
-            <span class="glyphicon glyphicon-calendar"></span>
-          </button>
-        </span>
-        <input type='text' class="form-control" placeholder="Enter start date and time" />
-      </div>
-    </div>
-    <div class='form-group form-group-lg'>
-      <div class='input-group date' id='datetimepicker2'>
-        <span class="input-group-addon">
-          <button type="button" class="btn btn-default" ng-click=vm.dateTimePicker()>
-            <span class="glyphicon glyphicon-calendar"></span>
-          </button>
-        </span>
-        <input type='text' class="form-control" placeholder="Enter end date and time" />
-      </div>
-    </div>
-    <a class="btn btn-primary btn-md" target="_blank" ng-model = "vm.newAddress" ng-click = vm.changeCenter()>Find Spot</a>
-  </div>
-
-<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETUsensor=false"></script> -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script> -->
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETU&callback=initMap"></script>
-<script src="/assets/gmap3.js?body=1" type="text/javascript"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbbk7AHIwTz8o9nGHrRXIlcVnl7_YHETU&libraries=places&callback=initMap"></script>
