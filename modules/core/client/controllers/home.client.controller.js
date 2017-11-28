@@ -25,6 +25,10 @@
             this.style.display = 'none';
         };
 	  });
+
+    vm.newCenter = function (){
+      vm.map.setCenter(new google.maps.LatLng(vm.newAddress.latitude, vm.newAddress.longitude));
+    }
     vm.lat = 29.65;
     vm.lng = -82.32;
     vm.changeCenter = changeCenter;
@@ -38,7 +42,7 @@
       });
     });
 
-    if (navigator.geolocation) {
+    /*if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         var pos = {
           lat: position.coords.latitude,
@@ -55,7 +59,7 @@
       });
     } else {
       alert('Browser doesn\'t support Geolocation.');
-    }
+    }*/
 
     function changeCenter() {
       var geocoder = new google.maps.Geocoder();
@@ -67,12 +71,14 @@
           vm.lat = results[0].geometry.location.lat();
           vm.lng = results[0].geometry.location.lng();
           var cur = { lat: vm.lat, lng: vm.lng };
-          var map = new google.maps.Map(document.getElementById('map'), {
+          vm.map.setCenter(new google.maps.LatLng(vm.lat, vm.lng));
+          vm.map.setZoom(12);
+          /*var map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: vm.lat, lng: vm.lng },
             zoom: 14
           });
           var infoWindow = new google.maps.InfoWindow;
-          infoWindow.open(map);
+          infoWindow.open(map);*/
         } else {
           alert('Cannot find ' + vm.newAddress);
         }

@@ -3,15 +3,27 @@
     <div style="font-family:Montserrat, sans-serif;font-size: 24px;width: 100%; background-color: #035096; color: white;padding-left: 5px">
       <p>This is a quick statement of Park-It. It'll probably have the logo, as well as brief instructions for users to follow to find a parking spot easily.</p>
     </div>
-    <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
+    <!--<div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
       <ng-map id ="map" style="height:79vh;width:100%;" center="{{vm.lat}},{{vm.lng}}" zoom="12"></ng-map>
-    </div>
+    </div>-->
+    <ng-map style="height:80vh;width:100%;" center="current-location" zoom="8">
+          <info-window id="myInfoWindow">
+            <div ng-non-bindable>
+              <h6>{{vm.selectedCity.address}}</h6>
+              <h6>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h6>
+              <h6>Special Instructions: {{vm.selectedCity.description}}</h6>
+            </div>
+          </info-window>
+          <directions draggable="true" panel="directions-panel" travel-mode="DRIVING"
+                origin="{{vm.origin}}" destination="{{vm.destination}}"></directions>
+          <marker ng-repeat="spot in vm.spots" position="{{spot.latitude}}, {{spot.longitude}}" id="{{spot.city_name}}" title="{{spot.address}}" on-click="vm.showSpotInfo(event, spot)"></marker>
+    </ng-map>
   </div>
   <div class="rightHome ">
     <div style="height:100px"></div>
     <h1 style="text-align:center;">Find Parking Spot</h1>
     <div class="form-group form-group-lg">
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords" ng-model = "vm.newAddress" ng-change= "vm.changeCenter()">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords" ng-model = "vm.newAddress" ng-change= "vm.changeCenter()" >
     </div>
     <div class='form-group form-group-lg'>
       <div class='input-group date' id='datetimepicker1'>
@@ -22,18 +34,6 @@
         </span>
         <input type='text' class="form-control" placeholder="Enter start date and time" />
       </div>
-      <ng-map style="height:80vh;width:100%;" center="current-location" zoom="8">
-      			<info-window id="myInfoWindow">
-      				<div ng-non-bindable>
-      					<h6>{{vm.selectedCity.address}}</h6>
-      					<h6>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h6>
-      					<h6>Special Instructions: {{vm.selectedCity.description}}</h6>
-      				</div>
-      			</info-window>
-      			<directions draggable="true" panel="directions-panel" travel-mode="DRIVING"
-      						origin="{{vm.origin}}" destination="{{vm.destination}}"></directions>
-      			<marker ng-repeat="spot in vm.spots" position="{{spot.latitude}}, {{spot.longitude}}" id="{{spot.city_name}}" title="{{spot.address}}" on-click="vm.showSpotInfo(event, spot)"></marker>
-      </ng-map>
       <div class="list-group">
         <a ng-repeat="article in vm.articles" ui-sref="articles.view({ articleId: article._id })" class="list-group-item">
           <small class="list-group-item-text">
