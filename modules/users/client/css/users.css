@@ -43,16 +43,22 @@ background: #035096;
 background-size: 100% 100%;
 height: 100%;
 left: 0;
-overflow: auto;
+overflow: visible;
 position: absolute;
 vertical-align: middle;
-overflow: scroll;
-position: fixed;
 width: 70%;
 }
-.left-inner{
-  margin: 0 auto;
-  overflow-y: auto;  
+
+
+
+
+
+
+.choochinner{
+
+  flex:1;
+
+  overflow:visible;
   width: 70%;
 }
 .user-profile-picture {
@@ -63,12 +69,15 @@ width: 70%;
 background: #DFD18B;
 clear: both;
 height: 100%;
-overflow: auto;
-position: absolute;
+  overflow: visible;
+  position: absolute;
 right: 0;
 width: 30%;
 }
-
+.signinContainer{
+  display:flex;
+  width:100%;
+}
 .social-button {
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
