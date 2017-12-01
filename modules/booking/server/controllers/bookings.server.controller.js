@@ -41,7 +41,7 @@ exports.create = function (req, res) {
         });
       }
     });
-/*
+    /*
     Booking.find({ parking_spot_id: bookingObj.spot }).forEach(function (doc) {
       if (!(bookingObj.exit_date_time < doc.entry_date_time) && !(doc.exit_date_time < bookingObj.entry_date_time)) {
         res.status(400).send(err);
@@ -79,7 +79,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var booking = req.booking;
 
-  booking.updated_date = Date.now;
+  //booking.updated_date = Date.now;
   booking.total_time = req.body.total_time;
 
   booking.save(function (err) {
