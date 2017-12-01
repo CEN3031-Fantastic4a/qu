@@ -20,18 +20,33 @@ exports.create = function (req, res) {
     if (err) {
       return res.json(err);
     }
-    var stream = Booking.find({ parking_spot_id: bookingObj.spot }).stream();
-
-    stream.on('data', function (doc) {
-      /* Add functionality to sort through booking times
-       if (!(bookingObj.exit_date_time < doc.entry_date_time) && !(doc.exit_date_time < bookingObj.entry_date_time)) {
+    Booking.find({ $and: [
+      { parking_spot_id: bookingObj.spot },
+      { exit_date_time: { $lt: bookingObj.entry_date_time } },
+      { entry_date_time: { $gt: bookingObj.exit_date_time } }
+    ] }, function (err, book) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        bookingObj.save(function (err) {
+          if (err) {
+            return res.status(422).send({
+              message: errorHandler.getErrorMessage(err)
+            });
+          } else {
+            res.json(bookingObj);
+          }
+        });
+      }
+    });
+    /*
+    Booking.find({ parking_spot_id: bookingObj.spot }).forEach(function (doc) {
+      if (!(bookingObj.exit_date_time < doc.entry_date_time) && !(doc.exit_date_time < bookingObj.entry_date_time)) {
         res.status(400).send(err);
-      } */
-    }).on('error', function (err) {
-      res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    }).on('close', function () {
+      }
+    }, function (err) {
       bookingObj.save(function (err) {
         if (err) {
           console.log(err);
@@ -40,7 +55,7 @@ exports.create = function (req, res) {
           res.json(bookingObj);
         }
       });
-    });
+    });*/
   });
 };
 
@@ -63,6 +78,7 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
   var booking = req.booking;
+
   // booking.updated_date = Date.now;
   booking.total_time = req.body.total_time;
 
