@@ -79,7 +79,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var booking = req.booking;
 
-  //booking.updated_date = Date.now;
+  // booking.updated_date = Date.now;
   booking.total_time = req.body.total_time;
 
   booking.save(function (err) {
