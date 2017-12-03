@@ -15,7 +15,7 @@
           templateUrl: '</modules/booking/client/views/booking.client.view.html>'
         })
 
-        .state('booking.hoster', {
+        .state('booking.host', {
             url: '',
             templateUrl: '/modules/booking/client/views/booking-host.client.view.html',
             controller: 'BookingHostController',
@@ -27,20 +27,6 @@
             controller: 'ParkingListController',
             controllerAs: 'vm'
           })
-    }
-  
-    getParking.$inject = ['$stateParams', 'ParkingService'];
-  
-    function getParking($stateParams, ParkingService) {
-      return ParkingService.get({
-        spotId: $stateParams.spotId
-      }).$promise;
-    }
-  //idk if I know this 
-    newParking.$inject = ['ManageParkingService'];
-  
-    function newParking(ManageParkingService) {
-      return new ManageParkingService();
     }
   }());
   
