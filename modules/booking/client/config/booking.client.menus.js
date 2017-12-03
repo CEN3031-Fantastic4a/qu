@@ -18,12 +18,12 @@
       // Add the dropdown list item
       menuService.addSubMenuItem('topbar', 'booking', {
         title: 'My Bookings',
-        state: 'parking.list',
+        state: 'booking.renter',
         roles: ['*']
       });
       menuService.addSubMenuItem('topbar', 'booking', {
         title: 'Host Bookings',
-        state: 'parking.list',
+        state: 'booking.host',
         roles: ['*']
     });
     }
