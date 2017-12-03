@@ -16,17 +16,25 @@ var bookingsPolicy = require('../policies/bookings.server.policy'),
  */
 
 module.exports = function (app) {
-  // Booking collection routes
-  app.route('/api/bookings').all(bookingsPolicy.isAllowed)
-    .get(bookings.list)
+    // Booking collection routes
+  app.route('/api/user-bookings').all(bookingsPolicy.isAllowed)
+    .get(bookings.listUser)
     .post(bookings.create);
 
-  // Single booking routes
-  app.route('/api/bookings/:bookingId').all(bookingsPolicy.isAllowed)
+  app.route('/api/host-bookings').all(bookingsPolicy.isAllowed)
+    .get(bookings.listHost);
+
+    // Single booking routes
+  app.route('/api/user-bookings/:bookingId').all(bookingsPolicy.isAllowed)
     .get(bookings.read)
     .put(bookings.update)
     .delete(bookings.delete);
 
-  // Finish by binding the booking middleware
+  app.route('/api/host-bookings/:bookingId').all(bookingsPolicy.isAllowed)
+    .get(bookings.read)
+    .put(bookings.update)
+    .delete(bookings.delete);
+
+    // Finish by binding the booking middleware
   app.param('bookingId', bookings.bookingByID);
 };
