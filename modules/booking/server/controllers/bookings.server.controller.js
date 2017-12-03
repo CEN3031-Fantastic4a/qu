@@ -146,3 +146,13 @@ exports.bookingByID = function (req, res, next, id) {
     next();
   });
 };
+
+
+/*Parking spot pricing*/
+exports.bookingPrice = function(req, res) {
+    var booking=req.booking;
+    var duration=booking.total_time-1;
+    var price_multiplier=math.max(3,5-duration/10);
+    var final_price=price_multiplier*booking.total_time;
+    res.json(final_price);
+}
