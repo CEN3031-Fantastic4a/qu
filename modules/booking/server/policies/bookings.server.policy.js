@@ -15,7 +15,7 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/bookings',
+      resources: ['/api/bookings','/api/bookings-user', '/api/bookings-host'],
       permissions: '*'
     }, {
       resources: '/api/bookings/:bookingId',
@@ -24,7 +24,7 @@ exports.invokeRolesPolicies = function () {
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/bookings',
+      resources: ['/api/bookings','/api/bookings-user', '/api/bookings-host'],
       permissions: ['get', 'post']
     }, {
       resources: '/api/bookings/:bookingId',

@@ -11,19 +11,19 @@
     $stateProvider
       .state('booking', {
         abstract: true,
-        url: '/booking',
+        url: '/bookings',
         templateUrl: '</modules/booking/client/views/booking.client.view.html>'
       })
-      .state('booking.host', {
-        url: '',
-        templateUrl: '/modules/booking/client/views/booking-host.client.view.html',
-        controller: 'BookingHostController',
+      .state('booking.user', {
+        url: '-user',
+        templateUrl: '/modules/booking/client/views/booking-user.client.view.html',
+        controller: 'BookingUserController',
         controllerAs: 'vm'
       })
-      .state('booking.renter', {
-        url: '',
-        templateUrl: '/modules/booking/client/views/booking-user.client.view.html',
-        controller: 'ParkingListController',
+      .state('booking.host', {
+        url: '-host',
+        templateUrl: '/modules/booking/client/views/booking-host.client.view.html',
+        controller: 'BookingHostController',
         controllerAs: 'vm'
       });
   }

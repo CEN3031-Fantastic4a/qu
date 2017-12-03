@@ -9,22 +9,22 @@
 
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
-      title: 'Booking',
+      title: 'Bookings',
       state: 'booking',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user', 'admin']
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'booking', {
       title: 'My Bookings',
-      state: 'booking.renter',
-      roles: ['*']
+      state: 'booking.user',
+      roles: ['user', 'admin']
     });
     menuService.addSubMenuItem('topbar', 'booking', {
       title: 'Host Bookings',
       state: 'booking.host',
-      roles: ['*']
+      roles: ['user', 'admin']
     });
   }
 }());
