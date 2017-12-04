@@ -58,7 +58,7 @@ display: inline;
 }
 
 .jumbotron {
-background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 section {
@@ -123,8 +123,6 @@ width: 30%;
 .mapAddressWrapper{
   background-color:green;
   height: calc("80vh - 50px");
-
-
 }
 .mapStyle{
   height:calc("80vh - 50px");
@@ -132,4 +130,14 @@ width: 30%;
 .whatWeDo{
   background-color:orange;
   height:700px;
+}
+
+#bookSpot{
+  padding: 20px;
+   display:none;
+}
+
+#bookButton{
+  background-color: #4CAF50;
+  font-size: 20px;
 }

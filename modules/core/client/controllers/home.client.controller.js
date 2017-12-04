@@ -16,6 +16,8 @@
       vm.map.setZoom(18);
       vm.map.setCenter(new google.maps.LatLng(vm.selectedCity.latitude, vm.selectedCity.longitude));
       vm.map.showInfoWindow('myInfoWindow', this);
+      document.getElementById("bookButton").disabled = false;
+      /*document.getElementById("bookSpot").scrollIntoView();*/
     };
     NgMap.getMap().then(function (map) {
       vm.map = map;
@@ -26,6 +28,21 @@
         this.style.display = 'none';
       };
     });
+
+    var button = document.getElementById('bookButton');
+
+    button.onclick = function() {
+        var div = document.getElementById('bookSpot');
+        /*if (div.style.display !== 'none') {
+            div.style.display = 'none';
+        }
+        else {
+            div.style.display = 'block';
+            document.getElementById("bookSpot").scrollIntoView();
+        } */
+        div.style.display = 'block';
+        document.getElementById("bookSpot").scrollIntoView();
+    };
 
     vm.newCenter = function () {
       vm.map.setCenter(new google.maps.LatLng(vm.newAddress.latitude, vm.newAddress.longitude));
