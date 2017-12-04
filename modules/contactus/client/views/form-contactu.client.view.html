@@ -5,7 +5,7 @@
 
   <form name="vm.form.contactuForm" class="form-horizontal" ng-submit="vm.save(vm.form.contactuForm.$valid)" novalidate>
     <fieldset>
-      <div class="col-md-6" ng-hide="!vm.user" style="padding-left:10%">
+      <div class="col-md-5" ng-hide="!vm.user" style="padding-left:10%">
         <div class="form-group">
           <div class="checkbox">
             <label><input name="anonymous" type="checkbox" ng-model="vm.contactu.anonymous" ng-change="vm.onSelectAnonymous()" >Prefer to be anonymous</label>
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6" style="padding-left:10%">
+      <div class="col-md-5 col-md-offset-1" style="padding-left:10%">
         <div class="form-group" show-errors>
           <label class="control-label" for="description">Message</label>
           <label class="control-label" for="description" ng-style="myStyle={color:'red'}">*</label>

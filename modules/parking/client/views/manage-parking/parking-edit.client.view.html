@@ -1,19 +1,15 @@
 <ui-view>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="page-header">
-        <h1>Edit Your Spot</h1>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="page-header">
+  <div class = "row">
+        <div class="page-header col-md-5">
+          <h1>Edit Your Spot</h1>
+        </div>
+        <div class = "page-header col-md-6 col-sm-offset-1">
         <h1>Choose Availability</h1>
       </div>
-    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <form name="vm.form.parkingForm" class="form-horizontal" ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
         <fieldset>
           <div class="form-group" show-errors>
@@ -124,73 +120,9 @@
         </fieldset>
       </form>
     </div>
-    <div class="col-md-6">
-      <style>
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 44px;
-          height: 20px;
-        }
-
-        .switch input {
-          display: none;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 18px;
-          width: 18px;
-          left: 1px;
-          bottom: 1px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-
-        input:checked+.slider {
-          background-color: #2196F3;
-        }
-
-        input:focus+.slider {
-          box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked+.slider:before {
-          -webkit-transform: translateX(24px);
-          -ms-transform: translateX(24px);
-          transform: translateX(24px);
-        }
-
-        /* Rounded sliders */
-
-        .slider.round {
-          border-radius: 20px;
-        }
-
-        .slider.round:before {
-          border-radius: 50%;
-        }
-      </style>
-
-
 
       <form>
-
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-offset-1">
           <div class="checkbox">
             <label>
               <input data-toggle="toggle" ng-model="checke" type="checkbox" ng-click="check = false" id="autoRent" onclick="if (this.checked){
@@ -399,7 +331,7 @@
             <input data-toggle="toggle" ng-model="check" type="checkbox" ng-click="checke = false" > Custom Rent
           </label>
         </div>
-        
+
           <ng-show ng-show="check">
               <div class="input-group input-daterange">
                   <input type="date" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
@@ -415,7 +347,7 @@
                   <input type="time" class="form-control" id="EndTime">
                 </div>
           </ng-show>
-        
+
       </form>
       </div>
     </div>

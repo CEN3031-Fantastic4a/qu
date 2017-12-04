@@ -1,18 +1,16 @@
 <ui-view>
     <div class = "row">
-        <div class="col-md-6">
-          <div class="page-header">
+          <div class="page-header col-md-5">
             <h1>Add Your Spot</h1>
           </div>
-        </div>
-        <div class = "col-md-6">
-          <h2>Choose Availability</h2>
+          <div class = "page-header col-md-6 col-sm-offset-1">
+          <h1>Choose Availability</h1>
         </div>
     </div>
 
     <form name="vm.form.parkingForm"  ng-submit="vm.save(vm.form.parkingForm.$valid)" novalidate>
       <fieldset>
-        <div class = "col-md-6">
+        <div class = "col-md-5">
           <div class="form-group" show-errors>
             <label for="address">Address</label>
             <input name="address" type="text" ng-model="vm.spot.address" id="address" class="form-control" placeholder="Address" required>
@@ -105,7 +103,7 @@
           </div>
         </div>
 
-        <div class = "col-md-6">
+        <div class = "col-md-6 col-sm-offset-1">
           <div class="checkbox">
           <label>
             <input data-toggle="toggle" type="checkbox" id = "autoRent"
@@ -130,7 +128,7 @@
             Auto Rent
           </label>
         </div>
-      
+
         <div class = "row">
           <div class = "col-md-4">
             <div class = "form-group">
@@ -141,7 +139,7 @@
                 else{
                   document.getElementById('monStartTime').disabled = true;
                   document.getElementById('monEndTime').disabled = true;
-                }">Monday
+                }"> Monday
               </div>
             </div>
 
@@ -153,7 +151,7 @@
               <div class="input-group-addon">:00</div>
             </div>
           </div>
-        
+
           <!-- <div class="input-group input-daterange form-group">
             <div class = "form-group" show-errors>
             <div class="float-left" style="width:50px; height: 25px">
@@ -188,9 +186,9 @@
                 else{
                   document.getElementById('tueStartTime').disabled = true;
                   document.getElementById('tueEndTime').disabled = true;
-                }">Tuesday
+                }"> Tuesday
               </div>
-            
+
               <div class="input-group input-daterange">
                 <input type="time" class="form-control" id = "tueStartTime"  ng-model="vm.spot.tue_start_time"disabled = "disabled" placeholder ="8">
                 <div class="input-group-addon">:00</div>
@@ -208,7 +206,7 @@
                 else{
                   document.getElementById('wedStartTime').disabled = true;
                   document.getElementById('wedEndTime').disabled = true;
-                }">Wednesday
+                }"> Wednesday
               </div>
 
             <div class="input-group input-daterange">
@@ -228,7 +226,7 @@
                 else{
                   document.getElementById('thuStartTime').disabled = true;
                   document.getElementById('thuEndTime').disabled = true;
-                }">Thursday
+                }"> Thursday
               </div>
 
             <div class="input-group input-daterange">
@@ -248,7 +246,7 @@
                 else{
                   document.getElementById('friStartTime').disabled = true;
                   document.getElementById('friEndTime').disabled = true;
-                }">Friday
+                }"> Friday
               </div>
 
             <div class="input-group input-daterange">
@@ -268,11 +266,11 @@
                 else{
                   document.getElementById('satStartTime').disabled = true;
                   document.getElementById('satEndTime').disabled = true;
-                }">Saturday
+                }"> Saturday
               </div>
               <div class="input-group input-daterange">
                 <input type="time" class="form-control" id = "satStartTime" ng-model="vm.spot.sat_start_time" disabled = "disabled" placeholder ="8">
-              <div class="input-group-addon">:00</div>
+                  <div class="input-group-addon">:00</div>
               <div class="input-group-addon">to</div>
                 <input type="time" class="form-control" id = "satEndTime" ng-model="vm.spot.sat_end_time" disabled = "disabled" placeholder ="6">
               <div class="input-group-addon">:00</div>
@@ -287,16 +285,18 @@
                 else{
                   document.getElementById('sunStartTime').disabled = true;
                   document.getElementById('sunEndTime').disabled = true;
-                }">Sunday
+                }"> Sunday
               </div>
 
-            <div class="input-group input-daterange">
-              <input type="time" class="form-control" id = "sunStartTime" ng-model="vm.spot.sun_start_time" disabled = "disabled" placeholder ="8">
-            <div class="input-group-addon">to</div>
-              <input type="time" class="form-control" id = "sunEndTime" ng-model="vm.spot.sun_end_time" disabled = "disabled" placeholder ="18">
-            </div>
+              <div class="input-group input-daterange">
+                <input type="time" class="form-control" id = "satStartTime" ng-model="vm.spot.sat_start_time" disabled = "disabled" placeholder ="8">
+                  <div class="input-group-addon">:00</div>
+              <div class="input-group-addon">to</div>
+                <input type="time" class="form-control" id = "satEndTime" ng-model="vm.spot.sat_end_time" disabled = "disabled" placeholder ="6">
+              <div class="input-group-addon">:00</div>
+              </div>
           </div>
-    
+
       <div class="checkbox">
         <label>
           <input data-toggle="toggle"  type="checkbox" onclick="if (this.checked){
@@ -313,23 +313,23 @@
                   }"> Custom Rent
         </label>
       </div>
-    
+
       <div class="row">
-        
+
           <div class="input-group input-daterange">
             <input type="text" class="form-control" id="startDate" disabled="disabled" size="55" placeholder="2017-11-5">
 
             <div class="input-group-addon">to</div>
             <input type="text" class="form-control" id="endDate" disabled="disabled" size="55" placeholder="2017-11-6">
           </div>
-        
-       
+
+
           <div class="input-group input-daterange">
             <input type="text" class="form-control" id="startT" disabled="disabled" placeholder="8 am">
             <div class="input-group-addon">to</div>
             <input type="text" class="form-control" id="endT" disabled="disabled" placeholder="6 pm">
           </div>
-        
+
       </div>
     </div>
         </div>
@@ -345,6 +345,6 @@
         </div>
       </fieldset>
     </form>
-  
+
   </fieldset>
 </ui-view>
