@@ -6,7 +6,6 @@
 .controlSocialBanner {
 background-color: #DFD18B;
 height: 30%;
-height: 100%;
 position: absolute;
 right: 0;
 width: 30%;
@@ -39,18 +38,26 @@ position: relative;
   color:black !important;
 }
 .left {
-  background: #035096;
-  background-size: 100% 100%;
-  height: 100%;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  vertical-align: middle;
-  width: 70%;
+background: #035096;
+background-size: 100% 100%;
+height: 100%;
+left: 0;
+overflow: visible;
+position: absolute;
+vertical-align: middle;
+width: 70%;
 }
-.left-inner{
-  margin: 0 auto;
-  overflow-y: auto;  
+
+
+
+
+
+
+.choochinner{
+
+  flex:1;
+
+  overflow:visible;
   width: 70%;
 }
 .user-profile-picture {
@@ -61,12 +68,15 @@ position: relative;
 background: #DFD18B;
 clear: both;
 height: 100%;
-overflow: auto;
-position: absolute;
+  overflow: visible;
+  position: absolute;
 right: 0;
 width: 30%;
 }
-
+.signinContainer{
+  display:flex;
+  width:100%;
+}
 .social-button {
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;

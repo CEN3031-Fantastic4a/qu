@@ -1,4 +1,4 @@
-<div class="container" ng-controller="HeaderController as vm">
+<div class="container" style="padding-left:0;padding-right:10px;"ng-controller="HeaderController as vm">
   <div class="navbar-header">
     <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
       <span class="sr-only">Toggle navigation</span>
@@ -7,9 +7,9 @@
       <span class="icon-bar"></span>
     </button>
     <a ui-sref="home">
-      <img class="png-icon" src="/modules/core/client/img/brand/parkit.png" style="width: 40px; height: 40px; margin-top: 12%">      
+      <img class="png-icon" src="/modules/core/client/img/brand/qu_logo.svg" style="width: 50px; height: 50px; ">
     </a>
-    
+
   </div>
   <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
