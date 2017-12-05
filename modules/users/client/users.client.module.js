@@ -1,7 +1,7 @@
 (function (app) {
   'use strict';
 
-  app.registerModule('users', ['ui.bootstrap']);
+  app.registerModule('users', ['ui.bootstrap', 'bankings']);
   app.registerModule('users.admin');
   app.registerModule('users.admin.routes', ['ui.router', 'core.routes', 'users.admin.services']);
   app.registerModule('users.admin.services');

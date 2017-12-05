@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Banking Schema
  */
 var BankingSchema = new Schema({
-  name: {
+  accountid: {
     type: String,
     default: '',
     required: 'Please fill Banking name',

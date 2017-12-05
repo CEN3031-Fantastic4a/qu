@@ -76,4 +76,10 @@
   function newBanking(BankingsService) {
     return new BankingsService();
   }
+
+  getToken.$inject = ['TokenService'];
+
+  function getToken(TokenService) {
+    return TokenService.get().$promise;
+  }
 }());

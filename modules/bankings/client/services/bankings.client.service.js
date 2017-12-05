@@ -12,9 +12,23 @@
     return $resource('api/bankings/:bankingId', {
       bankingId: '@_id'
     }, {
-      update: {
-        method: 'PUT'
+        update: {
+          method: 'PUT'
+        }
+      });
+  }
+  angular
+    .module('bankings')
+    .factory('TokenService', TokenService);
+
+  TokenService.$inject = ['$resource'];
+
+  function TokenService($resource) {
+    return $resource('/api/bankings-clienttoken', {}, {
+      get: {
+        method: 'GET'
       }
-    });
+    }
+    );
   }
 }());

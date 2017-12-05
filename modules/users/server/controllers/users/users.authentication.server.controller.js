@@ -8,8 +8,7 @@ var path = require('path'),
   mongoose = require('mongoose'),
   passport = require('passport'),
   User = mongoose.model('User'),
-  config = require(path.resolve('./config/config')),
-  Stripe = require('stripe')(config.stripe.api_key);
+  config = require(path.resolve('./config/config'))
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
   '/authentication/signin',
@@ -26,16 +25,7 @@ exports.signup = function (req, res) {
   var user = new User(req.body);
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
-  Stripe.customers.create({
-    email: user.email,
-    metadata: {
-      firstName: user.firstName,
-      lastName: user.lastName
-    }
-  }, function (err, customer) {
-    user.customer_id = customer.id;
-  });
-
+  
   // Then save the user
   user.save(function (err) {
     if (err) {

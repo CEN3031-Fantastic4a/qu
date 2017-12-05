@@ -33,8 +33,9 @@ module.exports = {
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/moment/min/moment.min.js',
         'public/lib/bootstrap/dist/js/bootstrap.min.js',
-        'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
-
+        'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        '//js.braintreegateway.com/web/dropin/1.9.1/js/dropin.min.js',
+        'public/lib/angular-load/dist/angular-load.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

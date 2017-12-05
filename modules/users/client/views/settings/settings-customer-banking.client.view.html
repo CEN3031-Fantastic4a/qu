@@ -4,14 +4,18 @@
   -->
 <ui-view>
   <div class="row">
-    <div class="col-md-12">
-      <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav navbar-brand col-centered" style="padding-bottom: 7%">
+    <div class="col-md-12 navbar navbar-default" style="padding: 0;">
+        <ul class="nav navbar-nav navbar-brand" style="padding: 0 0; margin-top: 3%;">
           <li class="col-sm-4"><button type="button" class="btn btn-primary">Add Payment Method</button></li>
           <li class="col-sm-4"><button type="button" class="btn btn-primary">List Payment Method</button></li>
           <li class="col-sm-4"><button type="button" class="btn btn-primary">Delete Payment Method</button></li>
         </ul>
-      </nav>
     </div>
+    <div id="payment" class="col-md-12 navbar navbar-default" style="padding: 5px;">
+        <div id="drop" value={{vm.token.token}}>
+          <div id="dropin-container"></div>
+          <button class="btn btn-primary" id="submit-button">Request payment method</button>
+        </div>
+      </div>
   </div>
 </ui-view>

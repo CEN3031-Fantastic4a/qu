@@ -8,7 +8,7 @@
 
   BankingsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'bankingResolve'];
 
-  function BankingsController ($scope, $state, $window, Authentication, banking) {
+  function BankingsController($scope, $state, $window, Authentication, banking) {
     var vm = this;
 
     vm.authentication = Authentication;

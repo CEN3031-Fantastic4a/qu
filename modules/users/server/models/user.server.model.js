@@ -79,37 +79,6 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
   },
-  customer: {
-    customer_id: { type: String },
-    sources: [{
-      payment_type: [{ type: String,
-        enum: ['cards', 'bank_account', ''],
-        default: ''
-      }],
-      currency: { type: String, default: 'usd' },
-      owner: {
-        address: {
-          city: { type: String },
-          country: { type: String },
-          line1: { type: String },
-          line2: { type: String },
-          postal_code: { type: Number },
-          state: { type: String }
-        },
-        email: {
-          type: String,
-          lowercase: true,
-          trim: true,
-          default: '',
-          validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
-        },
-        name: { type: String },
-        phone: { type: String }
-      },
-      token: { type: String },
-      usage: { type: String, default: 'reusable' }
-    }]
-  },
   username: {
     type: String,
     unique: 'Username already exists',

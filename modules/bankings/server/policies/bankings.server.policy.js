@@ -9,7 +9,7 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Bankings Permissions
+ * Invoke Bankings Permissions'/api/bankings-clienttoken'
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
@@ -29,6 +29,9 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/bankings/:bankingId',
       permissions: ['get']
+    }, {
+      resources: '/api/bankings-clienttoken',
+      permissions: ['get']
     }]
   }, {
     roles: ['guest'],
@@ -37,6 +40,9 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get']
     }, {
       resources: '/api/bankings/:bankingId',
+      permissions: ['get']
+    }, {
+      resources: '/api/bankings-clienttoken',
       permissions: ['get']
     }]
   }]);
