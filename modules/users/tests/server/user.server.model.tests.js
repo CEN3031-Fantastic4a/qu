@@ -27,28 +27,6 @@ describe('User Model Unit Tests:', function () {
       lastName: 'Name',
       displayName: 'Full Name',
       email: 'test@test.com',
-      customer: {
-        customer_id: 'cu_FJFkf443',
-        sources: [{
-          payment_type: 'cards',
-          currency: 'usd',
-          owner: {
-            address: {
-              city: 'Gainesvile',
-              country: 'USA',
-              line1: '1001 mill street',
-              line2: '',
-              postal_code: 33250,
-              state: 'FL'
-            },
-            email: 'dddd@fff.com',
-            name: 'Full Name',
-            phone: '7863105879'
-          },
-          token: 'tk_vidsds',
-          usage: 'reusable'
-        }]
-      },
       username: 'username',
       password: 'M3@n.jsI$Aw3$0m3',
       provider: 'local'
@@ -60,28 +38,6 @@ describe('User Model Unit Tests:', function () {
       lastName: 'User',
       displayName: 'Full Different Name',
       email: 'test3@test.com',
-      customer: {
-        customer_id: 'cu_FJFkf4de43',
-        sources: [{
-          payment_type: 'cards',
-          currency: 'usd',
-          owner: {
-            address: {
-              city: 'Gainesville',
-              country: 'USA',
-              line1: '1001 midll street',
-              line2: '',
-              postal_code: 32250,
-              state: 'FL'
-            },
-            email: 'test3@test.com',
-            name: 'Full Nadme',
-            phone: '786335879'
-          },
-          token: 'tke_videesds',
-          usage: 'reusable'
-        }]
-      },
       username: 'different_username',
       password: 'Different_Password1!',
       provider: 'local'
@@ -139,21 +95,6 @@ describe('User Model Unit Tests:', function () {
       _user1.save(function (err) {
         should.not.exist(err);
         _user1.roles = ['user', 'admin'];
-        _user1.save(function (err) {
-          should.not.exist(err);
-          _user1.remove(function (err) {
-            should.not.exist(err);
-            done();
-          });
-        });
-      });
-    });
-    it('should be able to update an existing user with valid payment_type without problems', function (done) {
-      var _user1 = new User(user1);
-
-      _user1.save(function (err) {
-        should.not.exist(err);
-        _user1.customer.payment_type = ['cards', 'bank_account', ''];
         _user1.save(function (err) {
           should.not.exist(err);
           _user1.remove(function (err) {
