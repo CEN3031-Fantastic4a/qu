@@ -9,7 +9,7 @@
 
   function customerBankingSetting($scope, $http, $location, UsersService, Authentication, Notification, TokenService) {
     var vm = this;
-
+    var braintree = {};
     vm.user = Authentication.user;
     vm.token = TokenService.get(function (data) {
       var x = document.getElementById('drop').getAttribute('value');

@@ -8,7 +8,7 @@ var path = require('path'),
   mongoose = require('mongoose'),
   passport = require('passport'),
   User = mongoose.model('User'),
-  config = require(path.resolve('./config/config'))
+  config = require(path.resolve('./config/config'));
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
   '/authentication/signin',
@@ -25,8 +25,7 @@ exports.signup = function (req, res) {
   var user = new User(req.body);
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
-  
-  // Then save the user
+// Then save the user
   user.save(function (err) {
     if (err) {
       return res.status(422).send({

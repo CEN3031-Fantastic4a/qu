@@ -19,13 +19,13 @@
     };
 
     NgMap.getMap().then(function (map) {
-		  vm.map = map;
-      vm.showCustomMarker = function(evt){
-			  console.log('showing marker');
-		  };
-		  vm.closeCustomMarker = function (evt) {
+      vm.map = map;
+      vm.showCustomMarker = function (evt) {
+        console.log('showing marker');
+      };
+      vm.closeCustomMarker = function (evt) {
         this.style.display = 'none';
       };
-	  });
+    });
   }
 }());

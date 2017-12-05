@@ -12,10 +12,10 @@
     return $resource('api/bankings/:bankingId', {
       bankingId: '@_id'
     }, {
-        update: {
-          method: 'PUT'
-        }
-      });
+      update: {
+        method: 'PUT'
+      }
+    });
   }
   angular
     .module('bankings')

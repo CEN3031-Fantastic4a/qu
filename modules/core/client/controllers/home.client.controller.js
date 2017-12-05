@@ -9,6 +9,7 @@
 
   function HomeController(ParkingService, NgMap) {
     var vm = this;
+    var google = {};
     vm.spots = ParkingService.query();
     vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
@@ -80,7 +81,7 @@
           var infoWindow = new google.maps.InfoWindow;
           infoWindow.open(map); */
         } else {
-          alert('Cannot find ' + vm.newAddress);
+// alert('Cannot find ' + vm.newAddress);
         }
       });
     }
