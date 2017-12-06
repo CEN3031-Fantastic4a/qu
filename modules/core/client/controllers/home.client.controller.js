@@ -5,11 +5,12 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['ParkingService', 'NgMap', '$window', 'bookingResolve']; 
+  HomeController.$inject = ['ParkingService', 'NgMap', '$window','$state', 'BookingUserService', 'Notification']; 
     
-  function HomeController(ParkingService, NgMap, $window, booking) { 
+  function HomeController(ParkingService, NgMap, $window, $state, BookingUserService, Notification) { 
     var vm = this;
     vm.spots = ParkingService.query();
+    vm.booking = new BookingUserService();
     vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
       vm.map.setZoom(18);
