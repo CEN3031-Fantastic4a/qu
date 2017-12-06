@@ -49,24 +49,23 @@
           </div>
           <a class="btn btn-primary btn-md" target="_blank" ng-model="vm.newAddress" ng-click=vm.changeCenter()>Find Spot</a>
           <br><br><br><br><br><br><br><br><br>
-          <button class="btn btn-primary btn-md" id="bookButton" style="background-color: #4CAF50; font-size: 20px;">Book This Spot</button>
+          <button class="btn btn-primary btn-md" id="bookButton" ng-disabled="!vm.selectedCity" style="background-color: #4CAF50; font-size: 20px;">Book This Spot</button>
         </div>
       </div>
     </div>
   </div>
   <div class="bookPopup" id="bookSpot" style="display:none;padding:15px;">
     <div class="row">
-      <h1>Details</h1>
       <div class="col-md-6">
+        <h1>Details</h1>
         <h4>{{vm.selectedCity.address}}</h4>
         <h4>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h4>
         <h4>Special Instructions: {{vm.selectedCity.description}}</h4>
         <div id="drop" value={{vm.token.token}}>
           <div id="dropin-container"></div>
-          <button class="btn btn-success" id="submit-button">Request payment method</button>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" style="padding-top:145px">
         <h3>Date</h3>
         <div class="input-group input-daterange">
           <input type="date" class="form-control" id="StartTime" placeholder="8">
@@ -85,10 +84,10 @@
           <div class="input-group-addon">to</div>
           <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
         </div>
-        <br>
-        <button type="button" class="btn btn-success">Book Now!</button>
       </div>
-    </div>
+      <div class="col-md-12"  style="text-align: center;">
+        <button class="btn btn-success" id="submit-button">Book Now!</button>
+      </div>
   </div>
 </div>
 

@@ -30,9 +30,11 @@
     var button = document.getElementById('bookButton');
 
     button.onclick = function () {
-      var div = document.getElementById('bookSpot');
-      div.style.display = 'block';
-      document.getElementById('bookSpot').scrollIntoView();
+      if (vm.selectedCity) {
+        var div = document.getElementById('bookSpot');
+        div.style.display = 'block';
+        document.getElementById('bookSpot').scrollIntoView();
+      }
     };
 
     vm.newCenter = function () {
