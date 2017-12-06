@@ -57,7 +57,13 @@ display: block;
 display: inline;
 }
 
-.jumbotron {
+.opener.bookPopup{
+  background-color:#fff;;
+  border-radius:10px;
+  color:#000;
+  margin-left:20px;
+  margin-right:20px;
+} {
   background-color: #ffffff;
 }
 
@@ -130,4 +136,11 @@ width: 30%;
 .whatWeDo{
   background-color:orange;
   height:700px;
+}
+.bookPopup{ 
+  background-color:#fff;;
+  border-radius:10px;
+  color:#000;
+  margin-left:20px;
+  margin-right:20px;
 }
