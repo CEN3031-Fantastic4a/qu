@@ -112,7 +112,7 @@ exports.delete = function (req, res) {
 /**
  * List of all the Bookings done by a User
  */
-exports.list = function (req, res) {
+exports.listUser = function (req, res) {
   Booking.find({ user: req.user.id }, function (err, bookings) {
     if (err) {
       return res.status(422).send({
@@ -121,6 +121,23 @@ exports.list = function (req, res) {
     } else {
       res.json(bookings);
     }
+  });
+};
+
+/**
+ * List of all the Bookings done by a User
+ */
+exports.listHost = function (req, res) {
+  Spot.find({ user: req.user.id }, function (err, spot) {
+    Booking.find({ spot: spot.id }, function (err, bookings) {
+      if (err) {
+        return res.status(422).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(bookings);
+      }
+    });
   });
 };
 

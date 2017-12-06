@@ -3,12 +3,12 @@
 
   angular
     .module('booking.services')
-    .factory('BookingService', BookingService);
+    .factory('BookingHostService', BookingHostService);
 
-  BookingService.$inject = ['$resource', '$log'];
+  BookingHostService.$inject = ['$resource', '$log'];
 
-  function BookingService($resource, $log) {
-    var Booking = $resource('/api/booking/:bookingId', {
+  function BookingHostService($resource, $log) {
+    var Booking = $resource('/api/bookings-host/:bookingId', {
       bookingId: '@_id'
     }, {
       update: {

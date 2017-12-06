@@ -2,14 +2,13 @@
   'use strict';
 
   angular
-    .module('booking')
+    .module('users')
     .controller('BookingHostController', BookingHostController);
 
-  BookingHostController.$inject = ['ParkingService'];
+  BookingHostController.$inject = ['$state', 'BookingHostService'];
 
-  function BookingHostController(ParkingService) {
+  function BookingHostController($state, BookingHostService) {
     var vm = this;
-
-    vm.spots = ParkingService.query();
+    vm.bookings = BookingHostService.query();
   }
 }());

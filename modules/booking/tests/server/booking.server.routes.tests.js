@@ -176,7 +176,7 @@ describe('Booking CRUD tests', function () {
 
   it('should not be able to book a spot if not logged in', function (done) {
     var booking = new Booking({ spot: spot._id });
-    agent.post('/api/bookings')
+    agent.post('/api/bookings-user/')
       .send(booking)
       .expect(403)
       .end(function (bookCreateErr, bookCreateRes) {
@@ -195,7 +195,7 @@ describe('Booking CRUD tests', function () {
         }
 
         var booking = new Booking({ user: diffUser._id, spot: spot._id });
-        agent.post('/api/bookings')
+        agent.post('/api/bookings-user')
           .send(booking)
           .expect(200)
           .end(function (bookingSaveErr, bookingSaveRes) {
@@ -206,7 +206,7 @@ describe('Booking CRUD tests', function () {
             // Change property of booking
             booking.total_time = 2;
 
-            agent.put('/api/bookings/' + bookingSaveRes.body._id)
+            agent.put('/api/bookings-user/' + bookingSaveRes.body._id)
               .send(booking)
               .expect(200)
               .end(function (bookingUpdateErr, bookingUpdateRes) {
@@ -229,7 +229,7 @@ describe('Booking CRUD tests', function () {
 
     bookingObj.save(function () {
       // Try updating spot
-      agent.put('/api/bookings/' + bookingObj._id)
+      agent.put('/api/bookings-user/' + bookingObj._id)
       .expect(403)
       .end(function (bookingUpdateErr, bookingUpdateRes) {
         // Set message assertion
@@ -257,11 +257,11 @@ describe('Booking CRUD tests', function () {
         spot: spot._id
       });
 
-      agent.post('/api/bookings')
+      agent.post('/api/bookings-user/')
       .send(booking)
       .expect(200)
       .end(function (bookingSaveErr, bookingSaveRes) {
-        agent.get('/api/bookings')
+        agent.get('/api/bookings-user/')
           .end(function (req, res) {
             // Set assertion
             res.body.should.be.instanceof(Array).and.have.lengthOf(1);
@@ -280,7 +280,7 @@ describe('Booking CRUD tests', function () {
     // Save the booking
     bookingObj.save(function () {
       // Request bookings
-      agent.get('/api/bookings')
+      agent.get('/api/bookings-user/')
         .end(function (req, res) {
           // Set assertion
           res.body.should.be.instanceof(Object).and.have.property('message', 'User is not authorized');
@@ -293,7 +293,7 @@ describe('Booking CRUD tests', function () {
 
   it('should not return proper error for single booking which doesnt exist, if not signed in', function (done) {
     // This is a valid mongoose Id but a non-existent booking
-    agent.get('/api/bookings/559e9cd815f80b4c256a8f41')
+    agent.get('/api/bookings-user/559e9cd815f80b4c256a8f41')
       .end(function (req, res) {
         // Set assertion
         res.body.should.be.instanceof(Object).and.have.property('message', 'No booking with that identifier has been found');
@@ -305,7 +305,7 @@ describe('Booking CRUD tests', function () {
 
   it('should return proper error for single booking which doesnt exist, if signed in', function (done) {
     // This is a valid mongoose Id but a non-existent booking
-    agent.get('/api/bookings/559e9cd815f80b4c256a8f41')
+    agent.get('/api/bookings-user/559e9cd815f80b4c256a8f41')
       .end(function (req, res) {
         // Set assertion
         res.body.should.be.instanceof(Object).and.have.property('message', 'No booking with that identifier has been found');
@@ -327,7 +327,7 @@ describe('Booking CRUD tests', function () {
           return done(signinErr);
         }
         booking.save(function () {
-          agent.delete('/api/bookings/' + booking._id)
+          agent.delete('/api/bookings-user/' + booking._id)
             .send(booking)
             .expect(403)
             .end(function (bookingDeleteErr, bookingDeleteRes) {
@@ -345,7 +345,7 @@ describe('Booking CRUD tests', function () {
     // Save the booking
     bookingObj.save(function () {
       // Try deleting spot
-      agent.delete('/api/bookings/' + bookingObj._id)
+      agent.delete('/api/bookings-user/' + bookingObj._id)
         .expect(403)
         .end(function (bookingDeleteErr, bookingDeleteRes) {
           // Set message assertion
@@ -378,7 +378,7 @@ describe('Booking CRUD tests', function () {
         }
 
         var booking = new Booking({ user: diffUser._id, spot: spot._id });
-        agent.post('/api/bookings')
+        agent.post('/api/bookings-user/')
           .send(booking)
           .expect(200)
           .end(function (bookingSaveErr, bookingSaveRes) {
@@ -387,7 +387,7 @@ describe('Booking CRUD tests', function () {
               return done(bookingSaveErr);
             }
 
-            agent.delete('/api/bookings/' + bookingSaveRes.body._id)
+            agent.delete('/api/bookings-user/' + bookingSaveRes.body._id)
               .send(booking)
               .expect(200)
               .end(function (bookingDeleteErr, bookingDeleteRes) {
