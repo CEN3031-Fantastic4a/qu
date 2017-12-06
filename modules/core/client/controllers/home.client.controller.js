@@ -5,9 +5,9 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['ParkingService', 'NgMap'];
-
-  function HomeController(ParkingService, NgMap) {
+  HomeController.$inject = ['ParkingService', 'NgMap', '$window', 'bookingResolve']; 
+    
+  function HomeController(ParkingService, NgMap, $window, booking) { 
     var vm = this;
     vm.spots = ParkingService.query();
     vm.showSpotInfo = function (event, spot) {
@@ -35,6 +35,29 @@
       document.getElementById('bookSpot').scrollIntoView();
     };
 
+    vm.form = {}; 
+    vm.save = save; 
+ 
+    // Save Booking 
+    function save(isValid) { 
+      if ($window.confirm('Are you sure you want to book this spot?')) { 
+        if (!isValid) { 
+          $scope.$broadcast('show-errors-check-validity', 'vm.form.bookingForm'); 
+          return false; 
+        } 
+ 
+        // Create a new booking, or update the current instance 
+        vm.booking.createOrUpdate() 
+          .then(function successCallback(res) { 
+            console.log(res); 
+            $state.go('home', {}, { reload: true });  
+            Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>Booking saved successfully!' }); 
+          }).catch(function errorCallback(res) { 
+            Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i>Booking save error!' }); 
+          }); 
+      } 
+    } 
+ 
     vm.newCenter = function () {
       vm.map.setCenter(new google.maps.LatLng(vm.newAddress.latitude, vm.newAddress.longitude));
     };

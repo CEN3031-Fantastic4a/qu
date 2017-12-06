@@ -55,36 +55,38 @@
   </div>
 </div>
   <div class="bookPopup" id="bookSpot" style="display:none;padding:15px;">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Details</h1>
-        <h3>{{vm.selectedCity.address}}</h3>
-        <h3>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h3>
-        <h3>Special Instructions: {{vm.selectedCity.description}}</h3>
+    <form name="vm.form.bookingForm"  ng-submit="vm.save(vm.form.bookingForm.$valid)" novalidate>           
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Details</h1>
+          <h3>{{vm.selectedCity.address}}</h3>
+          <h3>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h3>
+          <h3>Special Instructions: {{vm.selectedCity.description}}</h3>
+        </div>
+        <div class="col-md-6">
+          <h3>Date</h3>
+        <div class="input-group input-daterange">
+          <input type="date" class="form-control" id="StartTime"  placeholder="8">
+          <div class="input-group-addon">to</div>
+          <input type="date" class="form-control" id="EndTime"  placeholder="6">
+        </div>
+        <h3>Start time</h3>
+        <div class="input-group input-daterange">
+          <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
+          <div class="input-group-addon">to</div>
+          <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
+        </div>
+        <h3>End time</h3>
+        <div class="input-group input-daterange">
+          <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
+          <div class="input-group-addon">to</div>
+          <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
+        </div>
+        <br>
+        <input type="submit" class="btn btn-success"> 
+        </div>
       </div>
-      <div class="col-md-6">
-        <h3>Date</h3>
-       <div class="input-group input-daterange">
-         <input type="date" class="form-control" id="StartTime"  placeholder="8">
-         <div class="input-group-addon">to</div>
-         <input type="date" class="form-control" id="EndTime"  placeholder="6">
-       </div>
-       <h3>Start time</h3>
-       <div class="input-group input-daterange">
-         <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
-         <div class="input-group-addon">to</div>
-         <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
-       </div>
-       <h3>End time</h3>
-       <div class="input-group input-daterange">
-         <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
-         <div class="input-group-addon">to</div>
-         <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
-       </div>
-       <br>
-       <button type="button" class="btn btn-success">Book Now!</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
 
