@@ -11,6 +11,10 @@ position: absolute;
 right: 0;
 width: 30%;
 }
+.mapClass {
+background-color: black;
+height: 500px;
+}
 
 .social-account-container {
 display: inline-block;
@@ -27,18 +31,48 @@ position: relative;
   bottom:20%;
   position:relative;
   top:100px;
-  width: 70%;
-}
+  width: 70%}
 
 .goldButt{
   background-color: #DFD18B !important;
   border-color:#BFB16B !important;
   color:black !important;
 }
+.left {
+background: #035096;
+background-size: 100% 100%;
+height: 100%;
+left: 0;
+overflow: visible;
+position: absolute;
+vertical-align: middle;
+width: 70%;
+}
 
+
+
+
+
+
+.choochinner{
+
+  flex:1;
+
+  overflow:visible;
+  width: 70%;
+}
 .user-profile-picture {
   max-height: 150px;
   min-height: 150px;
+}
+.right {
+background: #DFD18B;
+clear: both;
+height: 100%;
+  overflow: visible;
+  position: absolute;
+right: 0;
+width: 30%;
 }
 .signinContainer{
   display:flex;
