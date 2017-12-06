@@ -5,9 +5,9 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['ParkingService', 'NgMap'];
+  HomeController.$inject = ['ParkingService', 'NgMap', 'TokenService', 'Notification'];
 
-  function HomeController(ParkingService, NgMap) {
+  function HomeController(ParkingService, NgMap, TokenService, Notification) {
     var vm = this;
     vm.spots = ParkingService.query();
     vm.showSpotInfo = function (event, spot) {
@@ -50,7 +50,24 @@
         collapse: false
       });
     });
-
+    vm.token = TokenService.get(function (data) {
+      var x = document.getElementById('drop').getAttribute('value');
+      var button = document.querySelector('#submit-button');
+      braintree.dropin.create({
+        authorization: data.token,
+        container: '#dropin-container'
+      }, function (createErr, instance) {
+        button.addEventListener('click', function () {
+          instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+            if (requestPaymentMethodErr) {
+              Notification.error({ message: '<i class="glyphicon glyphicon-remove"></i> Payment Error!' });
+            } else {
+              Notification.info({ message: 'Payment Successfull ' });
+            }
+          });
+        });
+      });
+    });
     /*  if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         var pos = {
