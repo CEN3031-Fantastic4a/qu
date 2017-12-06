@@ -1,12 +1,8 @@
 .content {
 margin-top: 50px;
-background-color: #001b51;
-}
-.jumbotron {
-  background-color: #001b51!important;
 }
 .frontPage {
-background-color: #001b51;
+background-color: #035096;
 height:70px;
 margin: 0;
 padding: 0;
@@ -61,7 +57,13 @@ display: block;
 display: inline;
 }
 
-.jumbotron {
+.opener.bookPopup{
+  background-color:#fff;;
+  border-radius:10px;
+  color:#000;
+  margin-left:20px;
+  margin-right:20px;
+} {
   background-color: #ffffff;
 }
 
@@ -124,7 +126,18 @@ width: 30%;
 }
 
 
-.bookPopup{
+.mapAddressWrapper{
+  background-color:green;
+  height: calc("80vh - 50px");
+}
+.mapStyle{
+  height:calc("80vh - 50px");
+}
+.whatWeDo{
+  background-color:orange;
+  height:700px;
+}
+.bookPopup{ 
   background-color:#fff;;
   border-radius:10px;
   color:#000;
