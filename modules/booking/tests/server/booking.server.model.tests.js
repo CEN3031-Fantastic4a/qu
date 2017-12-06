@@ -58,15 +58,6 @@ describe('Booking Model Unit Tests:', function () {
         return done();
       });
     });
-
-    it('should be able to show an error when try to save without spot id', function (done) {
-      booking.spot = '';
-
-      booking.save(function (err) {
-        should.exist(err);
-        return done();
-      });
-    });
   });
 
   afterEach(function (done) {

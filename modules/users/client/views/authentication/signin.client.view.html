@@ -1,23 +1,19 @@
-<div class="left">
-  <div class="left-inner">
-    <div class="center" style="border-radius:10px;">
-      <h1 style="color:white">Welcome to Park-It</h1>
-      <h3 style="color:#d3d3d3">Register for an account to start</h3>
-      <p style="color:#ccc" ;>
-        Park-it aims to provide users with quick
-        access to easy parking wherever you are. This is some filler text to make this part of the page look more full. Some objectives of Park-It includes making my life easier, making your life easier, and most importantly, making our client money. I don't know what else to type for now, but I think I have just enough content to make this seemed like a fleshed out paragraph. You know, on second thought, maybe I should add another sentence or two? A little bit of extra text never hurt anyone.
-      </p>
 
+<div class="container-fluid" style="margin-top:20px;background-color: #035096;border-radius:0 10px 10px 10px;box-shadow:10px 10px 10px; #222;">
+  <div class="row">
+    <div class="col-md-8"style="padding-left:10%;padding-right:10%;border-radius:0;">
+      <h1 style="color:white">Welcome to QU</h1>
+      <h3 style="color:#d3d3d3">Login to account to start</h3>
+      <p style="color:#ccc" ;>
+        QU aims to provide users with quick
+        access to easy parking wherever you are. To get started, sign in to your account using either your QU account or with a linked FaceBook or Google account.
+      </p>
       <p style="color:#d3d3d3"><br><br>Need to make an account?</p>
       <a href="signup" class="goldButt btn btn-raised btn-success">REGISTER HERE</a>
     </div>
-  </div>
-</div>
 
-<div class="right" style="margin-top: 170px;">
-  <div class="left-inner">
-    <div class="center" style="float:left; width: 80%; height:80%;top:0">
-      <h3 style="color: white">Or log in to you account</h3><form name="vm.userForm" ng-submit="vm.signin(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+    <div class="col-md-4" style="background-color:#DFD18B;border-radius:0 0 10px 0;min-height:400px;">
+      <h3 style="color: white">Or log in to your account</h3><form name="vm.userForm" ng-submit="vm.signin(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
         <fieldset>
           <div class="form-group" style="padding-bottom: 5px;margin-bottom: 5px"  show-errors>
             <uib-alert type="danger" ng-show="vm.error" class="text-center text-danger">
@@ -47,4 +43,6 @@
       </form>
     </div>
   </div>
+</div>
+<div style="min-height:20px;">
 </div>
