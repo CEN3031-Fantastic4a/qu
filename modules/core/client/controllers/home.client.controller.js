@@ -10,6 +10,7 @@
   function HomeController(ParkingService, NgMap, TokenService, $window, $state, BookingUserService, Notification) { 
     var vm = this;
     vm.spots = ParkingService.query();
+    vm.booking = new BookingUserService();
     vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
       vm.map.setZoom(18);
