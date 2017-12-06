@@ -5,11 +5,12 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['ParkingService', 'NgMap', 'TokenService', 'Notification'];
+  HomeController.$inject = ['$scope', 'ParkingService', 'NgMap', 'TokenService', '$window', '$state', 'BookingUserService', 'Notification'];
 
-  function HomeController(ParkingService, NgMap, TokenService, Notification) {
+  function HomeController($scope, ParkingService, NgMap, TokenService, $window, $state, BookingUserService, Notification) {
     var vm = this;
     vm.spots = ParkingService.query();
+    vm.booking = new BookingUserService();
     vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
       vm.map.setZoom(18);
@@ -36,6 +37,29 @@
         document.getElementById('bookSpot').scrollIntoView();
       }
     };
+
+    vm.form = {};
+    vm.save = save;
+
+// Save Booking
+    function save(isValid) {
+      if ($window.confirm('Are you sure you want to book this spot?')) {
+        if (!isValid) {
+          $scope.$broadcast('show-errors-check-validity', 'vm.form.bookingForm');
+          return false;
+        }
+
+// Create a new booking, or update the current instance
+        vm.booking.createOrUpdate()
+          .then(function successCallback(res) {
+            console.log(res);
+            $state.go('home', {}, { reload: true });
+            Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i>Booking saved successfully!' });
+          }).catch(function errorCallback(res) {
+            Notification.error({ message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i>Booking save error!' });
+          });
+      }
+    }
 
     vm.newCenter = function () {
       vm.map.setCenter(new google.maps.LatLng(vm.newAddress.latitude, vm.newAddress.longitude));
@@ -108,7 +132,7 @@
           var infoWindow = new google.maps.InfoWindow;
           infoWindow.open(map); */
         } else {
-// alert('Cannot find ' + vm.newAddress);
+          // alert('Cannot find ' + vm.newAddress);
         }
       });
     }
