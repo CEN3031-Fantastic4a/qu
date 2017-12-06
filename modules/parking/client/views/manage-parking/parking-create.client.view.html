@@ -26,8 +26,8 @@
             </div>
           </div>
           <div class = "form-group">
-          <label for="state">State</label>
-          <p></p>
+          <label for="state"style="margin-bottom:5px;">State</label>
+          <p style="padding:0px;margin:0px;"> </p>
             <select name="State">
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -81,6 +81,7 @@
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
             </select>
+            <p style="padding:5px;margin:0px;"> </p>
           <div class="form-group" show-errors>
             <label for="postal_code">Zip Code</label>
             <input name="postal_code" type="text" ng-model="vm.spot.postal_code" id="postal_code" class="form-control" placeholder="Zip Code" required>
@@ -132,7 +133,7 @@
           </label>
         </div>
 
-        <div class = "row">
+        <div class = "row"style="padding-top:10px;padding-bottom:0px;margin-bottom:0;">
           <div class = "col-md-4">
             <div class = "form-group">
               <input type="checkbox" id = "mon" disabled = "disabled" onclick="if (this.checked){
@@ -155,7 +156,7 @@
             </div>
           </div>
 
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox" id = "tue" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('tueStartTime').disabled = false;
@@ -175,7 +176,7 @@
                 <div class="input-group-addon">:00</div>
               </div>
           </div>
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox" id = "wed" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('wedStartTime').disabled = false;
@@ -195,7 +196,7 @@
               <div class="input-group-addon">:00</div>
             </div>
           </div>
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox"  id = "thu" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('thuStartTime').disabled = false;
@@ -215,7 +216,7 @@
             <div class="input-group-addon">:00</div>
             </div>
           </div>
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox" id = "fri" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('friStartTime').disabled = false;
@@ -235,7 +236,7 @@
             <div class="input-group-addon">:00</div>
             </div>
           </div>
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox" id = "sat" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('satStartTime').disabled = false;
@@ -254,7 +255,7 @@
               <div class="input-group-addon">:00</div>
               </div>
           </div>
-          <div class = "row">
+          <div class = "row" style="padding-top:10px;">
             <div class = "col-md-4">
               <input type="checkbox" id = "sun" disabled = "disabled" onclick="if (this.checked){
                 document.getElementById('sunStartTime').disabled = false;

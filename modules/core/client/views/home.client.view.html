@@ -48,7 +48,7 @@
             </div>
           </div>
           <a class="btn btn-primary btn-md" target="_blank" ng-model="vm.newAddress" ng-click=vm.changeCenter()>Find Spot</a>
-          <br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br>
           <button class="btn btn-primary btn-md" id="bookButton" ng-disabled="!vm.selectedCity" style="background-color: #4CAF50; font-size: 20px;">Book This Spot</button>
         </div>
       </div>
@@ -57,37 +57,48 @@
   <div class="bookPopup" id="bookSpot" style="display:none;padding:15px;">
     <div class="row">
       <div class="col-md-6">
-        <h1>Details</h1>
-        <h4>{{vm.selectedCity.address}}</h4>
-        <h4>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h4>
-        <h4>Special Instructions: {{vm.selectedCity.description}}</h4>
+        <h1>Booking Info</h1>
         <div id="drop" value={{vm.token.token}}>
           <div id="dropin-container"></div>
         </div>
       </div>
-      <div class="col-md-6" style="padding-top:145px">
+      <div class="col-md-6" style="">
+        <h1>Details</h1>
+        <h4>{{vm.selectedCity.address}}</h4>
+        <h4>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h4>
+        <h4>Special Instructions: {{vm.selectedCity.description}}</h4>
+        <h4>Total Hours:</h4>
+        
         <h3>Date</h3>
         <div class="input-group input-daterange">
-          <input type="date" class="form-control" id="StartTime" placeholder="8">
+          <input type="date" class="form-control" ng-model="vm.dateStart" id="dateStart" placeholder="8" required>
+            <div ng-messages="vm.bookingForm.dateStart.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Start date is required.</p>
+            </div>
           <div class="input-group-addon">to</div>
-          <input type="date" class="form-control" id="EndTime" placeholder="6">
+          <input type="date" class="form-control" ng-model="vm.dateEnd" id="dateEnd" placeholder="6" required>
+            <div ng-messages="vm.bookingForm.dateEnd.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">End date is required.</p>
+            </div>
         </div>
-        <h3>Start time</h3>
+        <h3>Duration</h3>
         <div class="input-group input-daterange">
-          <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
+          <input type="time" class="form-control" id="entry_date_time" ng-model="vm.booking.entry_date_time" placeholder="8" required>
+            <div ng-messages="vm.bookingForm.entry_date_time.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Start time is required.</p>
+            </div>
           <div class="input-group-addon">to</div>
-          <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
-        </div>
-        <h3>End time</h3>
-        <div class="input-group input-daterange">
-          <input type="time" class="form-control" id="StartTime" ng-model="vm.spot.mon_start_time" placeholder="8">
-          <div class="input-group-addon">to</div>
-          <input type="time" class="form-control" id="EndTime" ng-model="vm.spot.mon_end_time" placeholder="6">
+          <input type="time" class="form-control" id="entry_exit_time" ng-model="vm.booking.entry_exit_time" placeholder="6" required>
+            <div ng-messages="vm.bookingForm.exit_date_time.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">End time is required.</p>
+            </div>
         </div>
       </div>
-      <div class="col-md-12"  style="text-align: center;">
-        <button class="btn btn-success" id="submit-button" ng-click="vm.save(vm.form.bookingForm.$valid)">Book Now!</button>
-      </div>
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <button class="btn btn-success" id="submit-button" ng-click="vm.save(vm.form.bookingForm.$valid)" style="font-size:24px;margin-top:15px;">Book Now</button> 
+        </div>
   </div>
 </div>
 
