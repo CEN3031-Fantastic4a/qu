@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('parking.routes')
+    .module('booking.routes')
     .config(routeConfig);
 
   routeConfig.$inject = ['$stateProvider'];
