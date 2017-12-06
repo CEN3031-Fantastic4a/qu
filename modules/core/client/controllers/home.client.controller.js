@@ -9,15 +9,13 @@
 
   function HomeController(ParkingService, NgMap) {
     var vm = this;
-    var google = {};
     vm.spots = ParkingService.query();
     vm.showSpotInfo = function (event, spot) {
       vm.selectedCity = spot;
       vm.map.setZoom(18);
       vm.map.setCenter(new google.maps.LatLng(vm.selectedCity.latitude, vm.selectedCity.longitude));
       vm.map.showInfoWindow('myInfoWindow', this);
-      document.getElementById("bookButton").disabled = false;
-      /*document.getElementById("bookSpot").scrollIntoView();*/
+      document.getElementById('bookButton').disabled = false;
     };
     NgMap.getMap().then(function (map) {
       vm.map = map;
@@ -31,17 +29,10 @@
 
     var button = document.getElementById('bookButton');
 
-    button.onclick = function() {
-        var div = document.getElementById('bookSpot');
-        /*if (div.style.display !== 'none') {
-            div.style.display = 'none';
-        }
-        else {
-            div.style.display = 'block';
-            document.getElementById("bookSpot").scrollIntoView();
-        } */
-        div.style.display = 'block';
-        document.getElementById("bookSpot").scrollIntoView();
+    button.onclick = function () {
+      var div = document.getElementById('bookSpot');
+      div.style.display = 'block';
+      document.getElementById('bookSpot').scrollIntoView();
     };
 
     vm.newCenter = function () {

@@ -49,17 +49,14 @@
 </div>
 <a class="btn btn-primary btn-md" target="_blank" ng-model = "vm.newAddress" ng-click = vm.changeCenter()>Find Spot</a>
 <br><br><br><br><br><br><br><br><br>
-<button class="btn btn-primary btn-md" id= "bookButton" disabled>Book This Spot</button>
+<button class="btn btn-primary btn-md" id= "bookButton" style="background-color: #4CAF50; font-size: 20px;">Book This Spot</button>
 </div>
   </div>
   </div>
 </div>
-  <div id="bookSpot">
+  <div id="bookSpot" style="display:none">
     <h1>Details</h1>
       <div class="col-md-6">
-        <!--<div class="form-group form-group-lg">
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter keywords">
-        </div>-->
         <h4>{{vm.selectedCity.address}}</h4>
         <h4>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h4>
         <h4>Special Instructions: {{vm.selectedCity.description}}</h4>
