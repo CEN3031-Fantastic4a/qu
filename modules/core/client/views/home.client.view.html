@@ -1,9 +1,9 @@
 <div class="container-fluid" style="font-family:Montserrat;">
-<div class="jumbotron text-left" style="padding-top:10px;padding-bottom:10px;margin-bottom:10px;background-color:">
+<div class="jumbotron text-left" style="padding-top:10px;padding-bottom:10px;margin-bottom:10px;color:white;">
   <h1><strong>Welcome to QU!</strong></h1>
   <p>To get started, type the address below to see the spot's availability.</p>
 </div>
-<div class="container-fluid" style="width:100%;background-color: #035096;border-radius:10px;box-shadow:10px 10px 10px; #222;">
+<div class="container-fluid" style="width:100%;background-color: #001b51;border-radius:10px;">
   <div class="row">
     <div class="col-md-8 mapContainer">
       <div map-lazy-load="https://maps.google.com/maps/api/js" style="padding:15px;height:500px;"map-lazy-load-params="{{googleMapsUrl}}">
@@ -54,14 +54,15 @@
   </div>
   </div>
 </div>
-  <div id="bookSpot" style="display:none">
-    <h1>Details</h1>
-      <div class="col-md-6">
+  <div class="bookPopup" id="bookSpot" style="display:none;padding:15px;">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Details</h1>
         <h4>{{vm.selectedCity.address}}</h4>
         <h4>Number of Spots: {{vm.selectedCity.number_of_space_spot}}</h4>
         <h4>Special Instructions: {{vm.selectedCity.description}}</h4>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h3>Date</h3>
        <div class="input-group input-daterange">
          <input type="date" class="form-control" id="StartTime"  placeholder="8">
@@ -83,6 +84,7 @@
        <br>
        <button type="button" class="btn btn-success">Book Now!</button>
       </div>
+    </div>
   </div>
 </div>
 <div style="height:20px;">
