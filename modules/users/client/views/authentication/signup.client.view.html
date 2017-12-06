@@ -1,5 +1,4 @@
-
-<div class="container-fluid" style="margin-top:20px;background-color: #035096;border-radius:0 10px 10px 10px;box-shadow:10px 10px 10px; #222;">
+<div class="container-fluid" style="margin-top:20px;background-color: #035096;border-radius:0 10px 10px 10px;box-shadow:10px 10px 10px; color: #222;">
   <div class="row">
     <div class="col-md-8"style="padding-left:10%;padding-right:10%;border-radius:10px;">
       <h1 style="color:white">Welcome to QU</h1>
@@ -13,86 +12,6 @@
     </div>
 
     <div class="col-md-4" style="background-color:#DFD18B;border-radius:0 0 10px 0;">
-      <form name="vm.userForm" ng-submit="vm.signin(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
-        <fieldset>
-          <h3 style="color: white">Account Registration</h3>
-          <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
-            <fieldset>
-              <div class="form-group" show-errors>
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.credentials.firstName" placeholder="First Name" required autofocus>
-                <div ng-messages="vm.userForm.firstName.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">First name is required.</p>
-                </div>
-              </div>
-              <div class="form-group" show-errors>
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" class="form-control" ng-model="vm.credentials.lastName" placeholder="Last Name" required>
-                <div ng-messages="vm.userForm.lastName.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Last name is required.</p>
-                </div>
-              </div>
-              <div class="form-group" show-errors>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" ng-model="vm.credentials.email" placeholder="Email" lowercase required>
-                <div ng-messages="vm.userForm.email.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Email address is required.</p>
-                  <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
-                </div>
-              </div>
-              <div class="form-group" show-errors>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" class="form-control" ng-model="vm.credentials.username" ng-pattern="vm.usernameRegex" placeholder="Username" lowercase required>
-                <div ng-messages="vm.userForm.username.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Username is required.</p>
-                  <p class="help-block error-text" ng-message="pattern">Please enter a valid username: 3+ characters long, non restricted word, characters "_-.", no consecutive dots, does not begin or end with dots, letters a-z and numbers 0-9.</p>
-                </div>
-              </div>
-              <div class="form-group" show-errors>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" placeholder="Password" uib-popover="{{vm.getPopoverMsg()}}" popover-trigger="outsideClick" password-validator required>
-                <div ng-messages="vm.userForm.password.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Password is required.</p>
-                  <div ng-repeat="passwordError in passwordErrors">
-                    <p class="help-block error-text" ng-show="vm.userForm.password.$error.requirements">{{passwordError}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group" ng-show="!vm.userForm.password.$error.required" style="width:148px; height:63px;display:block;">
-                <label>Password Requirements</label>
-                <uib-progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></uib-progressbar>
-              </div>
-              <div class="text-center form-group">
-                <button type="submit" class="btn btn-primary">Sign up</button>
-              </div>
-            </fieldset>
-          </form>
-    </div>
-  </div>
-</div>
-<div style="min-height:20px;">
-</div>
-
-<!--
-<div class="left">
-  <div class="left-inner">
-    <div class="center" style="border-radius:10px;">
-      <h1 style="color:white">Welcome to Park-It</h1>
-      <h3 style="color:#d3d3d3">Register for an account to start</h3>
-      <p style="color:#ccc" ;>
-        Park-it aims to provide users with quick
-        access to easy parking wherever you are. This is some filler text to make this part of the page look more full. Some objectives of Park-It includes making my life easier, making your life easier, and most importantly, making our client money. I don't know what else to type for now, but I think I have just enough content to make this seemed like a fleshed out paragraph. You know, on second thought, maybe I should add another sentence or two? A little bit of extra text never hurt anyone.
-      </p>
-
-      <p style="color:#d3d3d3"><br><br>Already have an account?</p>
-      <a href="signin" class="goldButt btn btn-raised btn-success">LOGIN HERE</a>
-    </div>
-  </div>
-</div>
-
-<div class="right" style="margin-top: 170px;">
-  <div class="left-inner">
-    <div class="center" style="float:left; width: 90%; height:80%;top:0">
       <h3 style="color: white">Account Registration</h3>
       <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
         <fieldset>
@@ -148,4 +67,7 @@
     </div>
   </div>
 </div>
--->
+</div>
+</div>
+<div style="min-height:20px;">
+</div>
