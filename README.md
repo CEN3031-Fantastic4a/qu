@@ -7,6 +7,24 @@
 Qü is a full stack MEAN stack application that allows users to act as renters for private parking spaces. The user has the ability to rent out a space and also rent one from another user for a set amount of time agreed upon by the renter and rentee.
 
 
+### Heroku deployment of Development Branch
+_Link to the deployment branch: https://qu-park.herokuapp.com/
+
+### Update database and server links
+_There is no server links directly implemented.
+If the web app need to be transfered to another don't forget to update API keys to the new domain.
+The database is at the moment located on MLAB in a sandbox
+
+### Running in Development mode
+_This is the next step for the application_
+To run your application with *production* environment configuration:
+
+```bash
+$ npm start
+```
+
+Explore `config/env/development.js` for development environment configuration options.
+
 ### Running in Production mode
 _This is the next step for the application_
 To run your application with *production* environment configuration:
@@ -42,3 +60,16 @@ And to run only the client tests, run the test:client task:
 ```bash
 $ npm run test:client
 ```
+### Screenshots Example of the Webapp
+
+![alt img1*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img1.png)
+
+![alt img2*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img2.png)
+
+![alt img3*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img3.png)
+
+![alt img4*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img4.png)
+
+![alt img5*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img5.png)
+
+![alt img6*](https://github.com/CEN3031-Fantastic4a/qu/blob/master/public/img/img6.png)
