@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.8.0
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -13,3 +13,28 @@ patch:
         patched: '2017-12-03T23:22:25.916Z'
     - gulp-eslint > bufferstreams > debug > ms:
         patched: '2017-12-03T23:22:25.916Z'
+  SNYK-JS-LODASH-567746:
+    - lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - async > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - acl > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-uglify > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - wiredep > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - acl > async > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-eslint > eslint > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - mongoose > async > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-eslint > eslint > inquirer > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-eslint > eslint > table > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-sass > node-sass > sass-graph > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
+    - gulp-sass > node-sass > gaze > globule > lodash:
+        patched: '2020-04-30T23:57:03.407Z'
